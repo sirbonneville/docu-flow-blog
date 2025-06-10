@@ -77,9 +77,9 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
             })}
           </div>
 
-          {/* Liquid Glass Effect Overlay */}
+          {/* Liquid Glass Effect Overlay - Increased Height */}
           {shouldShowGlassEffect && (
-            <div className="absolute inset-x-0 bottom-0 h-32 md:h-40 pointer-events-none">
+            <div className="absolute inset-x-0 bottom-0 h-48 md:h-56 pointer-events-none">
               {/* Gradient fade overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
               
