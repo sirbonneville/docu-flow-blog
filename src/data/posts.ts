@@ -649,30 +649,30 @@ Developers prefer:
 ### Error Message Examples
 
 **Configuration Errors:**
-```
+\`\`\`
 ❌ Missing required field: webhook_url
 💡 Add webhook_url to your configuration:
    {
      "webhook_url": "https://yoursite.com/webhook"
    }
 📖 Learn more about webhooks
-```
+\`\`\`
 
 **Authentication Errors:**
-```
+\`\`\`
 ❌ Authentication failed
 🔍 Verify your API key has these permissions:
    • read:repositories
    • write:deployments
 🔧 Manage API key permissions
-```
+\`\`\`
 
 **Validation Errors:**
-```
+\`\`\`
 ❌ Invalid JSON in line 12
 💡 Missing comma after "name" property
 📝 JSON validator
-```
+\`\`\`
 
 ## Onboarding Copy
 
@@ -704,7 +704,7 @@ Expected build time: 2-3 minutes."
 ### Contextual Help
 Embed documentation links strategically:
 
-```
+\`\`\`
 Environment Variables
 Set environment variables for your application.
 
@@ -712,7 +712,7 @@ Set environment variables for your application.
 
 Need help? → Environment variable guide
 Common examples → Database, API keys, feature flags
-```
+\`\`\`
 
 ### Progressive Information
 Start with common use cases, link to comprehensive docs:
