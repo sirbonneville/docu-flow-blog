@@ -101,81 +101,79 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                   color: 'hsl(var(--muted-foreground))'
                 }}
               />
-            </div>
-          )}
-        </div>
 
-        {/* Premium Glassmorphism "View More" Section */}
-        {shouldShowGlassEffect && (
-          <div className="relative z-10 mt-12 flex justify-center">
-            <div className="group">
-              {/* Glassmorphism card with hover animations */}
-              <div className="relative overflow-hidden rounded-2xl border border-border/30 
-                            bg-background/10 dark:bg-card/15 
-                            backdrop-blur-md shadow-lg hover:shadow-xl
-                            transition-all duration-500 ease-out
-                            hover:bg-background/20 dark:hover:bg-card/25
-                            hover:-translate-y-1 hover:scale-[1.02]
-                            p-8 max-w-sm">
-                
-                {/* Subtle shimmer effect on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent 
-                              translate-x-[-100%] group-hover:translate-x-[100%] 
-                              transition-transform duration-1000 ease-out" />
-                
-                {/* Content */}
-                <div className="relative space-y-4 text-center">
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground 
-                                 bg-clip-text text-transparent">
-                      Discover More Stories
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      Explore {filteredPosts.length - visiblePosts.length} additional posts in our complete collection
-                    </p>
-                  </div>
-                  
-                  {/* Enhanced button with glassmorphism */}
-                  <Button 
-                    asChild 
-                    variant="outline" 
-                    className="group/btn relative overflow-hidden
-                             bg-background/50 dark:bg-card/20 
-                             border-border/40 hover:border-border/60
-                             backdrop-blur-sm shadow-sm hover:shadow-md
-                             transition-all duration-300 ease-out
-                             hover:bg-background/70 dark:hover:bg-card/30
-                             hover:-translate-y-0.5"
-                  >
-                    <Link to="/posts" className="flex items-center gap-2">
-                      <span className="font-medium">View All Posts</span>
-                      <ArrowRight 
-                        size={16} 
-                        className="transition-transform duration-300 ease-out 
-                                 group-hover/btn:translate-x-1" 
-                      />
+              {/* Premium Glassmorphism "Discover More" Card - Layered on TOP */}
+              <div className="absolute inset-x-0 bottom-8 flex justify-center pointer-events-auto z-10">
+                <div className="group">
+                  {/* Glassmorphism card with hover animations */}
+                  <div className="relative overflow-hidden rounded-2xl border border-border/30 
+                                bg-background/10 dark:bg-card/15 
+                                backdrop-blur-md shadow-lg hover:shadow-xl
+                                transition-all duration-500 ease-out
+                                hover:bg-background/20 dark:hover:bg-card/25
+                                hover:-translate-y-1 hover:scale-[1.02]
+                                p-8 max-w-sm">
+                    
+                    {/* Subtle shimmer effect on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent 
+                                  translate-x-[-100%] group-hover:translate-x-[100%] 
+                                  transition-transform duration-1000 ease-out" />
+                    
+                    {/* Content */}
+                    <div className="relative space-y-4 text-center">
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground 
+                                     bg-clip-text text-transparent">
+                          Discover More Stories
+                        </h3>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          Explore {filteredPosts.length - visiblePosts.length} additional posts in our complete collection
+                        </p>
+                      </div>
                       
-                      {/* Button shimmer effect */}
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent 
-                                    translate-x-[-100%] group-hover/btn:translate-x-[100%] 
-                                    transition-transform duration-700 ease-out" />
-                    </Link>
-                  </Button>
-                </div>
+                      {/* Enhanced button with glassmorphism */}
+                      <Button 
+                        asChild 
+                        variant="outline" 
+                        className="group/btn relative overflow-hidden
+                                 bg-background/50 dark:bg-card/20 
+                                 border-border/40 hover:border-border/60
+                                 backdrop-blur-sm shadow-sm hover:shadow-md
+                                 transition-all duration-300 ease-out
+                                 hover:bg-background/70 dark:hover:bg-card/30
+                                 hover:-translate-y-0.5"
+                      >
+                        <Link to="/posts" className="flex items-center gap-2">
+                          <span className="font-medium">View All Posts</span>
+                          <ArrowRight 
+                            size={16} 
+                            className="transition-transform duration-300 ease-out 
+                                     group-hover/btn:translate-x-1" 
+                          />
+                          
+                          {/* Button shimmer effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent 
+                                        translate-x-[-100%] group-hover/btn:translate-x-[100%] 
+                                        transition-transform duration-700 ease-out" />
+                        </Link>
+                      </Button>
+                    </div>
 
-                {/* Floating particles effect */}
-                <div className="absolute inset-0 opacity-20 pointer-events-none">
-                  <div className="absolute top-4 right-6 w-1 h-1 bg-primary rounded-full 
-                                animate-pulse" style={{ animationDelay: '0s' }} />
-                  <div className="absolute bottom-6 left-8 w-0.5 h-0.5 bg-accent rounded-full 
-                                animate-pulse" style={{ animationDelay: '1s' }} />
-                  <div className="absolute top-8 left-12 w-1.5 h-1.5 bg-muted-foreground/30 rounded-full 
-                                animate-pulse" style={{ animationDelay: '2s' }} />
+                    {/* Floating particles effect */}
+                    <div className="absolute inset-0 opacity-20 pointer-events-none">
+                      <div className="absolute top-4 right-6 w-1 h-1 bg-primary rounded-full 
+                                    animate-pulse" style={{ animationDelay: '0s' }} />
+                      <div className="absolute bottom-6 left-8 w-0.5 h-0.5 bg-accent rounded-full 
+                                    animate-pulse" style={{ animationDelay: '1s' }} />
+                      <div className="absolute top-8 left-12 w-1.5 h-1.5 bg-muted-foreground/30 rounded-full 
+                                    animate-pulse" style={{ animationDelay: '2s' }} />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
 
         {filteredPosts.length === 0 && searchQuery && (
           <div className="text-center py-6">
