@@ -1,4 +1,5 @@
 
+
 export const Hero = () => {
   return (
     <section className="py-20 lg:py-28 animate-fade-in">
@@ -17,7 +18,7 @@ export const Hero = () => {
           and leading documentation teams in the modern software landscape.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-2">
           <div className="flex items-center space-x-4 text-sm text-muted-foreground">
             <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
               writing software docs @ pieces for developers
@@ -28,3 +29,4 @@ export const Hero = () => {
     </section>
   );
 };
+
