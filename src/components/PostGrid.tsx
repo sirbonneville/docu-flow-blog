@@ -4,6 +4,7 @@ import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 interface Post {
   id: string;
@@ -32,7 +33,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
     (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())))
   );
 
-  // Determine if we should show the liquid glass effect
+  // Determine if we should show the glass effect
   const shouldShowGlassEffect = filteredPosts.length > 6; // Desktop: 6+, Mobile: 3+ (handled via CSS)
   const visiblePosts = shouldShowGlassEffect ? filteredPosts.slice(0, 6) : filteredPosts;
 
@@ -77,46 +78,101 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
             })}
           </div>
 
-          {/* Liquid Glass Effect Overlay - Increased Height */}
+          {/* Sophisticated Gradient Fade-out Effect */}
           {shouldShowGlassEffect && (
-            <div className="absolute inset-x-0 bottom-0 h-48 md:h-56 pointer-events-none">
-              {/* Gradient fade overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-64 md:h-72 pointer-events-none">
+              {/* Multi-layer gradient fade for smooth transition */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
               
-              {/* Glass morphism effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent backdrop-blur-[2px]" />
+              {/* Glassmorphism backdrop blur layer */}
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent backdrop-blur-[1px]" />
               
-              {/* Subtle grid pattern overlay that matches the background */}
-              <div className="absolute inset-0 opacity-20 bg-gradient-to-t from-muted/30 to-transparent" 
+              {/* Subtle dot pattern overlay with enhanced opacity */}
+              <div 
+                className="absolute inset-0 opacity-30 bg-gradient-to-t from-muted/40 to-transparent" 
                 style={{
-                  backgroundImage: 'url("/graph-paper.svg")',
-                  backgroundSize: '60px 60px',
-                  backgroundPosition: '0 0',
-                  backgroundRepeat: 'repeat'
+                  backgroundImage: `
+                    radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0),
+                    radial-gradient(circle at 3px 3px, currentColor 0.5px, transparent 0)
+                  `,
+                  backgroundSize: '20px 20px, 40px 40px',
+                  backgroundPosition: '0 0, 10px 10px',
+                  color: 'hsl(var(--muted-foreground))'
                 }}
               />
             </div>
           )}
         </div>
 
-        {/* View More Section */}
+        {/* Premium Glassmorphism "View More" Section */}
         {shouldShowGlassEffect && (
-          <div className="relative z-10 mt-8 text-center">
-            <div className="inline-flex flex-col items-center space-y-4 px-8 py-6 rounded-2xl border border-border/50 bg-background/80 backdrop-blur-md shadow-lg">
-              <div className="space-y-2">
-                <h3 className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-                  View More Posts
-                </h3>
-                <p className="text-sm text-muted-foreground max-w-xs">
-                  Discover {filteredPosts.length - visiblePosts.length} more posts in our complete collection
-                </p>
+          <div className="relative z-10 mt-12 flex justify-center">
+            <div className="group">
+              {/* Glassmorphism card with hover animations */}
+              <div className="relative overflow-hidden rounded-2xl border border-border/30 
+                            bg-background/10 dark:bg-card/15 
+                            backdrop-blur-md shadow-lg hover:shadow-xl
+                            transition-all duration-500 ease-out
+                            hover:bg-background/20 dark:hover:bg-card/25
+                            hover:-translate-y-1 hover:scale-[1.02]
+                            p-8 max-w-sm">
+                
+                {/* Subtle shimmer effect on hover */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent 
+                              translate-x-[-100%] group-hover:translate-x-[100%] 
+                              transition-transform duration-1000 ease-out" />
+                
+                {/* Content */}
+                <div className="relative space-y-4 text-center">
+                  <div className="space-y-2">
+                    <h3 className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground 
+                                 bg-clip-text text-transparent">
+                      Discover More Stories
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      Explore {filteredPosts.length - visiblePosts.length} additional posts in our complete collection
+                    </p>
+                  </div>
+                  
+                  {/* Enhanced button with glassmorphism */}
+                  <Button 
+                    asChild 
+                    variant="outline" 
+                    className="group/btn relative overflow-hidden
+                             bg-background/50 dark:bg-card/20 
+                             border-border/40 hover:border-border/60
+                             backdrop-blur-sm shadow-sm hover:shadow-md
+                             transition-all duration-300 ease-out
+                             hover:bg-background/70 dark:hover:bg-card/30
+                             hover:-translate-y-0.5"
+                  >
+                    <Link to="/posts" className="flex items-center gap-2">
+                      <span className="font-medium">View All Posts</span>
+                      <ArrowRight 
+                        size={16} 
+                        className="transition-transform duration-300 ease-out 
+                                 group-hover/btn:translate-x-1" 
+                      />
+                      
+                      {/* Button shimmer effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent 
+                                    translate-x-[-100%] group-hover/btn:translate-x-[100%] 
+                                    transition-transform duration-700 ease-out" />
+                    </Link>
+                  </Button>
+                </div>
+
+                {/* Floating particles effect */}
+                <div className="absolute inset-0 opacity-20 pointer-events-none">
+                  <div className="absolute top-4 right-6 w-1 h-1 bg-primary rounded-full 
+                                animate-pulse" style={{ animationDelay: '0s' }} />
+                  <div className="absolute bottom-6 left-8 w-0.5 h-0.5 bg-accent rounded-full 
+                                animate-pulse" style={{ animationDelay: '1s' }} />
+                  <div className="absolute top-8 left-12 w-1.5 h-1.5 bg-muted-foreground/30 rounded-full 
+                                animate-pulse" style={{ animationDelay: '2s' }} />
+                </div>
               </div>
-              
-              <Button asChild variant="outline" className="bg-background/50 backdrop-blur-sm border-border/50 hover:bg-background/80">
-                <Link to="/posts">
-                  Explore All Posts
-                </Link>
-              </Button>
             </div>
           </div>
         )}
