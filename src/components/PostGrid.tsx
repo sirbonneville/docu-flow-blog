@@ -38,7 +38,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   const visiblePosts = shouldShowGlassEffect ? filteredPosts.slice(0, 6) : filteredPosts;
 
   return (
-    <section className="py-4 relative">
+    <section className="py-4 pb-16 relative">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-6">
           <h2 className="text-xl md:text-2xl font-bold mb-3">{title}</h2>
