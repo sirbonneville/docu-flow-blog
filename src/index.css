@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -48,42 +47,42 @@
   }
 
   .dark {
-    /* Dark Mode - Deep charcoal base with bright green accents */
-    --background: 222 47% 11%; /* #1A1D23 */
-    --foreground: 210 40% 98%; /* #F8FAFC for headings */
+    /* Dark Mode - Deep slate base with warm tones */
+    --background: 222 84% 4.9%; /* #0F172A - Deep slate */
+    --foreground: 210 40% 98%; /* #F8FAFC - Off-white for headings */
 
-    --card: 215 25% 27%; /* #2D3748 */
-    --card-foreground: 214 32% 91%; /* #E2E8F0 */
+    --card: 215 25% 20%; /* #334155 - Warmer slate for cards */
+    --card-foreground: 214 32% 91%; /* #E2E8F0 - Warm gray for body text */
 
-    --popover: 215 25% 27%; /* #2D3748 */
-    --popover-foreground: 214 32% 91%;
+    --popover: 215 25% 20%; /* #334155 - Warmer slate */
+    --popover-foreground: 214 32% 91%; /* #E2E8F0 - Warm gray */
 
     /* Bright green primary for dark mode */
-    --primary: 158 64% 52%; /* #10B981 - vibrant green */
-    --primary-foreground: 220 13% 18%; /* Dark text on green */
+    --primary: 158 64% 52%; /* #10B981 - Keep bright green */
+    --primary-foreground: 222 84% 4.9%; /* Deep slate text on green */
 
-    --secondary: 215 28% 17%; /* #1A202C */
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 215 28% 17%; /* #1E293B - Dark slate for subtle elements */
+    --secondary-foreground: 210 40% 98%; /* Off-white */
 
-    --muted: 215 28% 17%; /* #1A202C */
-    --muted-foreground: 217 10% 65%; /* #9CA3AF */
+    --muted: 215 28% 17%; /* #1E293B - Dark slate */
+    --muted-foreground: 214 32% 91%; /* #E2E8F0 - Warm gray */
 
-    --accent: 158 65% 62%; /* #34D399 - brighter for accents */
-    --accent-foreground: 220 13% 18%;
+    --accent: 158 65% 62%; /* Brighter green for accents */
+    --accent-foreground: 222 84% 4.9%; /* Deep slate */
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 215 16% 47%; /* #4A5568 */
-    --input: 215 16% 47%;
-    --ring: 158 64% 52%;
+    --border: 215 20% 28%; /* #475569 - Medium slate for borders */
+    --input: 215 20% 28%; /* #475569 - Medium slate */
+    --ring: 158 64% 52%; /* Bright green */
 
     /* Custom gradient variables for dark mode */
-    --gradient-subtle-bg: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
-    --gradient-white-gray: linear-gradient(180deg, #1A202C 0%, #2D3748 100%);
+    --gradient-subtle-bg: linear-gradient(135deg, #1E293B 0%, #334155 100%);
+    --gradient-white-gray: linear-gradient(180deg, #1E293B 0%, #334155 100%);
     --gradient-green-cta: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    --gradient-hero: linear-gradient(135deg, #1A1D23 0%, #1A202C 50%, #2D3748 100%);
-    --gradient-card-hover: linear-gradient(135deg, #2D3748 0%, #374151 100%);
+    --gradient-hero: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #334155 100%);
+    --gradient-card-hover: linear-gradient(135deg, #334155 0%, #475569 100%);
   }
 }
 
