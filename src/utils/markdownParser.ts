@@ -90,6 +90,140 @@ The goal isn't perfect documentation—it's sustainable, useful documentation th
 Remember: documentation culture is a journey, not a destination. Start where you are, focus on your users' needs, and build systems that make good documentation the easy choice.`
   },
   {
+    filename: '2024-01-30-developer-experience-docs.md',
+    frontmatter: {
+      title: "Developer Experience: Making Documentation Developer-Friendly",
+      excerpt: "Explore strategies for creating documentation that developers actually want to use, with practical examples and implementation tips.",
+      date: "2024-01-30",
+      readTime: "6 min read",
+      featured: false
+    },
+    content: `# Developer Experience: Making Documentation Developer-Friendly
+
+Great developer documentation isn't just about accuracy—it's about creating an experience that helps developers succeed quickly and efficiently.
+
+## Understanding Developer Needs
+
+### Speed and Efficiency
+Developers need information fast. They're often working under pressure and looking for specific solutions to immediate problems.
+
+### Practical Examples
+Code samples, working examples, and copy-paste snippets are more valuable than lengthy explanations.
+
+### Context Awareness
+Documentation should understand where developers are in their journey—from first-time users to advanced implementers.
+
+## Design Principles for Developer Docs
+
+### Progressive Disclosure
+- Start with quick start guides
+- Provide detailed references for deep dives
+- Use clear navigation and search
+
+### Interactive Elements
+- Code playgrounds and sandboxes
+- Live API explorers
+- Interactive tutorials
+
+### Community Integration
+- Comment systems for questions
+- Community-contributed examples
+- Regular feedback collection
+
+## Implementation Tactics
+
+Focus on the "time to first success" metric. How quickly can a developer achieve their first meaningful result with your documentation?
+
+Use analytics to identify drop-off points and continuously optimize the developer journey through your docs.
+
+Remember: the best documentation is the one developers actually use and recommend to others.`
+  },
+  {
+    filename: '2024-01-25-documentation-automation.md',
+    frontmatter: {
+      title: "Automating Documentation Workflows: Tools and Techniques",
+      excerpt: "Discover how to streamline your documentation process with automation tools, reducing manual work while maintaining quality.",
+      date: "2024-01-25",
+      readTime: "8 min read",
+      featured: false
+    },
+    content: `# Automating Documentation Workflows: Tools and Techniques
+
+Manual documentation processes don't scale. As your team and product grow, automation becomes essential for maintaining consistency and quality while reducing the burden on writers.
+
+## Key Automation Opportunities
+
+### Content Generation
+- API documentation from code comments
+- Automated screenshot capture
+- Template-based content creation
+- Code example extraction
+
+### Quality Assurance
+- Spell check and grammar validation
+- Link checking and maintenance
+- Style guide enforcement
+- Accessibility scanning
+
+### Publishing and Distribution
+- Automated builds and deployments
+- Cross-platform publishing
+- Translation workflow automation
+- Version management
+
+## Popular Tools and Platforms
+
+- **GitBook**: Integrated writing and publishing
+- **Notion**: Collaborative documentation with automation
+- **Confluence**: Enterprise-grade automation features
+- **Custom solutions**: GitHub Actions, CI/CD pipelines
+
+## Getting Started
+
+Begin with the most time-consuming manual tasks in your workflow. Implement one automation at a time, measure the impact, and gradually expand your automated processes.
+
+The goal is to free up time for high-value strategic work while maintaining documentation quality.`
+  },
+  {
+    filename: '2024-01-20-technical-writing-metrics.md',
+    frontmatter: {
+      title: "Measuring Success: Key Metrics for Technical Writing Teams",
+      excerpt: "Learn how to track and measure the effectiveness of your technical documentation with actionable metrics and KPIs that matter.",
+      date: "2024-01-20",
+      readTime: "7 min read",
+      featured: false
+    },
+    content: `# Measuring Success: Key Metrics for Technical Writing Teams
+
+Technical writing teams often struggle with demonstrating their value and impact within organizations. Unlike sales or marketing teams with clear revenue metrics, documentation teams need different approaches to measure success.
+
+## Essential Documentation Metrics
+
+### User Engagement Metrics
+- Page views and unique visitors
+- Time spent on documentation pages
+- Search queries and popular content
+- User feedback and satisfaction scores
+
+### Quality Indicators
+- Content freshness and update frequency
+- Broken link monitoring
+- Accessibility compliance scores
+- Translation coverage for global teams
+
+### Business Impact Metrics
+- Support ticket reduction
+- Developer onboarding time
+- API adoption rates
+- Customer success correlation
+
+## Implementation Strategies
+
+Start with baseline measurements and establish regular reporting cadences. Use tools like Google Analytics, Hotjar, or specialized documentation platforms to gather data consistently.
+
+Remember: metrics should drive improvement, not just measurement for measurement's sake.`
+  },
+  {
     filename: '2024-01-10-docs-as-code-guide.md',
     frontmatter: {
       title: "Docs-as-Code: Managing Documentation Like Software",
