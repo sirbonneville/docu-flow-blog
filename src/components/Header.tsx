@@ -40,27 +40,29 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md bg-[#FAF8F3]/80 dark:bg-[#212121]/80">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
+          {/* Logo - Left justified */}
           <div className="flex items-center">
             <a href="/" className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
               The Documentation Lead
             </a>
           </div>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
+          {/* Desktop Navigation - Centered */}
+          <nav className="hidden md:flex items-center justify-center flex-1">
+            <div className="flex items-center space-x-8">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  className="text-muted-foreground hover:text-foreground transition-colors font-medium"
+                >
+                  {item.name}
+                </a>
+              ))}
+            </div>
           </nav>
 
-          {/* Theme Toggle and Mobile Menu */}
+          {/* Theme Toggle and Mobile Menu - Right side */}
           <div className="flex items-center space-x-2">
             <Button
               variant="ghost"

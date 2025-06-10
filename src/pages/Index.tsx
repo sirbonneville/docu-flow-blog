@@ -14,11 +14,11 @@ const Index = () => {
       <div className="animate-fade-in">
         <Hero />
         
-        {/* Featured Post Section */}
+        {/* Featured Post Section - Reduced padding */}
         {featuredPost && (
-          <section className="py-16 border-t">
+          <section className="py-8 border-t">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
                 Featured Post
               </h2>
               <PostCard
@@ -33,7 +33,7 @@ const Index = () => {
           </section>
         )}
 
-        {/* Recent Posts Section */}
+        {/* Recent Posts Section - Reduced padding */}
         <PostGrid 
           posts={recentPosts} 
           showSearch={false}
