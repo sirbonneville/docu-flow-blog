@@ -1,4 +1,3 @@
-
 import { Post } from '@/data/posts';
 
 export interface MarkdownPost {
@@ -21,8 +20,7 @@ const markdownFiles = [
       title: "Building Documentation Culture: From Chaos to Clarity",
       excerpt: "How to transform your team's approach to documentation by establishing clear processes, ownership models, and quality standards that scale.",
       date: "2024-01-15",
-      readTime: "8 min read",
-      featured: true
+      readTime: "8 min read"
     },
     content: `# Building Documentation Culture: From Chaos to Clarity
 
@@ -95,8 +93,7 @@ Remember: documentation culture is a journey, not a destination. Start where you
       title: "Developer Experience: Making Documentation Developer-Friendly",
       excerpt: "Explore strategies for creating documentation that developers actually want to use, with practical examples and implementation tips.",
       date: "2024-01-30",
-      readTime: "6 min read",
-      featured: false
+      readTime: "6 min read"
     },
     content: `# Developer Experience: Making Documentation Developer-Friendly
 
@@ -144,8 +141,7 @@ Remember: the best documentation is the one developers actually use and recommen
       title: "Automating Documentation Workflows: Tools and Techniques",
       excerpt: "Discover how to streamline your documentation process with automation tools, reducing manual work while maintaining quality.",
       date: "2024-01-25",
-      readTime: "8 min read",
-      featured: false
+      readTime: "8 min read"
     },
     content: `# Automating Documentation Workflows: Tools and Techniques
 
@@ -190,8 +186,7 @@ The goal is to free up time for high-value strategic work while maintaining docu
       title: "Measuring Success: Key Metrics for Technical Writing Teams",
       excerpt: "Learn how to track and measure the effectiveness of your technical documentation with actionable metrics and KPIs that matter.",
       date: "2024-01-20",
-      readTime: "7 min read",
-      featured: false
+      readTime: "7 min read"
     },
     content: `# Measuring Success: Key Metrics for Technical Writing Teams
 
@@ -510,7 +505,7 @@ function filenameToId(filename: string): string {
 }
 
 export function parseMarkdownPosts(): MarkdownPost[] {
-  return markdownFiles.map((file) => ({
+  const posts = markdownFiles.map((file) => ({
     id: filenameToId(file.filename),
     slug: filenameToSlug(file.filename),
     title: file.frontmatter.title,
@@ -518,8 +513,18 @@ export function parseMarkdownPosts(): MarkdownPost[] {
     content: file.content,
     date: file.frontmatter.date,
     readTime: file.frontmatter.readTime,
-    featured: file.frontmatter.featured || false
+    featured: false // We'll set this dynamically
   }));
+
+  // Sort by date to find the most recent post
+  const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  // Mark the most recent post as featured
+  if (sortedPosts.length > 0) {
+    sortedPosts[0].featured = true;
+  }
+
+  return sortedPosts;
 }
 
 export function getMarkdownPostBySlug(slug: string): MarkdownPost | undefined {
@@ -535,7 +540,6 @@ export function getFeaturedMarkdownPost(): MarkdownPost | undefined {
 export function getRecentMarkdownPosts(limit: number = 6): MarkdownPost[] {
   const posts = parseMarkdownPosts();
   return posts
-    .filter(post => !post.featured)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
 }
