@@ -54,93 +54,87 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
         )}
 
         <div className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {visiblePosts.map((post, index) => {
-              // Hide posts beyond mobile threshold (3) on mobile only
-              const hiddenOnMobile = shouldShowGlassEffect && index >= 3;
-              
-              return (
-                <div 
-                  key={post.id}
-                  className={`${hiddenOnMobile ? 'hidden md:block' : ''}`}
-                >
-                  <PostCard
-                    title={post.title}
-                    excerpt={post.excerpt}
-                    date={post.date}
-                    readTime={post.readTime}
-                    slug={post.slug}
-                    tags={post.tags}
-                    featured={post.featured}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          {/* Content Container with Constrained Gradient */}
+          <div 
+            className="relative"
+            style={{
+              // Constrain the gradient within the content area
+              clipPath: 'inset(0 0 0 0)',
+              contain: 'layout style'
+            }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {visiblePosts.map((post, index) => {
+                // Hide posts beyond mobile threshold (3) on mobile only
+                const hiddenOnMobile = shouldShowGlassEffect && index >= 3;
+                
+                // Apply fade effect to the last row of cards
+                const isInFadeZone = shouldShowGlassEffect && (
+                  (index >= 3 && index < 6) || // Last row on desktop
+                  (index >= 2 && index < 3)    // Last visible on mobile
+                );
+                
+                return (
+                  <div 
+                    key={post.id}
+                    className={`
+                      ${hiddenOnMobile ? 'hidden md:block' : ''}
+                      ${isInFadeZone ? 'relative' : ''}
+                    `}
+                    style={isInFadeZone ? {
+                      // Apply gradient fade directly to cards in the fade zone
+                      maskImage: `linear-gradient(to bottom, 
+                        rgba(0,0,0,1) 0%, 
+                        rgba(0,0,0,0.9) 20%, 
+                        rgba(0,0,0,0.7) 40%, 
+                        rgba(0,0,0,0.4) 60%, 
+                        rgba(0,0,0,0.2) 80%, 
+                        rgba(0,0,0,0.1) 100%
+                      )`,
+                      WebkitMaskImage: `linear-gradient(to bottom, 
+                        rgba(0,0,0,1) 0%, 
+                        rgba(0,0,0,0.9) 20%, 
+                        rgba(0,0,0,0.7) 40%, 
+                        rgba(0,0,0,0.4) 60%, 
+                        rgba(0,0,0,0.2) 80%, 
+                        rgba(0,0,0,0.1) 100%
+                      )`
+                    } : {}}
+                  >
+                    <PostCard
+                      title={post.title}
+                      excerpt={post.excerpt}
+                      date={post.date}
+                      readTime={post.readTime}
+                      slug={post.slug}
+                      tags={post.tags}
+                      featured={post.featured}
+                    />
+                  </div>
+                );
+              })}
+            </div>
 
-          {/* Sophisticated Gradient Fade-out Effect */}
-          {shouldShowGlassEffect && (
-            <div className="absolute inset-x-0 bottom-0 h-64 md:h-80 pointer-events-none">
-              {/* Natural dissolving gradient mask - spans 200px */}
-              <div 
-                className="absolute inset-0 transition-all duration-700 ease-out"
-                style={{
-                  background: `linear-gradient(to bottom, 
-                    transparent 0%, 
-                    var(--fade-mask-20) 15%,
-                    var(--fade-mask-40) 30%, 
-                    var(--fade-mask-60) 45%, 
-                    var(--fade-mask-80) 65%, 
-                    var(--fade-mask-90) 80%, 
-                    var(--fade-mask-100) 100%
-                  )`
-                }}
-              />
-              
-              {/* Subtle depth enhancement with scale transform */}
-              <div 
-                className="absolute inset-0 transform-gpu scale-[0.98] origin-bottom transition-transform duration-1000 ease-out"
-                style={{
-                  background: `linear-gradient(to bottom, 
-                    transparent 0%, 
-                    var(--fade-depth-20) 25%, 
-                    var(--fade-depth-50) 50%, 
-                    var(--fade-depth-80) 75%, 
-                    var(--fade-depth-100) 100%
-                  )`
-                }}
-              />
-
-              {/* Organic texture overlay for premium feel */}
-              <div 
-                className="absolute inset-0 opacity-[0.02] transition-opacity duration-500" 
-                style={{
-                  background: `linear-gradient(to bottom, 
-                    transparent 0%, 
-                    var(--fade-texture) 70%, 
-                    var(--fade-texture) 100%
-                  )`,
-                  backgroundImage: `
-                    radial-gradient(circle at 25% 25%, currentColor 1px, transparent 0),
-                    radial-gradient(circle at 75% 75%, currentColor 0.5px, transparent 0)
-                  `,
-                  backgroundSize: '32px 32px, 16px 16px',
-                  backgroundPosition: '0 0, 8px 8px',
-                  color: 'hsl(var(--muted-foreground))'
-                }}
-              />
-
-              {/* Premium Glassmorphism "Discover More" Card - Layered on TOP */}
-              <div className="absolute inset-x-0 bottom-8 flex justify-center pointer-events-auto z-20">
-                <div className="group">
-                  {/* Glassmorphism card with hover animations */}
-                  <div className="relative overflow-hidden rounded-2xl border border-border/30 
-                                bg-background/10 dark:bg-card/15 
-                                backdrop-blur-md shadow-lg hover:shadow-xl
+            {/* Glassmorphism Panel - Positioned Above Faded Content */}
+            {shouldShowGlassEffect && (
+              <div className="absolute inset-x-0 bottom-0 flex justify-center pointer-events-none z-20">
+                <div className="pointer-events-auto">
+                  {/* Floating Glassmorphism Card */}
+                  <div className="group relative overflow-hidden rounded-2xl 
+                                border border-border/20 shadow-lg hover:shadow-xl
                                 transition-all duration-500 ease-out
-                                hover:bg-background/20 dark:hover:bg-card/25
                                 hover:-translate-y-1 hover:scale-[1.02]
-                                p-8 max-w-sm">
+                                p-6 max-w-sm mx-4 mb-8"
+                       style={{
+                         backgroundColor: 'hsl(var(--background) / 0.7)',
+                         backdropFilter: 'blur(10px)',
+                         WebkitBackdropFilter: 'blur(10px)',
+                         backgroundImage: `linear-gradient(135deg, 
+                           hsl(var(--background) / 0.8) 0%, 
+                           hsl(var(--card) / 0.6) 50%, 
+                           hsl(var(--background) / 0.9) 100%
+                         )`
+                       }}>
                     
                     {/* Subtle shimmer effect on hover */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent 
@@ -164,12 +158,15 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                         asChild 
                         variant="outline" 
                         className="group/btn relative overflow-hidden
-                                 bg-background/50 dark:bg-card/20 
                                  border-border/40 hover:border-border/60
-                                 backdrop-blur-sm shadow-sm hover:shadow-md
+                                 shadow-sm hover:shadow-md
                                  transition-all duration-300 ease-out
-                                 hover:bg-background/70 dark:hover:bg-card/30
                                  hover:-translate-y-0.5"
+                        style={{
+                          backgroundColor: 'hsl(var(--background) / 0.8)',
+                          backdropFilter: 'blur(5px)',
+                          WebkitBackdropFilter: 'blur(5px)'
+                        }}
                       >
                         <Link to="/posts" className="flex items-center gap-2">
                           <span className="font-medium">View All Posts</span>
@@ -199,8 +196,8 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                   </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         {filteredPosts.length === 0 && searchQuery && (
