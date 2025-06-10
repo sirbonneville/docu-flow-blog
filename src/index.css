@@ -106,9 +106,9 @@
     right: 0;
     bottom: 0;
     background-image: url('/graph-paper.svg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-size: 100px 100px;
+    background-position: 0 0;
+    background-repeat: repeat;
     z-index: -1;
   }
   
