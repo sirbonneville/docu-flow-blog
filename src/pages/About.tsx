@@ -13,10 +13,17 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About Judson
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Leading product documentation at Pieces for Developers, specializing in technical writing 
-              and documentation strategy for AI-powered developer tools.
-            </p>
+            <div className="flex items-center justify-center gap-6 max-w-2xl mx-auto">
+              <img 
+                src="/judson_bonneville_pfp.jpg" 
+                alt="Judson Bonneville profile picture"
+                className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover flex-shrink-0"
+              />
+              <p className="text-xl text-muted-foreground text-left">
+                Leading product documentation at Pieces for Developers, specializing in technical writing 
+                and documentation strategy for AI-powered developer tools.
+              </p>
+            </div>
           </div>
 
           {/* Background */}
