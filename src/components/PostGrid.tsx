@@ -32,7 +32,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
     <section className="py-8">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Explore insights on technical writing, documentation strategy, and team leadership.
           </p>
