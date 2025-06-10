@@ -116,7 +116,7 @@
   
   /* Light mode: make SVG lines light gray */
   :root body::before {
-    filter: invert(1) opacity(0.16);
+    filter: invert(1) opacity(0.4);
   }
   
   /* Dark mode: make SVG lines lighter gray */
