@@ -29,22 +29,22 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   );
 
   return (
-    <section className="py-8">
+    <section className="py-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8">
-          <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+        <div className="text-center mb-6">
+          <h2 className="text-xl md:text-2xl font-bold mb-3">{title}</h2>
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
             Explore insights on technical writing, documentation strategy, and team leadership.
           </p>
         </div>
 
         {showSearch && (
-          <div className="mb-8">
+          <div className="mb-6">
             <SearchBar onSearch={setSearchQuery} />
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredPosts.map((post) => (
             <PostCard
               key={post.id}
@@ -59,8 +59,8 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
         </div>
 
         {filteredPosts.length === 0 && searchQuery && (
-          <div className="text-center py-8">
-            <p className="text-muted-foreground text-lg">
+          <div className="text-center py-6">
+            <p className="text-muted-foreground text-base">
               No posts found matching "{searchQuery}". Try a different search term.
             </p>
           </div>
