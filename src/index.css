@@ -43,7 +43,7 @@
     --gradient-subtle-bg: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
     --gradient-white-gray: linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
     --gradient-green-cta: linear-gradient(135deg, #2D5A27 0%, #1A4314 100%);
-    --gradient-hero: linear-gradient(135deg, rgba(254, 254, 254, 0.95) 0%, rgba(249, 249, 249, 0.97) 50%, rgba(247, 250, 252, 0.98) 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(254, 254, 254, 0.99) 0%, rgba(249, 249, 249, 0.995) 50%, rgba(247, 250, 252, 0.998) 100%);
     --gradient-card-hover: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
   }
 
@@ -82,7 +82,7 @@
     --gradient-subtle-bg: linear-gradient(135deg, #1E293B 0%, #334155 100%);
     --gradient-white-gray: linear-gradient(180deg, #1E293B 0%, #334155 100%);
     --gradient-green-cta: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    --gradient-hero: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 41, 59, 0.97) 50%, rgba(51, 65, 85, 0.98) 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(15, 23, 42, 0.99) 0%, rgba(30, 41, 59, 0.995) 50%, rgba(51, 65, 85, 0.998) 100%);
     --gradient-card-hover: linear-gradient(135deg, #334155 0%, #475569 100%);
   }
 }
@@ -105,7 +105,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('/background-universal.svg');
+    background-image: url('/graph-paper.svg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
