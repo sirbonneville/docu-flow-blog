@@ -1,4 +1,3 @@
-
 import { Post } from '@/data/posts';
 
 export interface MarkdownPost {
@@ -25,7 +24,15 @@ const markdownFiles = [
       readTime: "8 min read",
       tags: ["Documentation", "Team Culture", "Process", "Leadership"]
     },
-    content: `# Building Documentation Culture: From Chaos to Clarity
+    content: `---
+title: "Building Documentation Culture: From Chaos to Clarity"
+excerpt: "How to transform your team's approach to documentation by establishing clear processes, ownership models, and quality standards that scale."
+date: "2024-01-15"
+readTime: "8 min read"
+tags: ["Documentation", "Team Culture", "Process", "Leadership"]
+---
+
+# Building Documentation Culture: From Chaos to Clarity
 
 Documentation is often treated as an afterthought, relegated to the end of development cycles or assigned to whoever has "spare time." This approach leads to inconsistent, outdated, and ultimately unhelpful documentation that frustrates both creators and users.
 
@@ -99,7 +106,15 @@ Remember: documentation culture is a journey, not a destination. Start where you
       readTime: "6 min read",
       tags: ["Developer Experience", "Documentation", "API", "Technical Writing"]
     },
-    content: `# Developer Experience: Making Documentation Developer-Friendly
+    content: `---
+title: "Developer Experience: Making Documentation Developer-Friendly"
+excerpt: "Explore strategies for creating documentation that developers actually want to use, with practical examples and implementation tips."
+date: "2024-01-30"
+readTime: "6 min read"
+tags: ["Developer Experience", "Documentation", "API", "Technical Writing"]
+---
+
+# Developer Experience: Making Documentation Developer-Friendly
 
 Great developer documentation isn't just about accuracy—it's about creating an experience that helps developers succeed quickly and efficiently.
 
@@ -148,7 +163,15 @@ Remember: the best documentation is the one developers actually use and recommen
       readTime: "8 min read",
       tags: ["Automation", "Workflow", "Tools", "Productivity"]
     },
-    content: `# Automating Documentation Workflows: Tools and Techniques
+    content: `---
+title: "Automating Documentation Workflows: Tools and Techniques"
+excerpt: "Discover how to streamline your documentation process with automation tools, reducing manual work while maintaining quality."
+date: "2024-01-25"
+readTime: "8 min read"
+tags: ["Automation", "Workflow", "Tools", "Productivity"]
+---
+
+# Automating Documentation Workflows: Tools and Techniques
 
 Manual documentation processes don't scale. As your team and product grow, automation becomes essential for maintaining consistency and quality while reducing the burden on writers.
 
@@ -194,7 +217,15 @@ The goal is to free up time for high-value strategic work while maintaining docu
       readTime: "7 min read",
       tags: ["Metrics", "Analytics", "ROI", "Strategy"]
     },
-    content: `# Measuring Success: Key Metrics for Technical Writing Teams
+    content: `---
+title: "Measuring Success: Key Metrics for Technical Writing Teams"
+excerpt: "Learn how to track and measure the effectiveness of your technical documentation with actionable metrics and KPIs that matter."
+date: "2024-01-20"
+readTime: "7 min read"
+tags: ["Metrics", "Analytics", "ROI", "Strategy"]
+---
+
+# Measuring Success: Key Metrics for Technical Writing Teams
 
 Technical writing teams often struggle with demonstrating their value and impact within organizations. Unlike sales or marketing teams with clear revenue metrics, documentation teams need different approaches to measure success.
 
@@ -233,7 +264,15 @@ Remember: metrics should drive improvement, not just measurement for measurement
       readTime: "12 min read",
       tags: ["Docs-as-Code", "Version Control", "Best Practices", "Git"]
     },
-    content: `# Docs-as-Code: Managing Documentation Like Software
+    content: `---
+title: "Docs-as-Code: Managing Documentation Like Software"
+excerpt: "Learn how to apply software development best practices to documentation creation, including version control, peer review, and automated publishing."
+date: "2024-01-10"
+readTime: "12 min read"
+tags: ["Docs-as-Code", "Version Control", "Best Practices", "Git"]
+---
+
+# Docs-as-Code: Managing Documentation Like Software
 
 The docs-as-code approach treats documentation with the same rigor and best practices applied to software development. This methodology has revolutionized how technical teams create, maintain, and publish documentation.
 
@@ -355,7 +394,15 @@ The docs-as-code approach transforms documentation from a necessary evil into a 
       readTime: "10 min read",
       tags: ["API", "Documentation", "Developer Experience", "Best Practices"]
     },
-    content: `# API Documentation That Developers Actually Use
+    content: `---
+title: "API Documentation That Developers Actually Use"
+excerpt: "Best practices for creating API documentation that serves as both reference and tutorial, with real examples and interactive features."
+date: "2024-01-05"
+readTime: "10 min read"
+tags: ["API", "Documentation", "Developer Experience", "Best Practices"]
+---
+
+# API Documentation That Developers Actually Use
 
 Great API documentation is the difference between developers loving your API and abandoning it for alternatives. Yet most API docs fail because they're written for the documentation team, not the developers who actually use them.
 
