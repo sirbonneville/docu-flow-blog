@@ -99,27 +99,44 @@ const About = () => {
           </Card>
 
           {/* Core Focus Areas */}
-          <div className="grid md:grid-cols-2 gap-8 mb-10">
-            <Card>
-              <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-primary">Documentation Strategy</h3>
-                <ul className="space-y-2 text-muted-foreground">
-                  <li>• Technical writing for developer tools</li>
-                  <li>• Cross-functional team coordination</li>
-                  <li>• Style guide development</li>
-                  <li>• Platform migration management</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="mb-10">
+            {/* First two cards in a row */}
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-primary">AI-Powered Documentation Strategy</h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Technical writing for AI developer tools and workflows</li>
+                    <li>• Automated documentation pipelines and docs-as-code</li>
+                    <li>• Cross-platform migration expertise (Docusaurus → Mintlify → Custom Platform)</li>
+                    <li>• API documentation for machine learning products</li>
+                  </ul>
+                </CardContent>
+              </Card>
 
+              <Card>
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold mb-3 text-primary">Developer Experience & Content Architecture</h3>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li>• Developer-first content strategy and UX writing</li>
+                    <li>• Product lifecycle documentation coordination</li>
+                    <li>• Interactive documentation with code examples</li>
+                    <li>• Quality standards and naming conventions for scalable documentation</li>
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Third card - full width */}
             <Card>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-primary">Developer Experience</h3>
+                <h3 className="text-xl font-semibold mb-3 text-primary">Documentation Team Leadership</h3>
                 <ul className="space-y-2 text-muted-foreground">
-                  <li>• User empathy-driven content</li>
-                  <li>• Docs-as-code implementation</li>
-                  <li>• UX writing principles</li>
-                  <li>• Modern documentation practices</li>
+                  <li>• Cross-functional coordination with engineering and product teams</li>
+                  <li>• Team management and mentoring technical writers</li>
+                  <li>• Strategic planning for documentation infrastructure and workflows</li>
+                  <li>• Process optimization and quality assurance across documentation projects</li>
+                  <li>• Executive reporting</li>
                 </ul>
               </CardContent>
             </Card>
