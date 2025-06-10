@@ -3,81 +3,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Design system with forest green theme */
+/* Design system with updated light/dark theme */
 
 @layer base {
   :root {
-    --background: 45 100% 98%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light Mode - Cream/Gray Base */
+    --background: 0 0% 99.6%; /* #FEFEFE */
+    --foreground: 215 20.2% 25.1%; /* Dark text */
 
-    --card: 45 100% 99%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 215 20.2% 25.1%;
 
-    --popover: 45 100% 99%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 20.2% 25.1%;
 
-    --primary: 164 100% 19%;
+    /* Green primary from your spec */
+    --primary: 164 100% 19%; /* #006B47 - keeping your forest green for light mode */
     --primary-foreground: 0 0% 98%;
 
-    --secondary: 220 14.3% 95.9%;
-    --secondary-foreground: 220.9 39.3% 11%;
+    --secondary: 210 40% 98%; /* #F7FAFC */
+    --secondary-foreground: 215 20.2% 25.1%;
 
-    --muted: 45 50% 95%;
-    --muted-foreground: 220 8.9% 46.1%;
+    --muted: 214 31.8% 91.4%; /* #EDF2F7 */
+    --muted-foreground: 215 16.3% 46.9%; /* #64748B */
 
-    --accent: 45 50% 95%;
-    --accent-foreground: 220.9 39.3% 11%;
+    --accent: 210 40% 98%; /* #F7FAFC */
+    --accent-foreground: 215 20.2% 25.1%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 45 30% 88%;
-    --input: 45 30% 88%;
+    --border: 214 31.8% 91.4%; /* #EDF2F7 */
+    --input: 214 31.8% 91.4%;
     --ring: 164 100% 19%;
 
     --radius: 0.5rem;
 
-    /* Forest green variants */
-    --forest-50: 152 100% 97%;
-    --forest-100: 154 89% 90%;
-    --forest-200: 156 82% 80%;
-    --forest-300: 158 75% 65%;
-    --forest-400: 160 69% 50%;
-    --forest-500: 164 86% 40%;
-    --forest-600: 164 100% 19%;
-    --forest-700: 164 100% 15%;
-    --forest-800: 165 100% 12%;
-    --forest-900: 166 100% 9%;
+    /* Custom gradient variables for light mode */
+    --gradient-subtle-bg: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
+    --gradient-white-gray: linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
+    --gradient-green-cta: linear-gradient(135deg, #2D5A27 0%, #1A4314 100%);
+    --gradient-hero: linear-gradient(135deg, #FEFEFE 0%, #F9F9F9 50%, #F7FAFC 100%);
+    --gradient-card-hover: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Mode - Deep charcoal base with bright green accents */
+    --background: 222 47% 11%; /* #1A1D23 */
+    --foreground: 210 40% 98%; /* #F8FAFC for headings */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 215 25% 27%; /* #2D3748 */
+    --card-foreground: 214 32% 91%; /* #E2E8F0 */
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 215 25% 27%; /* #2D3748 */
+    --popover-foreground: 214 32% 91%;
 
-    --primary: 154 89% 90%;
-    --primary-foreground: 166 100% 9%;
+    /* Bright green primary for dark mode */
+    --primary: 158 64% 52%; /* #10B981 - vibrant green */
+    --primary-foreground: 220 13% 18%; /* Dark text on green */
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 215 28% 17%; /* #1A202C */
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 28% 17%; /* #1A202C */
+    --muted-foreground: 217 10% 65%; /* #9CA3AF */
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 158 65% 62%; /* #34D399 - brighter for accents */
+    --accent-foreground: 220 13% 18%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 154 89% 90%;
+    --border: 215 16% 47%; /* #4A5568 */
+    --input: 215 16% 47%;
+    --ring: 158 64% 52%;
+
+    /* Custom gradient variables for dark mode */
+    --gradient-subtle-bg: linear-gradient(135deg, #1A202C 0%, #2D3748 100%);
+    --gradient-white-gray: linear-gradient(180deg, #1A202C 0%, #2D3748 100%);
+    --gradient-green-cta: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    --gradient-hero: linear-gradient(135deg, #1A1D23 0%, #1A202C 50%, #2D3748 100%);
+    --gradient-card-hover: linear-gradient(135deg, #2D3748 0%, #374151 100%);
   }
 }
 
@@ -88,10 +94,12 @@
 
   body {
     @apply bg-background text-foreground font-inter antialiased;
+    background: var(--gradient-hero);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
+    color: hsl(var(--foreground));
   }
 
   .prose {
@@ -108,6 +116,21 @@
 
   .prose a {
     @apply text-primary hover:underline;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    background: var(--gradient-card-hover);
+    transition: all 0.3s ease;
+  }
+
+  /* Green button/CTA gradients */
+  .btn-primary {
+    background: var(--gradient-green-cta);
+  }
+
+  .btn-primary:hover {
+    filter: brightness(1.1);
   }
 }
 
@@ -141,5 +164,22 @@
       opacity: 1;
       transform: translateY(0);
     }
+  }
+
+  /* Gradient utility classes */
+  .bg-gradient-subtle {
+    background: var(--gradient-subtle-bg);
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-card-hover {
+    background: var(--gradient-card-hover);
+  }
+
+  .bg-gradient-green-cta {
+    background: var(--gradient-green-cta);
   }
 }

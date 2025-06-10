@@ -56,18 +56,6 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				forest: {
-					50: 'hsl(var(--forest-50))',
-					100: 'hsl(var(--forest-100))',
-					200: 'hsl(var(--forest-200))',
-					300: 'hsl(var(--forest-300))',
-					400: 'hsl(var(--forest-400))',
-					500: 'hsl(var(--forest-500))',
-					600: 'hsl(var(--forest-600))',
-					700: 'hsl(var(--forest-700))',
-					800: 'hsl(var(--forest-800))',
-					900: 'hsl(var(--forest-900))',
-				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -133,6 +121,12 @@ export default {
 					},
 				},
 			},
+			backgroundImage: {
+				'gradient-subtle': 'var(--gradient-subtle-bg)',
+				'gradient-hero': 'var(--gradient-hero)',
+				'gradient-card-hover': 'var(--gradient-card-hover)',
+				'gradient-green-cta': 'var(--gradient-green-cta)',
+			}
 		}
 	},
 	plugins: [
