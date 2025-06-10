@@ -10,12 +10,12 @@ const About = () => {
 
   return (
     <Layout>
-      <div className="py-16 animate-fade-in">
+      <div className="py-12 animate-fade-in">
         <div className="max-w-4xl mx-auto">
           
           {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-8">
               About Judson
             </h1>
             
@@ -34,14 +34,14 @@ const About = () => {
           </div>
 
           {/* Background - Collapsible on Mobile */}
-          <Card className="mb-12">
+          <Card className="mb-10">
             <CardContent className="p-6 md:p-8">
               <Collapsible 
                 open={isBackgroundExpanded} 
                 onOpenChange={setIsBackgroundExpanded}
                 className="w-full"
               >
-                <div className="flex items-center justify-between mb-4 md:mb-6">
+                <div className="flex items-center justify-between mb-6">
                   <h2 className="text-2xl font-semibold">Background</h2>
                   
                   {/* Toggle button - only visible on mobile */}
@@ -99,7 +99,7 @@ const About = () => {
           </Card>
 
           {/* Core Focus Areas */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-10">
             <Card>
               <CardContent className="p-6">
                 <h3 className="text-xl font-semibold mb-3 text-primary">Documentation Strategy</h3>
