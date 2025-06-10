@@ -9,8 +9,8 @@ export const Hero = () => {
         </h1>
         
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-          Expert insights on technical writing, docs-as-code, and building documentation 
-          strategies that scale with your team.
+          Thoughts and insights on technical writing, documentation strategy, 
+          and leading documentation teams in the modern software landscape.
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -19,7 +19,7 @@ export const Hero = () => {
               Senior Documentation Manager
             </span>
             <span>•</span>
-            <span>Technical Writing Expert</span>
+            <span>Technical Writing Leader</span>
           </div>
         </div>
       </div>

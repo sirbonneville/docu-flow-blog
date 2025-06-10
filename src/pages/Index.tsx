@@ -37,27 +37,8 @@ const Index = () => {
         <PostGrid 
           posts={recentPosts} 
           showSearch={false}
-          title="Latest Insights"
+          title="Recent Posts"
         />
-
-        {/* Call to Action */}
-        <section className="py-16 bg-muted/30">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Ready to Level Up Your Documentation?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-              Explore all posts for comprehensive insights on documentation strategy, 
-              technical writing, and team management.
-            </p>
-            <a 
-              href="/posts" 
-              className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-            >
-              View All Posts
-            </a>
-          </div>
-        </section>
       </div>
     </Layout>
   );
