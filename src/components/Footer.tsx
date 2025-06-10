@@ -2,31 +2,12 @@
 import { Linkedin, Mail } from "lucide-react";
 
 export const Footer = () => {
-  const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Posts", href: "/posts" },
-  ];
-
   return (
     <footer className="border-t bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+        <div className="flex flex-col items-center space-y-6">
           
-          {/* Navigation Links */}
-          <nav className="flex flex-wrap justify-center md:justify-start space-x-6">
-            {navItems.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="text-muted-foreground hover:text-foreground transition-colors font-medium"
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          {/* Contact Information */}
+          {/* Contact Information - Centered */}
           <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6">
             <a
               href="mailto:judsonbonneville97@gmail.com"
