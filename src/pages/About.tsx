@@ -106,10 +106,10 @@ const About = () => {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-primary">AI-Powered Documentation Strategy</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Technical writing for AI developer tools and workflows</li>
-                    <li>• Automated documentation pipelines and docs-as-code</li>
-                    <li>• Cross-platform migration expertise (Docusaurus → Mintlify → Custom Platform)</li>
-                    <li>• API documentation for machine learning products</li>
+                    <li>• Technical writing for AI developer tools</li>
+                    <li>• Automated documentation pipelines</li>
+                    <li>• Cross-platform migration expertise</li>
+                    <li>• AI-intensive workflow using dev tooling and documentation frameworks</li>
                   </ul>
                 </CardContent>
               </Card>
@@ -118,9 +118,9 @@ const About = () => {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-semibold mb-3 text-primary">Developer Experience & Content Architecture</h3>
                   <ul className="space-y-2 text-muted-foreground">
-                    <li>• Developer-first content strategy and UX writing</li>
-                    <li>• Product lifecycle documentation coordination</li>
-                    <li>• Interactive documentation with code examples</li>
+                    <li>• Developer-first content strategy</li>
+                    <li>• Product lifecycle documentation</li>
+                    <li>• Interactive documentation with examples</li>
                     <li>• Quality standards and naming conventions for scalable documentation</li>
                   </ul>
                 </CardContent>
