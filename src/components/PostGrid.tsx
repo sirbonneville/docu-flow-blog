@@ -80,30 +80,58 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
 
           {/* Sophisticated Gradient Fade-out Effect */}
           {shouldShowGlassEffect && (
-            <div className="absolute inset-x-0 bottom-0 h-64 md:h-72 pointer-events-none">
-              {/* Multi-layer gradient fade for smooth transition */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background/60" />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-              
-              {/* Glassmorphism backdrop blur layer */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent backdrop-blur-[1px]" />
-              
-              {/* Subtle dot pattern overlay with enhanced opacity */}
+            <div className="absolute inset-x-0 bottom-0 h-64 md:h-80 pointer-events-none">
+              {/* Natural dissolving gradient mask - spans 200px */}
               <div 
-                className="absolute inset-0 opacity-30 bg-gradient-to-t from-muted/40 to-transparent" 
+                className="absolute inset-0 transition-all duration-700 ease-out"
                 style={{
+                  background: `linear-gradient(to bottom, 
+                    transparent 0%, 
+                    var(--fade-mask-20) 15%,
+                    var(--fade-mask-40) 30%, 
+                    var(--fade-mask-60) 45%, 
+                    var(--fade-mask-80) 65%, 
+                    var(--fade-mask-90) 80%, 
+                    var(--fade-mask-100) 100%
+                  )`
+                }}
+              />
+              
+              {/* Subtle depth enhancement with scale transform */}
+              <div 
+                className="absolute inset-0 transform-gpu scale-[0.98] origin-bottom transition-transform duration-1000 ease-out"
+                style={{
+                  background: `linear-gradient(to bottom, 
+                    transparent 0%, 
+                    var(--fade-depth-20) 25%, 
+                    var(--fade-depth-50) 50%, 
+                    var(--fade-depth-80) 75%, 
+                    var(--fade-depth-100) 100%
+                  )`
+                }}
+              />
+
+              {/* Organic texture overlay for premium feel */}
+              <div 
+                className="absolute inset-0 opacity-[0.02] transition-opacity duration-500" 
+                style={{
+                  background: `linear-gradient(to bottom, 
+                    transparent 0%, 
+                    var(--fade-texture) 70%, 
+                    var(--fade-texture) 100%
+                  )`,
                   backgroundImage: `
-                    radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0),
-                    radial-gradient(circle at 3px 3px, currentColor 0.5px, transparent 0)
+                    radial-gradient(circle at 25% 25%, currentColor 1px, transparent 0),
+                    radial-gradient(circle at 75% 75%, currentColor 0.5px, transparent 0)
                   `,
-                  backgroundSize: '20px 20px, 40px 40px',
-                  backgroundPosition: '0 0, 10px 10px',
+                  backgroundSize: '32px 32px, 16px 16px',
+                  backgroundPosition: '0 0, 8px 8px',
                   color: 'hsl(var(--muted-foreground))'
                 }}
               />
 
               {/* Premium Glassmorphism "Discover More" Card - Layered on TOP */}
-              <div className="absolute inset-x-0 bottom-8 flex justify-center pointer-events-auto z-10">
+              <div className="absolute inset-x-0 bottom-8 flex justify-center pointer-events-auto z-20">
                 <div className="group">
                   {/* Glassmorphism card with hover animations */}
                   <div className="relative overflow-hidden rounded-2xl border border-border/30 

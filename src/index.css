@@ -1,4 +1,3 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -45,6 +44,23 @@
     --gradient-green-cta: linear-gradient(135deg, #2D5A27 0%, #1A4314 100%);
     --gradient-hero: none; /* No gradient for background */
     --gradient-card-hover: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+
+    /* Natural fade mask colors for light mode */
+    --fade-mask-20: hsla(40, 37%, 96%, 0.2);
+    --fade-mask-40: hsla(40, 37%, 96%, 0.4);
+    --fade-mask-60: hsla(40, 37%, 96%, 0.6);
+    --fade-mask-80: hsla(40, 37%, 96%, 0.8);
+    --fade-mask-90: hsla(40, 37%, 96%, 0.9);
+    --fade-mask-100: hsla(40, 37%, 96%, 1);
+    
+    /* Depth enhancement colors for light mode */
+    --fade-depth-20: hsla(40, 37%, 94%, 0.2);
+    --fade-depth-50: hsla(40, 37%, 92%, 0.5);
+    --fade-depth-80: hsla(40, 37%, 90%, 0.8);
+    --fade-depth-100: hsla(40, 37%, 88%, 1);
+    
+    /* Texture overlay for light mode */
+    --fade-texture: hsla(215, 16%, 47%, 0.1);
   }
 
   .dark {
@@ -84,6 +100,23 @@
     --gradient-green-cta: linear-gradient(135deg, #10B981 0%, #059669 100%);
     --gradient-hero: none; /* No gradient for background */
     --gradient-card-hover: linear-gradient(135deg, #2B2B2B 0%, #333333 100%);
+
+    /* Natural fade mask colors for dark mode */
+    --fade-mask-20: hsla(0, 0%, 13%, 0.2);
+    --fade-mask-40: hsla(0, 0%, 13%, 0.4);
+    --fade-mask-60: hsla(0, 0%, 13%, 0.6);
+    --fade-mask-80: hsla(0, 0%, 13%, 0.8);
+    --fade-mask-90: hsla(0, 0%, 13%, 0.9);
+    --fade-mask-100: hsla(0, 0%, 13%, 1);
+    
+    /* Depth enhancement colors for dark mode */
+    --fade-depth-20: hsla(0, 0%, 11%, 0.2);
+    --fade-depth-50: hsla(0, 0%, 9%, 0.5);
+    --fade-depth-80: hsla(0, 0%, 7%, 0.8);
+    --fade-depth-100: hsla(0, 0%, 5%, 1);
+    
+    /* Texture overlay for dark mode */
+    --fade-texture: hsla(214, 32%, 91%, 0.05);
   }
 }
 
