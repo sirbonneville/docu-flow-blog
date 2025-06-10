@@ -1,3 +1,4 @@
+
 import { Post } from '@/data/posts';
 
 export interface MarkdownPost {
@@ -8,6 +9,7 @@ export interface MarkdownPost {
   date: string;
   readTime: string;
   slug: string;
+  tags?: string[];
   featured?: boolean;
 }
 
@@ -20,7 +22,8 @@ const markdownFiles = [
       title: "Building Documentation Culture: From Chaos to Clarity",
       excerpt: "How to transform your team's approach to documentation by establishing clear processes, ownership models, and quality standards that scale.",
       date: "2024-01-15",
-      readTime: "8 min read"
+      readTime: "8 min read",
+      tags: ["Documentation", "Team Culture", "Process", "Leadership"]
     },
     content: `# Building Documentation Culture: From Chaos to Clarity
 
@@ -93,7 +96,8 @@ Remember: documentation culture is a journey, not a destination. Start where you
       title: "Developer Experience: Making Documentation Developer-Friendly",
       excerpt: "Explore strategies for creating documentation that developers actually want to use, with practical examples and implementation tips.",
       date: "2024-01-30",
-      readTime: "6 min read"
+      readTime: "6 min read",
+      tags: ["Developer Experience", "Documentation", "API", "Technical Writing"]
     },
     content: `# Developer Experience: Making Documentation Developer-Friendly
 
@@ -141,7 +145,8 @@ Remember: the best documentation is the one developers actually use and recommen
       title: "Automating Documentation Workflows: Tools and Techniques",
       excerpt: "Discover how to streamline your documentation process with automation tools, reducing manual work while maintaining quality.",
       date: "2024-01-25",
-      readTime: "8 min read"
+      readTime: "8 min read",
+      tags: ["Automation", "Workflow", "Tools", "Productivity"]
     },
     content: `# Automating Documentation Workflows: Tools and Techniques
 
@@ -186,7 +191,8 @@ The goal is to free up time for high-value strategic work while maintaining docu
       title: "Measuring Success: Key Metrics for Technical Writing Teams",
       excerpt: "Learn how to track and measure the effectiveness of your technical documentation with actionable metrics and KPIs that matter.",
       date: "2024-01-20",
-      readTime: "7 min read"
+      readTime: "7 min read",
+      tags: ["Metrics", "Analytics", "ROI", "Strategy"]
     },
     content: `# Measuring Success: Key Metrics for Technical Writing Teams
 
@@ -224,7 +230,8 @@ Remember: metrics should drive improvement, not just measurement for measurement
       title: "Docs-as-Code: Managing Documentation Like Software",
       excerpt: "Learn how to apply software development best practices to documentation creation, including version control, peer review, and automated publishing.",
       date: "2024-01-10",
-      readTime: "12 min read"
+      readTime: "12 min read",
+      tags: ["Docs-as-Code", "Version Control", "Best Practices", "Git"]
     },
     content: `# Docs-as-Code: Managing Documentation Like Software
 
@@ -345,7 +352,8 @@ The docs-as-code approach transforms documentation from a necessary evil into a 
       title: "API Documentation That Developers Actually Use",
       excerpt: "Best practices for creating API documentation that serves as both reference and tutorial, with real examples and interactive features.",
       date: "2024-01-05",
-      readTime: "10 min read"
+      readTime: "10 min read",
+      tags: ["API", "Documentation", "Developer Experience", "Best Practices"]
     },
     content: `# API Documentation That Developers Actually Use
 
@@ -513,6 +521,7 @@ export function parseMarkdownPosts(): MarkdownPost[] {
     content: file.content,
     date: file.frontmatter.date,
     readTime: file.frontmatter.readTime,
+    tags: file.frontmatter.tags,
     featured: false // We'll set this dynamically
   }));
 

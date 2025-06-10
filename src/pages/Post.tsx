@@ -5,7 +5,10 @@ import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/Layout";
 import { SocialShare } from "@/components/SocialShare";
 import { Button } from "@/components/ui/button";
-import { getPostBySlug } from "@/data/posts";
+import { ReadingProgressBar } from "@/components/ReadingProgressBar";
+import { RelatedPosts } from "@/components/RelatedPosts";
+import { Tag } from "@/components/Tag";
+import { getPostBySlug, getAllPosts } from "@/data/posts";
 
 const Post = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -17,6 +20,7 @@ const Post = () => {
   }
 
   const post = getPostBySlug(slug);
+  const allPosts = getAllPosts();
 
   if (!post) {
     navigate("/");
@@ -25,6 +29,7 @@ const Post = () => {
 
   return (
     <Layout>
+      <ReadingProgressBar />
       <div className="py-8 animate-fade-in">
         {/* Back Navigation */}
         <div className="mb-8">
@@ -44,6 +49,15 @@ const Post = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               {post.title}
             </h1>
+            
+            {/* Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-6">
+                {post.tags.map((tag) => (
+                  <Tag key={tag} tag={tag} variant="outline" />
+                ))}
+              </div>
+            )}
             
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">
@@ -139,6 +153,9 @@ const Post = () => {
               {post.content}
             </ReactMarkdown>
           </div>
+
+          {/* Related Posts */}
+          <RelatedPosts currentPost={post} allPosts={allPosts} />
 
           {/* Article Footer */}
           <footer className="mt-16 pt-8 border-t">

@@ -11,6 +11,7 @@ interface Post {
   readTime: string;
   slug: string;
   content?: string;
+  tags?: string[];
   featured?: boolean;
 }
 
@@ -25,7 +26,8 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   
   const filteredPosts = posts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+    post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())))
   );
 
   return (
@@ -53,6 +55,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
               date={post.date}
               readTime={post.readTime}
               slug={post.slug}
+              tags={post.tags}
               featured={post.featured}
             />
           ))}
