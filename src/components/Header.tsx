@@ -37,7 +37,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md bg-white/30 dark:bg-gray-900/30">
+    <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md bg-[#FAF8F3]/80 dark:bg-[#212121]/80">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
