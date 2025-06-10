@@ -17,10 +17,10 @@ export const Hero = () => {
           and leading documentation teams in the modern software landscape.
         </p>
         
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-0">
           <div className="flex items-center space-x-4 text-sm text-muted-foreground">
             <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
-              Product Documentation Lead & Plugin Lifecycle Coordinator @ Pieces for Developers
+              writing software docs @ pieces for developers
             </span>
           </div>
         </div>

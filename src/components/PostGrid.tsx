@@ -29,17 +29,17 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   );
 
   return (
-    <section className="py-16">
+    <section className="py-8">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">{title}</h2>
+        <div className="text-center mb-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-4">{title}</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Explore insights on technical writing, documentation strategy, and team leadership.
           </p>
         </div>
 
         {showSearch && (
-          <div className="mb-12">
+          <div className="mb-8">
             <SearchBar onSearch={setSearchQuery} />
           </div>
         )}
@@ -59,7 +59,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
         </div>
 
         {filteredPosts.length === 0 && searchQuery && (
-          <div className="text-center py-12">
+          <div className="text-center py-8">
             <p className="text-muted-foreground text-lg">
               No posts found matching "{searchQuery}". Try a different search term.
             </p>
