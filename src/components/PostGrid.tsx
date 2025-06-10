@@ -68,10 +68,13 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                 // Hide posts beyond mobile threshold (3) on mobile only
                 const hiddenOnMobile = shouldShowGlassEffect && index >= 3;
                 
-                // Apply fade effect to the last row of cards
+                // Apply fade effect only to bottom row cards:
+                // Desktop (lg): cards 3, 4, 5 (second row)
+                // Tablet (md): cards 4, 5 (third row) 
+                // Mobile: card 2 (third card)
                 const isInFadeZone = shouldShowGlassEffect && (
-                  (index >= 3 && index < 6) || // Last row on desktop
-                  (index >= 2 && index < 3)    // Last visible on mobile
+                  (index >= 3 && index <= 5) || // Bottom row on desktop (3 columns)
+                  (index === 2) // Last visible card on mobile
                 );
                 
                 return (
