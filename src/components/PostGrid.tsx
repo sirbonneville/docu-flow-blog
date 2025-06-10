@@ -119,83 +119,111 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
               })}
             </div>
 
-            {/* Glassmorphism Panel - Positioned Above Faded Content */}
+            {/* Enhanced Glassmorphism Panel - Positioned Above Faded Content */}
             {shouldShowGlassEffect && (
               <div className="absolute inset-x-0 bottom-0 flex justify-center pointer-events-none z-20">
                 <div className="pointer-events-auto">
-                  {/* Floating Glassmorphism Card */}
+                  {/* Enhanced Floating Glassmorphism Card */}
                   <div className="group relative overflow-hidden rounded-2xl 
-                                border border-border/20 shadow-lg hover:shadow-xl
+                                border-2 shadow-2xl hover:shadow-3xl
                                 transition-all duration-500 ease-out
-                                hover:-translate-y-1 hover:scale-[1.02]
-                                p-6 max-w-sm mx-4 mb-8"
+                                hover:-translate-y-2 hover:scale-[1.03]
+                                p-8 max-w-sm mx-4 mb-8
+                                backdrop-blur-xl border-primary/30 hover:border-primary/50"
                        style={{
-                         backgroundColor: 'hsl(var(--background) / 0.7)',
-                         backdropFilter: 'blur(10px)',
-                         WebkitBackdropFilter: 'blur(10px)',
-                         backgroundImage: `linear-gradient(135deg, 
-                           hsl(var(--background) / 0.8) 0%, 
-                           hsl(var(--card) / 0.6) 50%, 
-                           hsl(var(--background) / 0.9) 100%
-                         )`
+                         // Enhanced glassmorphism with distinct colors
+                         background: `linear-gradient(135deg, 
+                           hsl(var(--primary) / 0.15) 0%, 
+                           hsl(var(--secondary) / 0.25) 25%,
+                           hsl(var(--accent) / 0.20) 50%, 
+                           hsl(var(--primary) / 0.10) 75%,
+                           hsl(var(--card) / 0.30) 100%
+                         )`,
+                         backdropFilter: 'blur(16px) saturate(1.5)',
+                         WebkitBackdropFilter: 'blur(16px) saturate(1.5)',
+                         boxShadow: `
+                           0 8px 32px hsl(var(--primary) / 0.2),
+                           0 4px 16px hsl(var(--foreground) / 0.1),
+                           inset 0 1px 0 hsl(var(--background) / 0.3)
+                         `
                        }}>
                     
-                    {/* Subtle shimmer effect on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/5 to-transparent 
+                    {/* Enhanced shimmer effect on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-r 
+                                  from-transparent via-primary/10 to-transparent 
                                   translate-x-[-100%] group-hover:translate-x-[100%] 
                                   transition-transform duration-1000 ease-out" />
                     
+                    {/* Subtle animated border glow */}
+                    <div className="absolute inset-0 rounded-2xl opacity-60 group-hover:opacity-100 
+                                  transition-opacity duration-500"
+                         style={{
+                           background: `linear-gradient(45deg, 
+                             hsl(var(--primary) / 0.3), 
+                             hsl(var(--accent) / 0.2), 
+                             hsl(var(--primary) / 0.3)
+                           )`,
+                           filter: 'blur(1px)',
+                           zIndex: -1
+                         }} />
+                    
                     {/* Content */}
-                    <div className="relative space-y-4 text-center">
-                      <div className="space-y-2">
-                        <h3 className="text-lg font-semibold bg-gradient-to-r from-foreground to-muted-foreground 
-                                     bg-clip-text text-transparent">
+                    <div className="relative space-y-5 text-center">
+                      <div className="space-y-3">
+                        <h3 className="text-xl font-bold bg-gradient-to-r from-primary via-foreground to-primary 
+                                     bg-clip-text text-transparent leading-tight">
                           Discover More Stories
                         </h3>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-sm text-foreground/80 leading-relaxed font-medium">
                           Explore {filteredPosts.length - visiblePosts.length} additional posts in our complete collection
                         </p>
                       </div>
                       
-                      {/* Enhanced button with glassmorphism */}
+                      {/* Enhanced button with complementary glassmorphism */}
                       <Button 
                         asChild 
                         variant="outline" 
-                        className="group/btn relative overflow-hidden
-                                 border-border/40 hover:border-border/60
-                                 shadow-sm hover:shadow-md
+                        className="group/btn relative overflow-hidden font-semibold
+                                 border-2 border-primary/50 hover:border-primary/70
+                                 shadow-lg hover:shadow-xl
                                  transition-all duration-300 ease-out
-                                 hover:-translate-y-0.5"
+                                 hover:-translate-y-0.5 text-primary hover:text-primary"
                         style={{
-                          backgroundColor: 'hsl(var(--background) / 0.8)',
-                          backdropFilter: 'blur(5px)',
-                          WebkitBackdropFilter: 'blur(5px)'
+                          background: `linear-gradient(135deg, 
+                            hsl(var(--background) / 0.9) 0%, 
+                            hsl(var(--card) / 0.8) 50%,
+                            hsl(var(--background) / 0.9) 100%
+                          )`,
+                          backdropFilter: 'blur(8px)',
+                          WebkitBackdropFilter: 'blur(8px)'
                         }}
                       >
                         <Link to="/posts" className="flex items-center gap-2">
-                          <span className="font-medium">View All Posts</span>
+                          <span className="font-semibold">View All Posts</span>
                           <ArrowRight 
                             size={16} 
                             className="transition-transform duration-300 ease-out 
                                      group-hover/btn:translate-x-1" 
                           />
                           
-                          {/* Button shimmer effect */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent 
+                          {/* Enhanced button shimmer effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/15 to-transparent 
                                         translate-x-[-100%] group-hover/btn:translate-x-[100%] 
                                         transition-transform duration-700 ease-out" />
                         </Link>
                       </Button>
                     </div>
 
-                    {/* Floating particles effect */}
-                    <div className="absolute inset-0 opacity-20 pointer-events-none">
-                      <div className="absolute top-4 right-6 w-1 h-1 bg-primary rounded-full 
+                    {/* Enhanced floating particles effect */}
+                    <div className="absolute inset-0 opacity-30 pointer-events-none">
+                      <div className="absolute top-4 right-6 w-1.5 h-1.5 bg-primary rounded-full 
                                     animate-pulse" style={{ animationDelay: '0s' }} />
-                      <div className="absolute bottom-6 left-8 w-0.5 h-0.5 bg-accent rounded-full 
+                      <div className="absolute bottom-6 left-8 w-1 h-1 bg-accent rounded-full 
                                     animate-pulse" style={{ animationDelay: '1s' }} />
-                      <div className="absolute top-8 left-12 w-1.5 h-1.5 bg-muted-foreground/30 rounded-full 
+                      <div className="absolute top-8 left-12 w-2 h-2 bg-primary/50 rounded-full 
                                     animate-pulse" style={{ animationDelay: '2s' }} />
+                      <div className="absolute bottom-12 right-10 w-0.5 h-0.5 bg-foreground/40 rounded-full 
+                                    animate-pulse" style={{ animationDelay: '1.5s' }} />
                     </div>
                   </div>
                 </div>
