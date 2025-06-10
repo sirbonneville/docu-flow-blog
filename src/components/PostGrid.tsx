@@ -11,6 +11,7 @@ interface Post {
   readTime: string;
   slug: string;
   content?: string;
+  featured?: boolean;
 }
 
 interface PostGridProps {
@@ -52,6 +53,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
               date={post.date}
               readTime={post.readTime}
               slug={post.slug}
+              featured={post.featured}
             />
           ))}
         </div>
