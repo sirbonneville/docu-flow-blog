@@ -16,7 +16,7 @@ const Index = () => {
         
         {/* Featured Post Section */}
         {featuredPost && (
-          <section className="py-16 border-t">
+          <section className="py-8 border-t">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
                 Featured Post
