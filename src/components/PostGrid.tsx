@@ -68,12 +68,12 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                 // Hide posts beyond mobile threshold (3) on mobile only
                 const hiddenOnMobile = shouldShowGlassEffect && index >= 3;
                 
-                // Apply fade effect only to the last visible cards that will be overlapped:
-                // Desktop (lg): cards 4, 5 (indices 4, 5) - bottom row cards that get overlapped
-                // Tablet (md): card 3 (index 3) - the card that gets overlapped  
-                // Mobile: card 2 (index 2) - the last visible card that gets overlapped
+                // Apply fade effect to the bottom row cards that get overlapped:
+                // Desktop (lg): cards 4, 5, 6 (indices 3, 4, 5) - entire bottom row
+                // Tablet (md): card 4 (index 3) - the card that gets overlapped  
+                // Mobile: card 3 (index 2) - the last visible card that gets overlapped
                 const isInFadeZone = shouldShowGlassEffect && (
-                  (index >= 4 && index <= 5) || // Cards 5 & 6 on desktop (second row, right side)
+                  (index >= 3 && index <= 5) || // Cards 4, 5 & 6 on desktop (entire bottom row)
                   (index === 3 && window.innerWidth >= 768 && window.innerWidth < 1024) || // Card 4 on tablet
                   (index === 2 && window.innerWidth < 768) // Card 3 on mobile
                 );
