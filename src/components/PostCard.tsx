@@ -13,8 +13,8 @@ interface PostCardProps {
 
 export const PostCard = ({ title, excerpt, date, readTime, slug, featured = false }: PostCardProps) => {
   const cardClasses = featured
-    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
-    : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover";
+    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover h-full flex flex-col"
+    : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
   return (
     <Card className={cardClasses}>
@@ -51,12 +51,12 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, featured = fals
         </div>
       </CardHeader>
       
-      <CardContent>
-        <p className="text-muted-foreground leading-relaxed">
+      <CardContent className="flex flex-col flex-grow">
+        <p className="text-muted-foreground leading-relaxed flex-grow">
           {excerpt}
         </p>
         
-        <div className="mt-4">
+        <div className="mt-4 pt-2">
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-accent font-medium text-sm transition-colors"
