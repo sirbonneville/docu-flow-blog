@@ -47,8 +47,8 @@ export const Header = () => {
             </a>
           </div>
 
-          {/* Desktop Navigation - Centered */}
-          <nav className="hidden md:flex items-center justify-center flex-1">
+          {/* Desktop Navigation - Absolutely centered */}
+          <nav className="hidden md:block absolute left-1/2 transform -translate-x-1/2">
             <div className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <a
