@@ -18,7 +18,12 @@ export const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-0">
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+          <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+            <img 
+              src="/placeholder.svg" 
+              alt="Judson's profile picture" 
+              className="w-6 h-6 rounded-full object-cover flex-shrink-0"
+            />
             <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
               writing software docs @ pieces for developers
             </span>
