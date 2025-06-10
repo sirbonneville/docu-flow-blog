@@ -59,7 +59,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, featured = fals
         <div className="mt-4 pt-2">
           <a 
             href={`/post/${slug}`}
-            className="text-primary hover:text-accent font-medium text-sm transition-colors"
+            className="text-primary hover:text-primary/80 font-medium text-sm transition-colors"
           >
             Read more →
           </a>
