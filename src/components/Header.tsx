@@ -43,7 +43,7 @@ export const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
-              DocLeadership
+              The Documentation Lead
             </a>
           </div>
 
