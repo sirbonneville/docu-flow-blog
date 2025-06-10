@@ -117,7 +117,7 @@
   /* Light mode: make SVG lines visible */
   :root body::before {
     filter: brightness(0.9) contrast(1.2);
-    opacity: 0.15;
+    opacity: 0.1;
   }
   
   /* Dark mode: make SVG lines lighter gray */
