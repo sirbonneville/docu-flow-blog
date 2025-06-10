@@ -27,10 +27,8 @@ export const Footer = () => {
               <span>LinkedIn</span>
             </a>
           </div>
-        </div>
-        
-        {/* Copyright */}
-        <div className="mt-6 pt-6 border-t text-center">
+          
+          {/* Copyright */}
           <p className="text-sm text-muted-foreground">
             © 2024 Judson Bonneville. All rights reserved.
           </p>

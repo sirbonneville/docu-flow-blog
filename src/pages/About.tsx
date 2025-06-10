@@ -116,7 +116,7 @@ const About = () => {
 
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-semibold mb-3 text-primary">Developer Experience & Content Architecture</h3>
+                  <h3 className="text-xl font-semibold mb-3 text-primary">Content Architecture</h3>
                   <ul className="space-y-2 text-muted-foreground">
                     <li>• Developer-first content strategy</li>
                     <li>• Product lifecycle documentation</li>
@@ -151,7 +151,7 @@ const About = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/judsonbonneville/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
@@ -159,7 +159,7 @@ const About = () => {
                 Connect on LinkedIn
               </a>
               <a 
-                href="https://twitter.com" 
+                href="https://x.com/JBonneville2001" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 border border-primary text-primary rounded-lg font-medium hover:bg-primary/10 transition-colors"
