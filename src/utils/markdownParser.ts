@@ -16,6 +16,202 @@ export interface MarkdownPost {
 // For now, we'll simulate this with the existing posts
 const markdownFiles = [
   {
+    filename: '2024-02-01-accessibility-in-documentation.md',
+    frontmatter: {
+      title: "Making Documentation Accessible: A Comprehensive Guide",
+      excerpt: "Learn how to create documentation that works for everyone, including users with disabilities, different technical backgrounds, and varying accessibility needs.",
+      date: "2024-02-01",
+      readTime: "9 min read",
+      tags: ["Accessibility", "Inclusive Design", "UX", "Documentation"]
+    },
+    content: `---
+title: "Making Documentation Accessible: A Comprehensive Guide"
+excerpt: "Learn how to create documentation that works for everyone, including users with disabilities, different technical backgrounds, and varying accessibility needs."
+date: "2024-02-01"
+readTime: "9 min read"
+tags: ["Accessibility", "Inclusive Design", "UX", "Documentation"]
+---
+
+# Making Documentation Accessible: A Comprehensive Guide
+
+Accessible documentation isn't just about compliance—it's about creating content that truly serves all users, regardless of their abilities, technical background, or the tools they use to access information.
+
+## Why Accessibility Matters in Documentation
+
+### Universal Design Benefits Everyone
+When you design for accessibility, you create better experiences for all users:
+- **Clear structure** helps screen readers and visual scanners alike
+- **Simple language** reduces cognitive load for everyone
+- **Multiple formats** accommodate different learning styles
+- **Logical navigation** makes content findable and usable
+
+### Legal and Ethical Considerations
+Many organizations are legally required to provide accessible content under laws like the Americans with Disabilities Act (ADA) and Web Content Accessibility Guidelines (WCAG). But beyond compliance, accessible documentation is simply the right thing to do.
+
+## Core Accessibility Principles
+
+### 1. Perceivable Content
+Information must be presentable in ways users can perceive:
+
+**Visual Accessibility:**
+- Use sufficient color contrast (4.5:1 for normal text, 3:1 for large text)
+- Don't rely solely on color to convey information
+- Provide alt text for images and diagrams
+- Ensure text is resizable up to 200% without loss of functionality
+
+**Alternative Formats:**
+- Offer audio versions for complex written content
+- Provide transcripts for video content
+- Use descriptive link text instead of "click here"
+
+### 2. Operable Interface
+Users must be able to operate the interface:
+
+**Keyboard Navigation:**
+- Ensure all interactive elements are keyboard accessible
+- Provide visible focus indicators
+- Implement logical tab order
+- Include skip navigation links
+
+**Timing Considerations:**
+- Avoid auto-playing media with sound
+- Provide controls for time-sensitive content
+- Don't use flashing content that could trigger seizures
+
+### 3. Understandable Information
+Information and UI operation must be understandable:
+
+**Clear Language:**
+- Use plain language principles
+- Define technical terms when first used
+- Keep sentences and paragraphs concise
+- Provide context for abbreviations and acronyms
+
+**Predictable Navigation:**
+- Use consistent navigation patterns
+- Provide clear headings and page structure
+- Include breadcrumbs and site maps
+- Offer multiple ways to find content
+
+### 4. Robust Content
+Content must be robust enough for various assistive technologies:
+
+**Semantic HTML:**
+- Use proper heading hierarchy (h1, h2, h3, etc.)
+- Implement ARIA labels where needed
+- Structure tables with proper headers
+- Use lists for related items
+
+## Practical Implementation Strategies
+
+### Content Structure
+\`\`\`html
+<!-- Good heading hierarchy -->
+<h1>Main Topic</h1>
+  <h2>Subtopic</h2>
+    <h3>Specific Point</h3>
+    <h3>Another Point</h3>
+  <h2>Another Subtopic</h2>
+\`\`\`
+
+### Image Accessibility
+\`\`\`html
+<!-- Descriptive alt text -->
+<img src="api-flow-diagram.png" 
+     alt="API authentication flow showing user login, token generation, and resource access steps">
+
+<!-- Decorative images -->
+<img src="decorative-border.png" alt="" role="presentation">
+\`\`\`
+
+### Link Best Practices
+\`\`\`html
+<!-- Descriptive link text -->
+<a href="/api-guide">Complete API Integration Guide</a>
+
+<!-- Not: Click here for the API guide -->
+\`\`\`
+
+## Testing Your Documentation
+
+### Automated Testing Tools
+- **WAVE**: Web accessibility evaluation tool
+- **axe DevTools**: Browser extension for accessibility testing
+- **Lighthouse**: Built-in Chrome accessibility audit
+- **Pa11y**: Command-line accessibility testing
+
+### Manual Testing Methods
+- **Keyboard-only navigation**: Try using your docs without a mouse
+- **Screen reader testing**: Use tools like NVDA or VoiceOver
+- **High contrast mode**: Test visibility in high contrast settings
+- **Zoom testing**: Ensure usability at 200% zoom level
+
+### User Testing
+Include users with disabilities in your testing process:
+- Recruit diverse testers with different accessibility needs
+- Observe real usage patterns and pain points
+- Gather feedback on content clarity and navigation
+- Iterate based on user insights
+
+## Common Accessibility Pitfalls
+
+### Color-Only Information
+❌ "Click the red button to continue"
+✅ "Click the 'Continue' button (highlighted in red) to proceed"
+
+### Poor Heading Structure
+❌ Using headings for styling (h1, h3, h2, h4)
+✅ Logical hierarchy (h1, h2, h3, h3, h2, h3)
+
+### Inaccessible Forms
+❌ Placeholder text as labels
+✅ Proper label elements with clear instructions
+
+### Missing Context
+❌ Links that say "read more" or "click here"
+✅ Descriptive links that explain the destination
+
+## Creating Inclusive Content
+
+### Language Considerations
+- Use person-first language ("person with a disability" not "disabled person")
+- Avoid ableist language and metaphors
+- Provide definitions for technical terms
+- Consider cultural context and translation needs
+
+### Multiple Learning Styles
+- Combine text with visuals and examples
+- Offer step-by-step tutorials alongside quick reference guides
+- Provide both beginner and advanced paths through content
+- Include video, audio, and interactive elements when appropriate
+
+## Measuring Success
+
+Track metrics that matter for accessibility:
+- **Task completion rates** across different user groups
+- **Time to find information** for users with assistive technologies
+- **Error rates** in form completion and navigation
+- **User satisfaction scores** from accessibility-focused surveys
+
+## Building an Accessible Documentation Culture
+
+### Team Training
+- Educate writers about accessibility principles
+- Provide tools and resources for accessible content creation
+- Include accessibility in content review processes
+- Share user stories and feedback to build empathy
+
+### Continuous Improvement
+- Regular accessibility audits
+- User feedback collection and response
+- Staying current with accessibility guidelines
+- Documenting and sharing accessibility improvements
+
+Remember: accessibility is not a one-time checklist item—it's an ongoing commitment to creating inclusive experiences that serve all users effectively. Start with the basics, test regularly, and continuously improve based on user feedback and evolving best practices.
+
+The goal isn't perfection—it's progress toward documentation that truly works for everyone.`
+  },
+  {
     filename: '2024-01-15-building-documentation-culture.md',
     frontmatter: {
       title: "Building Documentation Culture: From Chaos to Clarity",
