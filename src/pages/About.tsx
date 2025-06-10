@@ -1,8 +1,13 @@
 
 import { Layout } from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 const About = () => {
+  const [isBackgroundExpanded, setIsBackgroundExpanded] = useState(false);
+
   return (
     <Layout>
       <div className="py-16 animate-fade-in">
@@ -13,37 +18,83 @@ const About = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               About Judson
             </h1>
-            <div className="flex items-center justify-center gap-6 max-w-2xl mx-auto">
+            
+            {/* Mobile: Stack vertically, Desktop: Side by side */}
+            <div className="flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-center md:gap-6 max-w-2xl mx-auto">
               <img 
                 src="/judson_bonneville_pfp.jpg" 
                 alt="Judson Bonneville profile picture"
-                className="w-16 h-16 md:w-20 md:h-20 rounded-full object-cover flex-shrink-0"
+                className="w-20 h-20 md:w-20 md:h-20 rounded-full object-cover flex-shrink-0"
               />
-              <p className="text-xl text-muted-foreground text-left">
+              <p className="text-lg md:text-xl text-muted-foreground text-center md:text-left">
                 Leading product documentation at Pieces for Developers, specializing in technical writing 
                 and documentation strategy for AI-powered developer tools.
               </p>
             </div>
           </div>
 
-          {/* Background */}
+          {/* Background - Collapsible on Mobile */}
           <Card className="mb-12">
-            <CardContent className="p-8">
-              <h2 className="text-2xl font-semibold mb-6">Background</h2>
-              <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
-                <p>
-                  I lead product documentation at Pieces for Developers, specializing in technical writing and documentation strategy for AI-powered developer tools. I've authored 180+ documentation pages from scratch, managed multiple platform migrations, and established style conventions that create cohesive user experiences.
-                </p>
-                <p>
-                  With a Liberal Arts background, 7+ years in technical writing, and 2+ years in web development, I approach documentation through logic-driven structure and clarity. My role spans writing, cross-functional coordination, and product strategy—working daily with engineering, product, and leadership teams.
-                </p>
-                <p>
-                  I believe great documentation transforms complex developer experiences into digestible content filled with examples and guided explanations. What drives me is collaboration, thoughtful critique, and communication—essential elements in both documentation and cross-functional work.
-                </p>
-                <p>
-                  This blog explores technical writing, developer experience, and modern documentation practices. I share insights on docs-as-code, UX writing, team management, and creating documentation with user empathy at the forefront.
-                </p>
-              </div>
+            <CardContent className="p-6 md:p-8">
+              <Collapsible 
+                open={isBackgroundExpanded} 
+                onOpenChange={setIsBackgroundExpanded}
+                className="w-full"
+              >
+                <div className="flex items-center justify-between mb-4 md:mb-6">
+                  <h2 className="text-2xl font-semibold">Background</h2>
+                  
+                  {/* Toggle button - only visible on mobile */}
+                  <CollapsibleTrigger className="md:hidden flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+                    <span>{isBackgroundExpanded ? 'Show less' : 'Read more'}</span>
+                    {isBackgroundExpanded ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+                  </CollapsibleTrigger>
+                </div>
+                
+                {/* Desktop: Always show full content */}
+                <div className="hidden md:block prose prose-lg max-w-none text-muted-foreground space-y-4">
+                  <p>
+                    I lead product documentation at Pieces for Developers, specializing in technical writing and documentation strategy for AI-powered developer tools. I've authored 180+ documentation pages from scratch, managed multiple platform migrations, and established style conventions that create cohesive user experiences.
+                  </p>
+                  <p>
+                    With a Liberal Arts background, 7+ years in technical writing, and 2+ years in web development, I approach documentation through logic-driven structure and clarity. My role spans writing, cross-functional coordination, and product strategy—working daily with engineering, product, and leadership teams.
+                  </p>
+                  <p>
+                    I believe great documentation transforms complex developer experiences into digestible content filled with examples and guided explanations. What drives me is collaboration, thoughtful critique, and communication—essential elements in both documentation and cross-functional work.
+                  </p>
+                  <p>
+                    This blog explores technical writing, developer experience, and modern documentation practices. I share insights on docs-as-code, UX writing, team management, and creating documentation with user empathy at the forefront.
+                  </p>
+                </div>
+
+                {/* Mobile: Show preview with blur effect when collapsed */}
+                <div className="md:hidden">
+                  <div className="relative">
+                    <div className="prose prose-lg max-w-none text-muted-foreground space-y-4">
+                      <p>
+                        I lead product documentation at Pieces for Developers, specializing in technical writing and documentation strategy for AI-powered developer tools. I've authored 180+ documentation pages from scratch, managed multiple platform migrations, and established style conventions that create cohesive user experiences.
+                      </p>
+                      {!isBackgroundExpanded && (
+                        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card via-card/80 to-transparent pointer-events-none" />
+                      )}
+                    </div>
+                  </div>
+                  
+                  <CollapsibleContent className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden">
+                    <div className="prose prose-lg max-w-none text-muted-foreground space-y-4 pt-4">
+                      <p>
+                        With a Liberal Arts background, 7+ years in technical writing, and 2+ years in web development, I approach documentation through logic-driven structure and clarity. My role spans writing, cross-functional coordination, and product strategy—working daily with engineering, product, and leadership teams.
+                      </p>
+                      <p>
+                        I believe great documentation transforms complex developer experiences into digestible content filled with examples and guided explanations. What drives me is collaboration, thoughtful critique, and communication—essential elements in both documentation and cross-functional work.
+                      </p>
+                      <p>
+                        This blog explores technical writing, developer experience, and modern documentation practices. I share insights on docs-as-code, UX writing, team management, and creating documentation with user empathy at the forefront.
+                      </p>
+                    </div>
+                  </CollapsibleContent>
+                </div>
+              </Collapsible>
             </CardContent>
           </Card>
 
