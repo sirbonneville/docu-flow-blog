@@ -1,4 +1,3 @@
-
 import { Layout } from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -62,9 +61,6 @@ const About = () => {
                   <p>
                     I believe great documentation transforms complex developer experiences into digestible content filled with examples and guided explanations. What drives me is collaboration, thoughtful critique, and communication—essential elements in both documentation and cross-functional work.
                   </p>
-                  <p>
-                    This blog explores technical writing, developer experience, and modern documentation practices. I share insights on docs-as-code, UX writing, team management, and creating documentation with user empathy at the forefront.
-                  </p>
                 </div>
 
                 {/* Mobile: Show preview with blur effect when collapsed */}
@@ -87,9 +83,6 @@ const About = () => {
                       </p>
                       <p>
                         I believe great documentation transforms complex developer experiences into digestible content filled with examples and guided explanations. What drives me is collaboration, thoughtful critique, and communication—essential elements in both documentation and cross-functional work.
-                      </p>
-                      <p>
-                        This blog explores technical writing, developer experience, and modern documentation practices. I share insights on docs-as-code, UX writing, team management, and creating documentation with user empathy at the forefront.
                       </p>
                     </div>
                   </CollapsibleContent>
