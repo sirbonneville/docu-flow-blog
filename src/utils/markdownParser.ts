@@ -11,6 +11,7 @@ export interface MarkdownPost {
   readTime: string;
   slug: string;
   tags?: string[];
+  tagColors?: Record<string, string>;
   featured?: boolean;
 }
 
@@ -57,6 +58,7 @@ export function parseMarkdownPosts(): MarkdownPost[] {
       date: frontmatter.date || new Date().toISOString().split('T')[0],
       readTime: frontmatter.readTime || '5 min read',
       tags: frontmatter.tags || [],
+      tagColors: frontmatter.tagColors || undefined,
       featured: false
     };
 

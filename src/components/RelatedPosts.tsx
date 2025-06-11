@@ -70,6 +70,7 @@ export const RelatedPosts = ({ currentPost, allPosts, maxPosts = 3 }: RelatedPos
             readTime={post.readTime}
             slug={post.slug}
             tags={post.tags}
+            tagColors={post.tagColors}
             featured={post.featured}
           />
         ))}

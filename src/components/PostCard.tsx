@@ -10,6 +10,7 @@ interface PostCardProps {
   readTime: string;
   slug: string;
   tags?: string[];
+  tagColors?: Record<string, string>;
   featured?: boolean;
   showFeaturedStyling?: boolean; // New prop to control when featured styling is applied
 }
@@ -21,6 +22,7 @@ export const PostCard = ({
   readTime, 
   slug, 
   tags, 
+  tagColors,
   featured = false,
   showFeaturedStyling = false // Default to false, only true in dedicated featured section
 }: PostCardProps) => {
@@ -93,7 +95,7 @@ export const PostCard = ({
             <div className="tag-container flex items-center gap-1.5 w-full mr-2 overflow-visible" style={{ flexWrap: 'nowrap', justifyContent: 'flex-start' }}>
               {/* Visible tags */}
               {visibleTags.map((tag) => (
-                <Tag key={tag} tag={tag} className="flex-shrink-0 whitespace-nowrap" />
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0 whitespace-nowrap" />
               ))}
               
               {/* Remaining count indicator - styled like regular tags */}

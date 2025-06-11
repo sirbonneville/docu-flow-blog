@@ -1,0 +1,36 @@
+{
+  "tags": {
+    "Documentation": {
+      "color": "blue",
+      "description": "General documentation practices and techniques"
+    },
+    "API": {
+      "color": "green",
+      "description": "API design and documentation"
+    },
+    "Best Practices": {
+      "color": "purple",
+      "description": "Industry standards and recommended approaches"
+    },
+    "Developer Experience": {
+      "color": "orange",
+      "description": "Improving developer workflows and satisfaction"
+    },
+    "Team Culture": {
+      "color": "indigo",
+      "description": "Building collaborative documentation teams"
+    },
+    "Automation": {
+      "color": "red",
+      "description": "Automating documentation workflows"
+    },
+    "Metrics": {
+      "color": "teal",
+      "description": "Measuring documentation effectiveness"
+    },
+    "Version Control": {
+      "color": "pink",
+      "description": "Managing documentation with Git and similar tools"
+    }
+  }
+}

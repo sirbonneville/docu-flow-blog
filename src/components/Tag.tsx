@@ -6,10 +6,11 @@ interface TagProps {
   tag: string;
   variant?: 'default' | 'secondary' | 'outline';
   className?: string;
+  tagColors?: Record<string, string>;
 }
 
-export const Tag = ({ tag, variant = 'outline', className }: TagProps) => {
-  const tagColorClasses = getTagColor(tag);
+export const Tag = ({ tag, variant = 'outline', className, tagColors }: TagProps) => {
+  const tagColorClasses = getTagColor(tag, { frontmatterColors: tagColors });
   
   return (
     <Badge 

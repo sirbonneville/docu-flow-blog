@@ -70,7 +70,7 @@ const Post = () => {
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {post.tags.map((tag) => (
-                  <Tag key={tag} tag={tag} />
+                  <Tag key={tag} tag={tag} tagColors={post.tagColors} />
                 ))}
               </div>
             )}

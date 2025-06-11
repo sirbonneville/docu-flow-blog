@@ -28,6 +28,7 @@ const Index = () => {
                 readTime={featuredPost.readTime}
                 slug={featuredPost.slug}
                 tags={featuredPost.tags}
+                tagColors={featuredPost.tagColors}
                 featured={true}
                 showFeaturedStyling={true}
               />
