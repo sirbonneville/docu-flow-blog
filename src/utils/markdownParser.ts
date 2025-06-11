@@ -60,9 +60,9 @@ Great API documentation is an investment in developer experience that pays divid
     slug: "api-documentation-best-practices",
     tags: ["API", "Documentation", "Best Practices"],
     tagColors: {
-      "API": "#3B82F6",
-      "Documentation": "#10B981",
-      "Best Practices": "#8B5CF6"
+      "API": "blue",
+      "Documentation": "green",
+      "Best Practices": "purple"
     },
     featured: true
   },
@@ -119,9 +119,9 @@ Docs-as-code transforms documentation from a chore into an integral part of your
     slug: "docs-as-code-guide",
     tags: ["Docs-as-Code", "Automation", "Workflow"],
     tagColors: {
-      "Docs-as-Code": "#F59E0B",
-      "Automation": "#EF4444",
-      "Workflow": "#06B6D4"
+      "Docs-as-Code": "orange",
+      "Automation": "red",
+      "Workflow": "teal"
     }
   },
   {
@@ -177,9 +177,9 @@ Building documentation culture is a journey, not a destination. Focus on progres
     slug: "building-documentation-culture",
     tags: ["Culture", "Team Building", "Leadership"],
     tagColors: {
-      "Culture": "#8B5CF6",
-      "Team Building": "#10B981",
-      "Leadership": "#F59E0B"
+      "Culture": "purple",
+      "Team Building": "green",
+      "Leadership": "orange"
     }
   },
   {
@@ -245,9 +245,9 @@ Remember: Perfect measurement isn't the goal. Useful insights that drive improve
     slug: "technical-writing-metrics",
     tags: ["Metrics", "Analytics", "Improvement"],
     tagColors: {
-      "Metrics": "#EF4444",
-      "Analytics": "#3B82F6",
-      "Improvement": "#10B981"
+      "Metrics": "red",
+      "Analytics": "blue",
+      "Improvement": "green"
     }
   },
   {
@@ -320,9 +320,9 @@ Automation should enhance human creativity, not replace human judgment.`,
     slug: "documentation-automation",
     tags: ["Automation", "Workflow", "Efficiency"],
     tagColors: {
-      "Automation": "#EF4444",
-      "Workflow": "#06B6D4",
-      "Efficiency": "#10B981"
+      "Automation": "red",
+      "Workflow": "teal",
+      "Efficiency": "green"
     }
   },
   {
@@ -403,9 +403,9 @@ Remember: Documentation is often the first and most frequent touchpoint develope
     slug: "developer-experience-docs",
     tags: ["Developer Experience", "UX", "Design"],
     tagColors: {
-      "Developer Experience": "#8B5CF6",
-      "UX": "#F59E0B",
-      "Design": "#06B6D4"
+      "Developer Experience": "purple",
+      "UX": "orange",
+      "Design": "teal"
     }
   }
 ];
