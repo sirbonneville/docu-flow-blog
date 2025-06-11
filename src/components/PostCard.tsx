@@ -18,6 +18,28 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
     ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
+  // Determine how many tags to show based on screen size and post type
+  const getTagDisplayConfig = () => {
+    if (featured) {
+      // Featured posts can show 3 tags on all screen sizes
+      return {
+        maxTags: 3,
+        remainingCount: tags && tags.length > 3 ? tags.length - 3 : 0
+      };
+    } else {
+      // Regular posts: 2 tags on mobile/tablet, 3 on desktop
+      // We'll use CSS classes to handle this responsively
+      return {
+        maxTagsMobile: 2,
+        maxTagsDesktop: 3,
+        remainingCountMobile: tags && tags.length > 2 ? tags.length - 2 : 0,
+        remainingCountDesktop: tags && tags.length > 3 ? tags.length - 3 : 0
+      };
+    }
+  };
+
+  const tagConfig = getTagDisplayConfig();
+
   return (
     <Card className={cardClasses}>
       <CardHeader className="pb-0 space-y-3 p-4 flex-shrink-0">
@@ -59,15 +81,43 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-3 ${featured ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Always show for both featured and regular posts */}
+        {/* Tags Section - Responsive tag display */}
         <div className={`${featured ? 'mb-3' : 'h-8 mb-3 flex-shrink-0'}`}>
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 overflow-hidden">
-              {tags.slice(0, 3).map((tag) => (
-                <Tag key={tag} tag={tag} />
-              ))}
-              {tags.length > 3 && (
-                <span className="text-xs text-muted-foreground self-center">+{tags.length - 3}</span>
+              {featured ? (
+                // Featured posts: show 3 tags on all screen sizes
+                <>
+                  {tags.slice(0, 3).map((tag) => (
+                    <Tag key={tag} tag={tag} />
+                  ))}
+                  {tagConfig.remainingCount > 0 && (
+                    <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCount}</span>
+                  )}
+                </>
+              ) : (
+                // Regular posts: responsive tag display
+                <>
+                  {/* Mobile and tablet: show only 2 tags */}
+                  <div className="flex flex-wrap gap-1.5 lg:hidden">
+                    {tags.slice(0, 2).map((tag) => (
+                      <Tag key={tag} tag={tag} />
+                    ))}
+                    {tagConfig.remainingCountMobile > 0 && (
+                      <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCountMobile}</span>
+                    )}
+                  </div>
+                  
+                  {/* Desktop: show 3 tags */}
+                  <div className="hidden lg:flex flex-wrap gap-1.5">
+                    {tags.slice(0, 3).map((tag) => (
+                      <Tag key={tag} tag={tag} />
+                    ))}
+                    {tagConfig.remainingCountDesktop > 0 && (
+                      <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCountDesktop}</span>
+                    )}
+                  </div>
+                </>
               )}
             </div>
           )}
