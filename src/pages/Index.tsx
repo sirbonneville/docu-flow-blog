@@ -16,7 +16,7 @@ const Index = () => {
         
         {/* Featured Post Section - Seamless flow with centered heading */}
         {featuredPost && (
-          <section style={{ paddingTop: '12px', paddingBottom: '32px' }}>
+          <section style={{ paddingTop: '12px', paddingBottom: '32px' }} className="md:pb-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '42px' }}>
                 Featured Post
@@ -35,12 +35,14 @@ const Index = () => {
           </section>
         )}
 
-        {/* All Posts Section with Liquid Glass Effect */}
-        <PostGrid 
-          posts={allPosts} 
-          showSearch={false}
-          title="Recent Posts"
-        />
+        {/* All Posts Section with Liquid Glass Effect - Mobile spacing adjustments */}
+        <div className="mt-8 md:mt-0">
+          <PostGrid 
+            posts={allPosts} 
+            showSearch={false}
+            title="Recent Posts"
+          />
+        </div>
       </div>
     </Layout>
   );

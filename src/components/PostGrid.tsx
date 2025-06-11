@@ -84,9 +84,10 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   return (
     <section className="py-4 pb-16 relative">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-6">
-          <h2 className="text-xl md:text-2xl font-bold mb-3">{title}</h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
+        {/* Mobile-optimized spacing for heading and subtitle */}
+        <div className="text-center mb-6 md:mb-6">
+          <h2 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">{title}</h2>
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto mb-6 md:mb-0">
             Explore insights on technical writing, documentation strategy, and team leadership.
           </p>
         </div>
