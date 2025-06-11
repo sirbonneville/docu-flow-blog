@@ -15,8 +15,8 @@ interface PostCardProps {
 
 export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured = false }: PostCardProps) => {
   const cardClasses = featured
-    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover min-h-[320px] flex flex-col"
-    : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover min-h-[320px] flex flex-col";
+    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover h-full flex flex-col"
+    : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
   return (
     <Card className={cardClasses}>
@@ -45,7 +45,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         {/* Title - Limited to 2-3 lines with ellipsis */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
           featured ? "text-lg md:text-xl" : "text-base"
-        } line-clamp-3`}>
+        } line-clamp-2`}>
           <a href={`/post/${slug}`} className="block">
             {title}
           </a>
@@ -73,8 +73,8 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
           )}
         </div>
         
-        {/* Excerpt - Limited to exactly 3 lines */}
-        <p className="text-muted-foreground leading-relaxed flex-grow text-sm line-clamp-3 mb-4">
+        {/* Excerpt - Limited to exactly 2 lines for consistency */}
+        <p className="text-muted-foreground leading-relaxed flex-grow text-sm line-clamp-2 mb-4">
           {excerpt}
         </p>
         

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
 import { Button } from "@/components/ui/button";
@@ -26,6 +26,24 @@ interface PostGridProps {
 
 export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: PostGridProps) => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
+  
+  // Track screen size changes for proper fade effect
+  useEffect(() => {
+    const updateScreenSize = () => {
+      if (window.innerWidth < 768) {
+        setScreenSize('mobile');
+      } else if (window.innerWidth < 1024) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('desktop');
+      }
+    };
+
+    updateScreenSize();
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, []);
   
   const filteredPosts = posts.filter(post =>
     post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -33,9 +51,35 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
     (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())))
   );
 
-  // Determine if we should show the glass effect
-  const shouldShowGlassEffect = filteredPosts.length > 6; // Desktop: 6+, Mobile: 3+ (handled via CSS)
-  const visiblePosts = shouldShowGlassEffect ? filteredPosts.slice(0, 6) : filteredPosts;
+  // Determine how many posts to show and which need fade effect based on screen size
+  const getDisplayConfig = () => {
+    const totalPosts = filteredPosts.length;
+    
+    switch (screenSize) {
+      case 'mobile':
+        return {
+          visibleCount: totalPosts > 3 ? 3 : totalPosts,
+          showGlassEffect: totalPosts > 3,
+          fadeIndices: totalPosts > 3 ? [2] : [] // Only the 3rd card (index 2)
+        };
+      case 'tablet':
+        return {
+          visibleCount: totalPosts > 4 ? 4 : totalPosts,
+          showGlassEffect: totalPosts > 4,
+          fadeIndices: totalPosts > 4 ? [3] : [] // Only the 4th card (index 3)
+        };
+      case 'desktop':
+      default:
+        return {
+          visibleCount: totalPosts > 6 ? 6 : totalPosts,
+          showGlassEffect: totalPosts > 6,
+          fadeIndices: totalPosts > 6 ? [3, 4, 5] : [] // Bottom row cards (indices 3, 4, 5)
+        };
+    }
+  };
+
+  const { visibleCount, showGlassEffect, fadeIndices } = getDisplayConfig();
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   return (
     <section className="py-4 pb-16 relative">
@@ -53,40 +97,31 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
           </div>
         )}
 
-        {/* Cards Container */}
+        {/* Cards Container with improved grid consistency */}
         <div className="relative">
           <div 
             className="relative"
             style={{
-              // Constrain the gradient within the content area
               clipPath: 'inset(0 0 0 0)',
               contain: 'layout style'
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {visiblePosts.map((post, index) => {
-                // Hide posts beyond mobile threshold (3) on mobile only
-                const hiddenOnMobile = shouldShowGlassEffect && index >= 3;
+                // Determine if this card should be hidden on mobile
+                const hiddenOnMobile = screenSize === 'mobile' && index >= 3;
                 
-                // Apply fade effect to the bottom row cards that get overlapped:
-                // Desktop (lg): cards 4, 5, 6 (indices 3, 4, 5) - entire bottom row
-                // Tablet (md): card 4 (index 3) - the card that gets overlapped  
-                // Mobile: card 3 (index 2) - the last visible card that gets overlapped
-                const isInFadeZone = shouldShowGlassEffect && (
-                  (index >= 3 && index <= 5) || // Cards 4, 5 & 6 on desktop (entire bottom row)
-                  (index === 3 && window.innerWidth >= 768 && window.innerWidth < 1024) || // Card 4 on tablet
-                  (index === 2 && window.innerWidth < 768) // Card 3 on mobile
-                );
+                // Apply fade effect only to cards that need it
+                const shouldFade = fadeIndices.includes(index);
                 
                 return (
                   <div 
                     key={post.id}
                     className={`
                       ${hiddenOnMobile ? 'hidden md:block' : ''}
-                      ${isInFadeZone ? 'relative' : ''}
+                      ${shouldFade ? 'relative' : ''}
                     `}
-                    style={isInFadeZone ? {
-                      // Apply gradient fade directly to cards in the fade zone
+                    style={shouldFade ? {
                       maskImage: `linear-gradient(to bottom, 
                         rgba(0,0,0,1) 0%, 
                         rgba(0,0,0,0.9) 20%, 
@@ -121,8 +156,8 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
           </div>
         </div>
 
-        {/* Discover More Stories Section - Now positioned below cards in normal flow */}
-        {shouldShowGlassEffect && (
+        {/* Discover More Stories Section */}
+        {showGlassEffect && (
           <div className="flex justify-center mt-8">
             <div className="group relative overflow-hidden rounded-2xl 
                           border-2 shadow-2xl hover:shadow-3xl
@@ -131,7 +166,6 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                           p-8 max-w-sm mx-4
                           backdrop-blur-xl border-border/30 hover:border-border/50"
                  style={{
-                   // Neutral glassmorphism with subtle colors
                    background: `linear-gradient(135deg, 
                      hsl(var(--card) / 0.8) 0%, 
                      hsl(var(--background) / 0.7) 25%,
