@@ -18,27 +18,18 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
     ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
-  // Determine how many tags to show based on screen size and post type
-  const getTagDisplayConfig = () => {
-    if (featured) {
-      // Featured posts can show 3 tags on all screen sizes
-      return {
-        maxTags: 3,
-        remainingCount: tags && tags.length > 3 ? tags.length - 3 : 0
-      };
-    } else {
-      // Regular posts: 2 tags on mobile/tablet, 3 on desktop
-      // We'll use CSS classes to handle this responsively
-      return {
-        maxTagsMobile: 2,
-        maxTagsDesktop: 3,
-        remainingCountMobile: tags && tags.length > 2 ? tags.length - 2 : 0,
-        remainingCountDesktop: tags && tags.length > 3 ? tags.length - 3 : 0
-      };
-    }
+  // Calculate tag display for desktop (limit 2) and mobile (limit 2)
+  const getTagDisplayInfo = () => {
+    if (!tags || tags.length === 0) return { visibleTags: [], remainingCount: 0 };
+    
+    const maxTags = 2; // Always limit to 2 tags on both desktop and mobile
+    const visibleTags = tags.slice(0, maxTags);
+    const remainingCount = Math.max(0, tags.length - maxTags);
+    
+    return { visibleTags, remainingCount };
   };
 
-  const tagConfig = getTagDisplayConfig();
+  const { visibleTags, remainingCount } = getTagDisplayInfo();
 
   return (
     <Card className={cardClasses}>
@@ -81,43 +72,20 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-3 ${featured ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Responsive tag display */}
+        {/* Tags Section - Responsive tag display with overflow control */}
         <div className={`${featured ? 'mb-3' : 'h-8 mb-3 flex-shrink-0'}`}>
           {tags && tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 overflow-hidden">
-              {featured ? (
-                // Featured posts: show 3 tags on all screen sizes
-                <>
-                  {tags.slice(0, 3).map((tag) => (
-                    <Tag key={tag} tag={tag} />
-                  ))}
-                  {tagConfig.remainingCount > 0 && (
-                    <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCount}</span>
-                  )}
-                </>
-              ) : (
-                // Regular posts: responsive tag display
-                <>
-                  {/* Mobile and tablet: show only 2 tags */}
-                  <div className="flex flex-wrap gap-1.5 lg:hidden">
-                    {tags.slice(0, 2).map((tag) => (
-                      <Tag key={tag} tag={tag} />
-                    ))}
-                    {tagConfig.remainingCountMobile > 0 && (
-                      <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCountMobile}</span>
-                    )}
-                  </div>
-                  
-                  {/* Desktop: show 3 tags */}
-                  <div className="hidden lg:flex flex-wrap gap-1.5">
-                    {tags.slice(0, 3).map((tag) => (
-                      <Tag key={tag} tag={tag} />
-                    ))}
-                    {tagConfig.remainingCountDesktop > 0 && (
-                      <span className="text-xs text-muted-foreground self-center">+{tagConfig.remainingCountDesktop}</span>
-                    )}
-                  </div>
-                </>
+            <div className="flex items-center gap-1.5 overflow-hidden h-full">
+              {/* Visible tags */}
+              {visibleTags.map((tag) => (
+                <Tag key={tag} tag={tag} className="flex-shrink-0 whitespace-nowrap" />
+              ))}
+              
+              {/* Remaining count indicator */}
+              {remainingCount > 0 && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0 whitespace-nowrap">
+                  +{remainingCount}
+                </span>
               )}
             </div>
           )}
