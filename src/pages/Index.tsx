@@ -14,11 +14,11 @@ const Index = () => {
       <div className="animate-fade-in">
         <Hero />
         
-        {/* Featured Post Section - Equal spacing above and below heading */}
+        {/* Featured Post Section - Seamless flow with centered heading */}
         {featuredPost && (
-          <section style={{ paddingTop: '32px', paddingBottom: '32px' }}>
+          <section style={{ paddingTop: '12px', paddingBottom: '32px' }}>
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '32px' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '24px' }}>
                 Featured Post
               </h2>
               <PostCard
