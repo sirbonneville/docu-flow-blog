@@ -16,9 +16,9 @@ const Index = () => {
         
         {/* Featured Post Section - Seamless flow with centered heading */}
         {featuredPost && (
-          <section style={{ paddingTop: '30px', paddingBottom: '32px' }}>
+          <section style={{ paddingTop: '12px', paddingBottom: '32px' }}>
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '60px' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '24px' }}>
                 Featured Post
               </h2>
               <PostCard
