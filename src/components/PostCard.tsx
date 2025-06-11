@@ -20,11 +20,11 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
 
   return (
     <Card className={cardClasses}>
-      <CardHeader className="pb-4 space-y-4">
+      <CardHeader className="pb-3 space-y-3 p-4">
         {/* Featured Badge */}
         {featured && (
           <div className="flex justify-start">
-            <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
+            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
               Featured Post
             </span>
           </div>
@@ -32,8 +32,8 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         
         {/* Publication Date */}
         <div className="flex items-center space-x-2 text-primary font-medium">
-          <Calendar className="h-4 w-4 flex-shrink-0" />
-          <span className="text-sm">
+          <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
+          <span className="text-xs">
             {new Date(date).toLocaleDateString('en-US', { 
               year: 'numeric', 
               month: 'long', 
@@ -44,7 +44,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         
         {/* Title */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
-          featured ? "text-xl md:text-2xl" : "text-lg"
+          featured ? "text-lg md:text-xl" : "text-base"
         }`}>
           <a href={`/post/${slug}`} className="block">
             {title}
@@ -53,7 +53,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
 
         {/* Tags Section */}
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-1.5">
             {tags.map((tag) => (
               <Tag key={tag} tag={tag} />
             ))}
@@ -61,15 +61,15 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         )}
         
         {/* Read Time */}
-        <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+        <div className="flex items-center space-x-1 text-xs text-muted-foreground">
           <Clock className="h-3 w-3 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
-      <CardContent className="flex flex-col flex-grow pt-0">
+      <CardContent className="flex flex-col flex-grow pt-0 p-4">
         {/* Excerpt */}
-        <p className="text-muted-foreground leading-relaxed flex-grow mb-4">
+        <p className="text-muted-foreground leading-relaxed flex-grow mb-3 text-sm">
           {excerpt}
         </p>
         
@@ -77,7 +77,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         <div className="pt-2 border-t border-border/50">
           <a 
             href={`/post/${slug}`}
-            className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group"
+            className="text-primary hover:text-primary/80 font-medium text-xs transition-colors inline-flex items-center group"
           >
             Read more 
             <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
