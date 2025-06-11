@@ -9,6 +9,7 @@ interface Post {
   readTime: string;
   slug: string;
   tags?: string[];
+  tagColors?: Record<string, string>;
   featured?: boolean;
 }
 

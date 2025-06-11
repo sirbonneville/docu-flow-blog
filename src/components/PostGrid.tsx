@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
@@ -14,6 +15,7 @@ interface Post {
   slug: string;
   content?: string;
   tags?: string[];
+  tagColors?: Record<string, string>;
   featured?: boolean;
 }
 

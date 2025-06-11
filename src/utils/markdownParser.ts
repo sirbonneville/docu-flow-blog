@@ -1,6 +1,12 @@
-import { Post } from '@/data/posts';
+
+import { Buffer } from 'buffer';
 import matter from 'gray-matter';
 import { marked } from 'marked';
+
+// Make Buffer globally available for gray-matter
+if (typeof window !== 'undefined') {
+  window.Buffer = Buffer;
+}
 
 export interface MarkdownPost {
   id: string;
