@@ -1,6 +1,7 @@
+
 export const Hero = () => {
   return (
-    <section className="py-12 lg:py-16 animate-fade-in" style={{ paddingBottom: '12px' }}>
+    <section className="py-12 lg:py-16 animate-fade-in" style={{ paddingBottom: '8px' }}>
       <div className="max-w-4xl mx-auto text-center">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-space-md" style={{ lineHeight: '1.2', margin: 0, marginBottom: 'var(--space-md)' }}>
           <span className="text-foreground">Hi, I'm</span>{" "}
