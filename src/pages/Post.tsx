@@ -1,5 +1,7 @@
+
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
+import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/Layout";
 import { SocialShare } from "@/components/SocialShare";
 import { Button } from "@/components/ui/button";
@@ -80,22 +82,22 @@ const Post = () => {
             </p>
           </header>
 
-          {/* Article Content */}
-          <div 
-            className="prose prose-lg dark:prose-invert max-w-none
-              prose-headings:font-bold prose-headings:text-foreground
-              prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-12 prose-h1:mb-6
-              prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-10 prose-h2:mb-4
-              prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
-              prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
-              prose-ul:text-muted-foreground prose-ul:space-y-2 prose-ul:mb-6 prose-ul:pl-6
-              prose-li:relative prose-li:marker:text-primary
-              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:my-6 prose-blockquote:italic prose-blockquote:text-muted-foreground
-              prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
-              prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
-              prose-a:text-primary prose-a:hover:text-primary/80 prose-a:underline"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          {/* Article Content - Now using ReactMarkdown */}
+          <div className="prose prose-lg dark:prose-invert max-w-none
+            prose-headings:font-bold prose-headings:text-foreground
+            prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-12 prose-h1:mb-6
+            prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-10 prose-h2:mb-4
+            prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
+            prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
+            prose-ul:text-muted-foreground prose-ul:space-y-2 prose-ul:mb-6 prose-ul:pl-6
+            prose-li:relative prose-li:marker:text-primary
+            prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:my-6 prose-blockquote:italic prose-blockquote:text-muted-foreground
+            prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
+            prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
+            prose-a:text-primary prose-a:hover:text-primary/80 prose-a:underline"
+          >
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
 
           {/* Related Posts */}
           <RelatedPosts currentPost={post} allPosts={allPosts} />
