@@ -71,14 +71,14 @@ export const PostCard = ({
         {/* Title - Use consistent sizing for grid cards */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
           shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-base"
-        } line-clamp-2 mb-1.5`}>
+        } line-clamp-2 mb-1`}>
           <a href={`/post/${slug}`} className="block">
             {title}
           </a>
         </h3>
 
-        {/* Read Time - Perfectly centered between title and tags */}
-        <div className="flex items-center space-x-1 text-xs text-muted-foreground my-1.5">
+        {/* Read Time - Perfectly centered between title and tags with fine-tuned spacing */}
+        <div className="flex items-center space-x-1 text-xs text-muted-foreground my-2">
           <Clock className="h-3 w-3 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
@@ -87,7 +87,7 @@ export const PostCard = ({
       <CardContent className={`flex flex-col p-3 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
         {/* Tags Section - Compact spacing with consistent margin */}
         <div 
-          className="flex-shrink-0 mt-1.5"
+          className="flex-shrink-0 mt-1"
         >
           {tags && tags.length > 0 && (
             <div className="tag-container flex items-center gap-1.5 w-full mr-2 overflow-visible" style={{ flexWrap: 'nowrap', justifyContent: 'flex-start' }}>
