@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,6 +39,13 @@
 
     --radius: 0.5rem;
 
+    /* Systematic spacing values */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+
     /* Custom gradient variables for light mode */
     --gradient-subtle-bg: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
     --gradient-white-gray: linear-gradient(180deg, #FFFFFF 0%, #F7FAFC 100%);
@@ -61,6 +69,17 @@
     
     /* Texture overlay for light mode */
     --fade-texture: hsla(215, 16%, 47%, 0.1);
+  }
+
+  /* Mobile spacing - 25% reduction for screens under 768px */
+  @media (max-width: 767px) {
+    :root {
+      --space-xs: 6px;
+      --space-sm: 12px;
+      --space-md: 18px;
+      --space-lg: 24px;
+      --space-xl: 36px;
+    }
   }
 
   .dark {
@@ -118,6 +137,17 @@
     /* Texture overlay for dark mode */
     --fade-texture: hsla(214, 32%, 91%, 0.05);
   }
+
+  /* Mobile spacing for dark mode - 25% reduction for screens under 768px */
+  @media (max-width: 767px) {
+    .dark {
+      --space-xs: 6px;
+      --space-sm: 12px;
+      --space-md: 18px;
+      --space-lg: 24px;
+      --space-xl: 36px;
+    }
+  }
 }
 
 @layer base {
@@ -162,6 +192,11 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
     color: hsl(var(--foreground));
+    line-height: 1.2;
+  }
+
+  p {
+    line-height: 1.5;
   }
 
   .prose {
@@ -244,4 +279,11 @@
   .bg-gradient-green-cta {
     background: var(--gradient-green-cta);
   }
+
+  /* Spacing utility classes using custom properties */
+  .mb-space-xs { margin-bottom: var(--space-xs); }
+  .mb-space-sm { margin-bottom: var(--space-sm); }
+  .mb-space-md { margin-bottom: var(--space-md); }
+  .mb-space-lg { margin-bottom: var(--space-lg); }
+  .mb-space-xl { margin-bottom: var(--space-xl); }
 }
