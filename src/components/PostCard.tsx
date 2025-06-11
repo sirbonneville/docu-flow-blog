@@ -15,7 +15,7 @@ interface PostCardProps {
 
 export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured = false }: PostCardProps) => {
   const cardClasses = featured
-    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover h-full flex flex-col"
+    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
   return (
@@ -58,9 +58,9 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         </div>
       </CardHeader>
       
-      <CardContent className="flex flex-col flex-grow p-4 pt-3">
-        {/* Tags Section - Fixed height container */}
-        <div className="h-8 mb-3 flex-shrink-0">
+      <CardContent className={`flex flex-col p-4 pt-3 ${featured ? '' : 'flex-grow'}`}>
+        {/* Tags Section - Always show for both featured and regular posts */}
+        <div className={`${featured ? 'mb-3' : 'h-8 mb-3 flex-shrink-0'}`}>
           {tags && tags.length > 0 && (
             <div className="flex flex-wrap gap-1.5 overflow-hidden">
               {tags.slice(0, 3).map((tag) => (
@@ -73,13 +73,15 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
           )}
         </div>
         
-        {/* Excerpt - Limited to exactly 2 lines for consistency */}
-        <p className="text-muted-foreground leading-relaxed flex-grow text-sm line-clamp-2 mb-4">
+        {/* Excerpt - Different handling for featured vs regular posts */}
+        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
+          featured ? '' : 'line-clamp-2 flex-grow'
+        }`}>
           {excerpt}
         </p>
         
-        {/* Read More Link - Always at bottom */}
-        <div className="pt-3 border-t border-border/50 mt-auto flex-shrink-0">
+        {/* Read More Link */}
+        <div className={`border-t border-border/50 ${featured ? 'pt-3' : 'pt-3 mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-primary/80 font-medium text-xs transition-colors inline-flex items-center group"
