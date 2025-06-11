@@ -3,7 +3,7 @@
 export type { MarkdownPost } from '@/utils/markdownParser';
 
 // Also create a Post type alias for backward compatibility
-export type Post = MarkdownPost;
+export type { MarkdownPost as Post } from '@/utils/markdownParser';
 
 export {
   parseMarkdownPosts,
