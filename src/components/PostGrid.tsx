@@ -66,7 +66,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
         return {
           visibleCount: totalPosts > 4 ? 4 : totalPosts,
           showGlassEffect: totalPosts > 4,
-          fadeIndices: totalPosts > 4 ? [3] : [] // Only the 4th card (index 3)
+          fadeIndices: totalPosts > 4 ? [2, 3] : [] // Both 3rd and 4th cards (indices 2, 3) - bottom row in 2-column grid
         };
       case 'desktop':
       default:
