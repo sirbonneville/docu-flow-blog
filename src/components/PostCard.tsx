@@ -72,20 +72,23 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-3 ${featured ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Responsive tag display with overflow control */}
-        <div className={`${featured ? 'mb-3' : 'h-8 mb-3 flex-shrink-0'}`}>
+        {/* Tags Section - Fixed spacing and layout */}
+        <div 
+          className={`${featured ? '' : 'flex-shrink-0'}`}
+          style={{ marginTop: 'var(--tag-spacing)' }}
+        >
           {tags && tags.length > 0 && (
-            <div className="flex items-center gap-1.5 overflow-hidden h-full">
+            <div className="tag-container flex items-center gap-1.5 w-full mr-2 overflow-visible" style={{ flexWrap: 'nowrap', justifyContent: 'flex-start' }}>
               {/* Visible tags */}
               {visibleTags.map((tag) => (
                 <Tag key={tag} tag={tag} className="flex-shrink-0 whitespace-nowrap" />
               ))}
               
-              {/* Remaining count indicator */}
+              {/* Remaining count indicator - styled like regular tags */}
               {remainingCount > 0 && (
-                <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0 whitespace-nowrap">
+                <div className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0 whitespace-nowrap min-w-fit">
                   +{remainingCount}
-                </span>
+                </div>
               )}
             </div>
           )}
@@ -94,7 +97,7 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         {/* Excerpt - Different handling for featured vs regular posts */}
         <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
           featured ? '' : 'line-clamp-2 flex-grow'
-        }`}>
+        }`} style={{ marginTop: 'var(--tag-spacing)' }}>
           {excerpt}
         </p>
         
