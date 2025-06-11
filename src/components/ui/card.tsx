@@ -13,12 +13,6 @@ const Card = React.forwardRef<
       "rounded-lg border bg-card text-card-foreground shadow-sm",
       className
     )}
-    style={{
-      // Ensure line-clamp works properly
-      WebkitLineClamp: 'unset',
-      WebkitBoxOrient: 'unset',
-      display: 'block'
-    }}
     {...props}
   />
 ))
