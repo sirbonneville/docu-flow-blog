@@ -1,6 +1,10 @@
 
 // Re-export types and functions from the markdown parser
-export type { MarkdownPost as Post } from '@/utils/markdownParser';
+export type { MarkdownPost } from '@/utils/markdownParser';
+
+// Also create a Post type alias for backward compatibility
+export type Post = MarkdownPost;
+
 export {
   parseMarkdownPosts,
   getMarkdownPostBySlug as getPostBySlug,
