@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
@@ -82,12 +81,12 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
   const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   return (
-    <section className="py-4 pb-16 relative">
+    <section className="py-2 pb-16 relative">
       <div className="max-w-6xl mx-auto">
-        {/* Mobile-optimized spacing for heading and subtitle */}
-        <div className="text-center mb-6 md:mb-6">
-          <h2 className="text-xl md:text-2xl font-bold mb-2 md:mb-3">{title}</h2>
-          <p className="text-muted-foreground text-base max-w-2xl mx-auto mb-6 md:mb-0">
+        {/* Tighter mobile spacing for heading */}
+        <div className="text-center mb-4 md:mb-6">
+          <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-3">{title}</h2>
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto mb-4 md:mb-0">
             Explore insights on technical writing, documentation strategy, and team leadership.
           </p>
         </div>

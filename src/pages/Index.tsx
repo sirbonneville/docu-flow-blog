@@ -14,11 +14,11 @@ const Index = () => {
       <div className="animate-fade-in">
         <Hero />
         
-        {/* Featured Post Section - Seamless flow with centered heading */}
+        {/* Featured Post Section - Much tighter mobile spacing */}
         {featuredPost && (
-          <section style={{ paddingTop: '12px', paddingBottom: '32px' }} className="md:pb-8">
+          <section className="pt-3 pb-4 md:pt-3 md:pb-8">
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '42px' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10">
                 Featured Post
               </h2>
               <PostCard
@@ -29,14 +29,14 @@ const Index = () => {
                 slug={featuredPost.slug}
                 tags={featuredPost.tags}
                 featured={true}
-                showFeaturedStyling={true} // Enable featured styling only here
+                showFeaturedStyling={true}
               />
             </div>
           </section>
         )}
 
-        {/* All Posts Section with Liquid Glass Effect - Mobile spacing adjustments */}
-        <div className="mt-8 md:mt-0">
+        {/* All Posts Section - Remove top margin on mobile */}
+        <div className="mt-0 md:mt-0">
           <PostGrid 
             posts={allPosts} 
             showSearch={false}
