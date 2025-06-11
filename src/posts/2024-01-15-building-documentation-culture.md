@@ -5,6 +5,7 @@ excerpt: "How to transform your team's approach to documentation by establishing
 date: "2024-01-15"
 readTime: "8 min read"
 featured: true
+tags: ["Documentation", "Team Culture", "Process", "Leadership"]
 ---
 
 # Building Documentation Culture: From Chaos to Clarity

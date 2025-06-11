@@ -5,6 +5,7 @@ excerpt: "Navigate the challenges of growing documentation teams, from hiring th
 date: "2024-02-05"
 readTime: "9 min read"
 featured: false
+tags: ["Team Management", "Documentation", "Scaling", "Strategy"]
 ---
 
 # Scaling Documentation Teams: From Solo Writer to Team Leader

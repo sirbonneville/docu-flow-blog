@@ -5,6 +5,7 @@ excerpt: "Explore strategies for creating documentation that developers actually
 date: "2024-01-30"
 readTime: "6 min read"
 featured: false
+tags: ["Developer Experience", "Documentation", "API", "Technical Writing"]
 ---
 
 # Developer Experience: Making Documentation Developer-Friendly

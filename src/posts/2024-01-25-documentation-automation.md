@@ -5,6 +5,7 @@ excerpt: "Discover how to streamline your documentation process with automation 
 date: "2024-01-25"
 readTime: "8 min read"
 featured: false
+tags: ["Automation", "Workflow", "Tools", "Productivity"]
 ---
 
 # Automating Documentation Workflows: Tools and Techniques

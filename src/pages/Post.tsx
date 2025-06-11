@@ -1,7 +1,5 @@
-
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/Layout";
 import { SocialShare } from "@/components/SocialShare";
 import { Button } from "@/components/ui/button";
@@ -50,33 +48,32 @@ const Post = () => {
               {post.title}
             </h1>
             
+            <div className="flex flex-wrap items-center gap-6 mb-6">
+              <div className="flex items-center space-x-2 text-muted-foreground">
+                <Calendar className="h-4 w-4" />
+                <span>
+                  {new Date(post.date).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}
+                </span>
+              </div>
+              
+              <div className="flex items-center space-x-2 text-muted-foreground">
+                <Clock className="h-4 w-4" />
+                <span>{post.readTime}</span>
+              </div>
+            </div>
+
             {/* Tags */}
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-6">
                 {post.tags.map((tag) => (
-                  <Tag key={tag} tag={tag} variant="outline" />
+                  <Tag key={tag} tag={tag} />
                 ))}
               </div>
             )}
-            
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-                <div className="flex items-center space-x-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>{new Date(post.date).toLocaleDateString('en-US', { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
-                  })}</span>
-                </div>
-                <div className="flex items-center space-x-1">
-                  <Clock className="h-4 w-4" />
-                  <span>{post.readTime}</span>
-                </div>
-              </div>
-
-              <SocialShare title={post.title} />
-            </div>
 
             <p className="text-xl text-muted-foreground leading-relaxed">
               {post.excerpt}
@@ -84,75 +81,21 @@ const Post = () => {
           </header>
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none">
-            <ReactMarkdown
-              components={{
-                h1: ({ children }) => (
-                  <h1 className="text-3xl md:text-4xl font-bold mt-12 mb-6 first:mt-0">
-                    {children}
-                  </h1>
-                ),
-                h2: ({ children }) => (
-                  <h2 className="text-2xl md:text-3xl font-semibold mt-10 mb-4">
-                    {children}
-                  </h2>
-                ),
-                h3: ({ children }) => (
-                  <h3 className="text-xl md:text-2xl font-semibold mt-8 mb-3">
-                    {children}
-                  </h3>
-                ),
-                p: ({ children }) => (
-                  <p className="text-muted-foreground leading-relaxed mb-6">
-                    {children}
-                  </p>
-                ),
-                ul: ({ children }) => (
-                  <ul className="text-muted-foreground space-y-2 mb-6 pl-6">
-                    {children}
-                  </ul>
-                ),
-                li: ({ children }) => (
-                  <li className="relative">
-                    <span className="absolute -left-6 top-0 text-primary">•</span>
-                    {children}
-                  </li>
-                ),
-                blockquote: ({ children }) => (
-                  <blockquote className="border-l-4 border-primary pl-6 my-6 italic text-muted-foreground">
-                    {children}
-                  </blockquote>
-                ),
-                code: ({ children, className }) => {
-                  const isBlock = className?.includes('language-');
-                  if (isBlock) {
-                    return (
-                      <pre className="bg-muted p-4 rounded-lg overflow-x-auto my-6">
-                        <code className="text-sm">{children}</code>
-                      </pre>
-                    );
-                  }
-                  return (
-                    <code className="bg-muted px-2 py-1 rounded text-sm font-mono">
-                      {children}
-                    </code>
-                  );
-                },
-                a: ({ href, children }) => (
-                  <a 
-                    href={href} 
-                    className="text-primary hover:text-primary/80 underline"
-                    target={href?.startsWith('http') ? '_blank' : undefined}
-                    rel={href?.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  >
-                    {children}
-                  </a>
-                ),
-              }}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </div>
+          <div 
+            className="prose prose-lg dark:prose-invert max-w-none
+              prose-headings:font-bold prose-headings:text-foreground
+              prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-12 prose-h1:mb-6
+              prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-10 prose-h2:mb-4
+              prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
+              prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-6
+              prose-ul:text-muted-foreground prose-ul:space-y-2 prose-ul:mb-6 prose-ul:pl-6
+              prose-li:relative prose-li:marker:text-primary
+              prose-blockquote:border-l-4 prose-blockquote:border-primary prose-blockquote:pl-6 prose-blockquote:my-6 prose-blockquote:italic prose-blockquote:text-muted-foreground
+              prose-code:bg-muted prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:before:content-[''] prose-code:after:content-['']
+              prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
+              prose-a:text-primary prose-a:hover:text-primary/80 prose-a:underline"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
           {/* Related Posts */}
           <RelatedPosts currentPost={post} allPosts={allPosts} />

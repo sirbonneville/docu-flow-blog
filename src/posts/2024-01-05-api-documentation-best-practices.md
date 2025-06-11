@@ -4,6 +4,7 @@ title: "API Documentation That Developers Actually Use"
 excerpt: "Best practices for creating API documentation that serves as both reference and tutorial, with real examples and interactive features."
 date: "2024-01-05"
 readTime: "10 min read"
+tags: ["API", "Documentation", "Developer Experience", "Best Practices"]
 ---
 
 # API Documentation That Developers Actually Use

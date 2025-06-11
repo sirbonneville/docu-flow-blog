@@ -5,6 +5,7 @@ excerpt: "Learn how to track and measure the effectiveness of your technical doc
 date: "2024-01-20"
 readTime: "7 min read"
 featured: false
+tags: ["Metrics", "Analytics", "ROI", "Strategy"]
 ---
 
 # Measuring Success: Key Metrics for Technical Writing Teams

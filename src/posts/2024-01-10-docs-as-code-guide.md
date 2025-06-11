@@ -4,6 +4,7 @@ title: "Docs-as-Code: Managing Documentation Like Software"
 excerpt: "Learn how to apply software development best practices to documentation creation, including version control, peer review, and automated publishing."
 date: "2024-01-10"
 readTime: "12 min read"
+tags: ["Docs-as-Code", "Version Control", "Best Practices", "Git"]
 ---
 
 # Docs-as-Code: Managing Documentation Like Software
