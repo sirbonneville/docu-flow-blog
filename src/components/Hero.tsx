@@ -8,6 +8,16 @@ export const Hero = () => {
           <span className="text-primary">Judson</span>
         </h1>
         
+        {/* Professional pill badge positioned under the name */}
+        <div className="flex justify-center mb-6">
+          <div className="inline-flex items-center px-4 py-2 rounded-full border border-border/50 bg-gradient-to-r from-card/80 to-card/60 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300 hover:border-primary/30">
+            <div className="w-2 h-2 bg-primary rounded-full mr-3 animate-pulse"></div>
+            <span className="text-sm font-medium text-foreground/80">
+              Writing software docs @ Pieces for Developers
+            </span>
+          </div>
+        </div>
+        
         <h2 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
           I write about documentation leadership
         </h2>
@@ -16,14 +26,6 @@ export const Hero = () => {
           Thoughts on technical writing, documentation strategy, 
           and leading documentation teams in the modern software landscape.
         </p>
-        
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-0">
-          <div className="flex items-center space-x-4 text-sm text-muted-foreground">
-            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full font-medium">
-              writing software docs @ pieces for developers
-            </span>
-          </div>
-        </div>
       </div>
     </section>
   );
