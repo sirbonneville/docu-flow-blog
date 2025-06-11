@@ -38,15 +38,15 @@
 
     --radius: 0.5rem;
 
-    /* Systematic spacing values */
-    --space-xs: 8px;
-    --space-sm: 16px;
-    --space-md: 24px;
-    --space-lg: 32px;
-    --space-xl: 48px;
+    /* Compact spacing values for tighter layouts */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 24px;
     
-    /* Tag container spacing - consistent across all breakpoints */
-    --tag-spacing: 16px;
+    /* Tag container spacing - reduced for compact layout */
+    --tag-spacing: 8px;
 
     /* Custom gradient variables for light mode */
     --gradient-subtle-bg: linear-gradient(135deg, #F7FAFC 0%, #EDF2F7 100%);
@@ -73,30 +73,30 @@
     --fade-texture: hsla(215, 16%, 47%, 0.1);
   }
 
-  /* Mobile spacing - 25% reduction for screens under 768px */
+  /* Mobile spacing - keep compact values consistent */
   @media (max-width: 767px) {
     :root {
-      --space-xs: 6px;
-      --space-sm: 12px;
-      --space-md: 18px;
-      --space-lg: 24px;
-      --space-xl: 36px;
-      /* Keep tag spacing consistent across breakpoints */
-      --tag-spacing: 16px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 20px;
+      /* Keep tag spacing compact and consistent */
+      --tag-spacing: 8px;
     }
   }
   
-  /* Tablet spacing - keep tag spacing consistent */
+  /* Tablet spacing - keep compact values consistent */
   @media (min-width: 768px) and (max-width: 1199px) {
     :root {
-      --tag-spacing: 16px;
+      --tag-spacing: 8px;
     }
   }
   
-  /* Desktop spacing - keep tag spacing consistent */
+  /* Desktop spacing - keep compact values consistent */
   @media (min-width: 1200px) {
     :root {
-      --tag-spacing: 16px;
+      --tag-spacing: 8px;
     }
   }
 
@@ -131,8 +131,8 @@
     --input: 0 0% 25%; /* #404040 - Neutral gray */
     --ring: 158 64% 52%; /* Bright green */
 
-    /* Tag container spacing - consistent across all breakpoints */
-    --tag-spacing: 16px;
+    /* Tag container spacing - compact and consistent */
+    --tag-spacing: 8px;
 
     /* Custom gradient variables for dark mode - neutral grays */
     --gradient-subtle-bg: linear-gradient(135deg, #333333 0%, #2B2B2B 100%);
@@ -159,30 +159,30 @@
     --fade-texture: hsla(214, 32%, 91%, 0.05);
   }
 
-  /* Mobile spacing for dark mode - 25% reduction for screens under 768px */
+  /* Mobile spacing for dark mode - keep compact values consistent */
   @media (max-width: 767px) {
     .dark {
-      --space-xs: 6px;
-      --space-sm: 12px;
-      --space-md: 18px;
-      --space-lg: 24px;
-      --space-xl: 36px;
-      /* Keep tag spacing consistent across breakpoints */
-      --tag-spacing: 16px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 20px;
+      /* Keep tag spacing compact and consistent */
+      --tag-spacing: 8px;
     }
   }
   
-  /* Tablet spacing for dark mode - keep tag spacing consistent */
+  /* Tablet spacing for dark mode - keep compact values consistent */
   @media (min-width: 768px) and (max-width: 1199px) {
     .dark {
-      --tag-spacing: 16px;
+      --tag-spacing: 8px;
     }
   }
   
-  /* Desktop spacing for dark mode - keep tag spacing consistent */
+  /* Desktop spacing for dark mode - keep compact values consistent */
   @media (min-width: 1200px) {
     .dark {
-      --tag-spacing: 16px;
+      --tag-spacing: 8px;
     }
   }
 }
@@ -328,7 +328,7 @@
 /* Tag container layout fixes */
 @layer utilities {
   .tag-container {
-    /* Ensure proper layout and spacing */
+    /* Ensure proper layout and spacing with compact values */
     display: flex;
     align-items: center;
     gap: 6px;
@@ -339,22 +339,22 @@
     width: 100%;
   }
   
-  /* Responsive adjustments for tag container */
+  /* Responsive adjustments for tag container with compact spacing */
   @media (max-width: 767px) {
     .tag-container {
-      margin-right: 12px; /* Extra margin on mobile */
+      margin-right: 8px; /* Compact margin on mobile */
     }
   }
   
   @media (min-width: 768px) and (max-width: 1199px) {
     .tag-container {
-      margin-right: 10px; /* Medium margin on tablet */
+      margin-right: 8px; /* Compact margin on tablet */
     }
   }
   
   @media (min-width: 1200px) {
     .tag-container {
-      margin-right: 8px; /* Standard margin on desktop */
+      margin-right: 8px; /* Compact margin on desktop */
     }
   }
 }

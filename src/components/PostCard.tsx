@@ -46,10 +46,10 @@ export const PostCard = ({
 
   return (
     <Card className={cardClasses}>
-      <CardHeader className="pb-0 space-y-3 p-4 flex-shrink-0">
+      <CardHeader className="pb-0 space-y-2 p-3 flex-shrink-0">
         {/* Featured Badge - only show when showFeaturedStyling is true */}
         {shouldShowFeaturedStyling && (
-          <div className="flex justify-start">
+          <div className="flex justify-start mb-2">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
               Featured Post
             </span>
@@ -71,24 +71,23 @@ export const PostCard = ({
         {/* Title - Use consistent sizing for grid cards */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
           shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-base"
-        } line-clamp-2`}>
+        } line-clamp-2 mt-2`}>
           <a href={`/post/${slug}`} className="block">
             {title}
           </a>
         </h3>
 
         {/* Read Time */}
-        <div className="flex items-center space-x-1 text-xs text-muted-foreground">
+        <div className="flex items-center space-x-1 text-xs text-muted-foreground mt-2">
           <Clock className="h-3 w-3 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
-      <CardContent className={`flex flex-col p-4 pt-3 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Consistent layout for all cards */}
+      <CardContent className={`flex flex-col p-3 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+        {/* Tags Section - Compact spacing with 8px margin */}
         <div 
-          className="flex-shrink-0"
-          style={{ marginTop: 'var(--tag-spacing)' }}
+          className="flex-shrink-0 mt-2"
         >
           {tags && tags.length > 0 && (
             <div className="tag-container flex items-center gap-1.5 w-full mr-2 overflow-visible" style={{ flexWrap: 'nowrap', justifyContent: 'flex-start' }}>
@@ -107,15 +106,15 @@ export const PostCard = ({
           )}
         </div>
         
-        {/* Excerpt - Consistent handling for grid cards */}
-        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
+        {/* Excerpt - Compact spacing with 12px margin */}
+        <p className={`text-muted-foreground leading-relaxed text-sm mt-3 mb-3 ${
           shouldShowFeaturedStyling ? '' : 'line-clamp-2 flex-grow'
-        }`} style={{ marginTop: 'var(--tag-spacing)' }}>
+        }`}>
           {excerpt}
         </p>
         
-        {/* Read More Link */}
-        <div className={`border-t border-border/50 ${shouldShowFeaturedStyling ? 'pt-3' : 'pt-3 mt-auto flex-shrink-0'}`}>
+        {/* Read More Link - Reduced top padding */}
+        <div className={`border-t border-border/50 ${shouldShowFeaturedStyling ? 'pt-2' : 'pt-2 mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-primary/80 font-medium text-xs transition-colors inline-flex items-center group"
