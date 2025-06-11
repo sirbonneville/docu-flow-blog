@@ -18,7 +18,7 @@ const Index = () => {
         {featuredPost && (
           <section style={{ paddingTop: '12px', paddingBottom: '32px' }}>
             <div className="max-w-4xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '50px' }}>
+              <h2 className="text-2xl md:text-3xl font-bold text-center" style={{ marginBottom: '48px' }}>
                 Featured Post
               </h2>
               <PostCard
