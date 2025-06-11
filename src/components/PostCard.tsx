@@ -11,10 +11,23 @@ interface PostCardProps {
   slug: string;
   tags?: string[];
   featured?: boolean;
+  showFeaturedStyling?: boolean; // New prop to control when featured styling is applied
 }
 
-export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured = false }: PostCardProps) => {
-  const cardClasses = featured
+export const PostCard = ({ 
+  title, 
+  excerpt, 
+  date, 
+  readTime, 
+  slug, 
+  tags, 
+  featured = false,
+  showFeaturedStyling = false // Default to false, only true in dedicated featured section
+}: PostCardProps) => {
+  // Only apply featured styling when explicitly requested
+  const shouldShowFeaturedStyling = featured && showFeaturedStyling;
+  
+  const cardClasses = shouldShowFeaturedStyling
     ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
@@ -34,8 +47,8 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
   return (
     <Card className={cardClasses}>
       <CardHeader className="pb-0 space-y-3 p-4 flex-shrink-0">
-        {/* Featured Badge */}
-        {featured && (
+        {/* Featured Badge - only show when showFeaturedStyling is true */}
+        {shouldShowFeaturedStyling && (
           <div className="flex justify-start">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
               Featured Post
@@ -55,9 +68,9 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
           </span>
         </div>
         
-        {/* Title - Limited to 2-3 lines with ellipsis */}
+        {/* Title - Use consistent sizing for grid cards */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
-          featured ? "text-lg md:text-xl" : "text-base"
+          shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-base"
         } line-clamp-2`}>
           <a href={`/post/${slug}`} className="block">
             {title}
@@ -71,10 +84,10 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
         </div>
       </CardHeader>
       
-      <CardContent className={`flex flex-col p-4 pt-3 ${featured ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Fixed spacing and layout */}
+      <CardContent className={`flex flex-col p-4 pt-3 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+        {/* Tags Section - Consistent layout for all cards */}
         <div 
-          className={`${featured ? '' : 'flex-shrink-0'}`}
+          className="flex-shrink-0"
           style={{ marginTop: 'var(--tag-spacing)' }}
         >
           {tags && tags.length > 0 && (
@@ -94,15 +107,15 @@ export const PostCard = ({ title, excerpt, date, readTime, slug, tags, featured 
           )}
         </div>
         
-        {/* Excerpt - Different handling for featured vs regular posts */}
+        {/* Excerpt - Consistent handling for grid cards */}
         <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
-          featured ? '' : 'line-clamp-2 flex-grow'
+          shouldShowFeaturedStyling ? '' : 'line-clamp-2 flex-grow'
         }`} style={{ marginTop: 'var(--tag-spacing)' }}>
           {excerpt}
         </p>
         
         {/* Read More Link */}
-        <div className={`border-t border-border/50 ${featured ? 'pt-3' : 'pt-3 mt-auto flex-shrink-0'}`}>
+        <div className={`border-t border-border/50 ${shouldShowFeaturedStyling ? 'pt-3' : 'pt-3 mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-primary/80 font-medium text-xs transition-colors inline-flex items-center group"

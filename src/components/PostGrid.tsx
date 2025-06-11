@@ -148,6 +148,7 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
                       slug={post.slug}
                       tags={post.tags}
                       featured={post.featured}
+                      // Don't pass showFeaturedStyling - all grid cards use standard styling
                     />
                   </div>
                 );

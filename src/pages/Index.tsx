@@ -27,7 +27,9 @@ const Index = () => {
                 date={featuredPost.date}
                 readTime={featuredPost.readTime}
                 slug={featuredPost.slug}
+                tags={featuredPost.tags}
                 featured={true}
+                showFeaturedStyling={true} // Enable featured styling only here
               />
             </div>
           </section>
