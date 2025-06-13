@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
@@ -23,9 +22,15 @@ interface PostGridProps {
   posts: Post[];
   showSearch?: boolean;
   title?: string;
+  showDiscoverMore?: boolean; // New prop to control the "Discover More Stories" button
 }
 
-export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: PostGridProps) => {
+export const PostGrid = ({ 
+  posts, 
+  showSearch = true, 
+  title = "Recent Posts",
+  showDiscoverMore = true // Default to true for backward compatibility
+}: PostGridProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
   
@@ -160,8 +165,8 @@ export const PostGrid = ({ posts, showSearch = true, title = "Recent Posts" }: P
           </div>
         </div>
 
-        {/* Discover More Stories Section */}
-        {showGlassEffect && (
+        {/* Discover More Stories Section - only show if showDiscoverMore is true */}
+        {showGlassEffect && showDiscoverMore && (
           <div className="flex justify-center mt-8">
             <div className="group relative overflow-hidden rounded-2xl 
                           border-2 shadow-2xl hover:shadow-3xl
