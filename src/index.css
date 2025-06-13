@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -323,6 +324,16 @@
   .mb-space-md { margin-bottom: var(--space-md); }
   .mb-space-lg { margin-bottom: var(--space-lg); }
   .mb-space-xl { margin-bottom: var(--space-xl); }
+
+  /* Custom responsive utilities */
+  @media (max-width: 480px) {
+    .xs\:hidden { display: none !important; }
+    .xs\:inline { display: inline !important; }
+  }
+  
+  @media (min-width: 481px) {
+    .hidden.xs\:inline { display: none !important; }
+  }
 }
 
 /* Tag container layout fixes */

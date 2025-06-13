@@ -40,10 +40,11 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md bg-[#FAF8F3]/80 dark:bg-[#212121]/80">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo - Left justified */}
-          <div className="flex items-center">
-            <a href="/" className="text-xl font-bold text-primary hover:text-primary/80 transition-colors">
-              The Documentation Lead
+          {/* Logo - Responsive sizing */}
+          <div className="flex items-center min-w-0 flex-1 sm:flex-none">
+            <a href="/" className="text-sm sm:text-lg md:text-xl font-bold text-primary hover:text-primary/80 transition-colors truncate">
+              <span className="hidden xs:inline">The Documentation Lead</span>
+              <span className="xs:hidden">Doc Lead</span>
             </a>
           </div>
 
@@ -63,7 +64,7 @@ export const Header = () => {
           </nav>
 
           {/* Theme Toggle and Mobile Menu - Right side */}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 flex-shrink-0">
             <Button
               variant="ghost"
               size="sm"
