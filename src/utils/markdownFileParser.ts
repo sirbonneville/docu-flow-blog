@@ -1,5 +1,4 @@
 
-
 export interface MarkdownPost {
   id: string;
   title: string;
@@ -13,46 +12,82 @@ export interface MarkdownPost {
   featured?: boolean;
 }
 
-// Simple frontmatter parser that works in the browser
+// Improved frontmatter parser that works in the browser
 function parseFrontmatter(content: string): { data: Record<string, any>; content: string } {
-  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  // More robust regex to match frontmatter
+  const frontmatterRegex = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n([\s\S]*)$/;
   const match = content.match(frontmatterRegex);
   
   if (!match) {
+    console.log('No frontmatter match found in content');
     return { data: {}, content };
   }
   
   const [, frontmatterText, markdownContent] = match;
+  console.log('Frontmatter text:', frontmatterText);
+  
   const data: Record<string, any> = {};
   
-  // Parse YAML-like frontmatter
-  frontmatterText.split('\n').forEach(line => {
-    const colonIndex = line.indexOf(':');
-    if (colonIndex > 0) {
-      const key = line.substring(0, colonIndex).trim();
-      let value: any = line.substring(colonIndex + 1).trim();
-      
-      // Remove quotes if present
-      if ((value.startsWith('"') && value.endsWith('"')) || 
-          (value.startsWith("'") && value.endsWith("'"))) {
-        value = value.slice(1, -1);
-      }
-      
-      // Handle arrays (tags)
-      if (value.startsWith('[') && value.endsWith(']')) {
-        value = value.slice(1, -1).split(',').map((item: string) => 
-          item.trim().replace(/['"]/g, '')
-        ).filter((item: string) => item.length > 0);
-      }
-      
-      // Handle booleans
-      if (value === 'true') value = true;
-      if (value === 'false') value = false;
-      
-      data[key] = value;
-    }
-  });
+  // Parse YAML-like frontmatter line by line
+  const lines = frontmatterText.split(/\r?\n/);
   
+  for (const line of lines) {
+    const trimmedLine = line.trim();
+    
+    // Skip empty lines and comments
+    if (!trimmedLine || trimmedLine.startsWith('#')) {
+      continue;
+    }
+    
+    const colonIndex = trimmedLine.indexOf(':');
+    if (colonIndex === -1) {
+      continue;
+    }
+    
+    const key = trimmedLine.substring(0, colonIndex).trim();
+    let value: any = trimmedLine.substring(colonIndex + 1).trim();
+    
+    // Skip if no key or value
+    if (!key || !value) {
+      continue;
+    }
+    
+    // Remove quotes if present
+    if ((value.startsWith('"') && value.endsWith('"')) || 
+        (value.startsWith("'") && value.endsWith("'"))) {
+      value = value.slice(1, -1);
+    }
+    
+    // Handle arrays (tags) - look for bracket notation
+    if (value.startsWith('[') && value.endsWith(']')) {
+      const arrayContent = value.slice(1, -1);
+      if (arrayContent.trim()) {
+        value = arrayContent
+          .split(',')
+          .map((item: string) => item.trim().replace(/['"]/g, ''))
+          .filter((item: string) => item.length > 0);
+      } else {
+        value = [];
+      }
+    }
+    
+    // Handle booleans
+    if (value === 'true') value = true;
+    if (value === 'false') value = false;
+    
+    // Handle numbers
+    if (!isNaN(Number(value)) && value !== '') {
+      const numValue = Number(value);
+      if (Number.isInteger(numValue)) {
+        value = numValue;
+      }
+    }
+    
+    data[key] = value;
+    console.log(`Parsed: ${key} = `, value);
+  }
+  
+  console.log('Final parsed data:', data);
   return { data, content: markdownContent };
 }
 
@@ -65,7 +100,11 @@ const markdownFiles = import.meta.glob('/src/posts/*.md', {
 export function parseMarkdownPosts(): MarkdownPost[] {
   const posts: MarkdownPost[] = [];
   
+  console.log('Available markdown files:', Object.keys(markdownFiles));
+  
   Object.entries(markdownFiles).forEach(([filepath, content]) => {
+    console.log(`Processing file: ${filepath}`);
+    
     // Extract filename from path for slug generation
     const filename = filepath.split('/').pop()?.replace('.md', '') || '';
     
@@ -79,7 +118,7 @@ export function parseMarkdownPosts(): MarkdownPost[] {
       id: slug,
       title: frontmatter.title || 'Untitled',
       excerpt: frontmatter.excerpt || '',
-      content: markdownContent,
+      content: markdownContent.trim(), // Ensure no leading/trailing whitespace
       date: frontmatter.date || new Date().toISOString(),
       readTime: frontmatter.readTime || '5 min read',
       slug: slug,
@@ -88,11 +127,15 @@ export function parseMarkdownPosts(): MarkdownPost[] {
       featured: frontmatter.featured || false
     };
     
+    console.log(`Created post: ${post.title}`, post);
     posts.push(post);
   });
   
   // Sort by date (newest first)
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const sortedPosts = posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  console.log('Final sorted posts:', sortedPosts);
+  
+  return sortedPosts;
 }
 
 export function getMarkdownPostBySlug(slug: string): MarkdownPost | undefined {
@@ -115,4 +158,3 @@ export function getRecentMarkdownPosts(limit: number = 6): MarkdownPost[] {
 export function getAllMarkdownPosts(): MarkdownPost[] {
   return parseMarkdownPosts();
 }
-
