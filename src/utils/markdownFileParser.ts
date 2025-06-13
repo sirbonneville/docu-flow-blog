@@ -1,4 +1,5 @@
 
+
 export interface MarkdownPost {
   id: string;
   title: string;
@@ -29,7 +30,7 @@ function parseFrontmatter(content: string): { data: Record<string, any>; content
     const colonIndex = line.indexOf(':');
     if (colonIndex > 0) {
       const key = line.substring(0, colonIndex).trim();
-      let value = line.substring(colonIndex + 1).trim();
+      let value: any = line.substring(colonIndex + 1).trim();
       
       // Remove quotes if present
       if ((value.startsWith('"') && value.endsWith('"')) || 
@@ -39,9 +40,9 @@ function parseFrontmatter(content: string): { data: Record<string, any>; content
       
       // Handle arrays (tags)
       if (value.startsWith('[') && value.endsWith(']')) {
-        value = value.slice(1, -1).split(',').map(item => 
+        value = value.slice(1, -1).split(',').map((item: string) => 
           item.trim().replace(/['"]/g, '')
-        ).filter(item => item.length > 0);
+        ).filter((item: string) => item.length > 0);
       }
       
       // Handle booleans
@@ -114,3 +115,4 @@ export function getRecentMarkdownPosts(limit: number = 6): MarkdownPost[] {
 export function getAllMarkdownPosts(): MarkdownPost[] {
   return parseMarkdownPosts();
 }
+
