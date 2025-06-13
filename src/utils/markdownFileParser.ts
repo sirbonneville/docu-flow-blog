@@ -1,6 +1,4 @@
 
-import matter from 'gray-matter';
-
 export interface MarkdownPost {
   id: string;
   title: string;
@@ -12,6 +10,49 @@ export interface MarkdownPost {
   tags?: string[];
   tagColors?: Record<string, string>;
   featured?: boolean;
+}
+
+// Simple frontmatter parser that works in the browser
+function parseFrontmatter(content: string): { data: Record<string, any>; content: string } {
+  const frontmatterRegex = /^---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/;
+  const match = content.match(frontmatterRegex);
+  
+  if (!match) {
+    return { data: {}, content };
+  }
+  
+  const [, frontmatterText, markdownContent] = match;
+  const data: Record<string, any> = {};
+  
+  // Parse YAML-like frontmatter
+  frontmatterText.split('\n').forEach(line => {
+    const colonIndex = line.indexOf(':');
+    if (colonIndex > 0) {
+      const key = line.substring(0, colonIndex).trim();
+      let value = line.substring(colonIndex + 1).trim();
+      
+      // Remove quotes if present
+      if ((value.startsWith('"') && value.endsWith('"')) || 
+          (value.startsWith("'") && value.endsWith("'"))) {
+        value = value.slice(1, -1);
+      }
+      
+      // Handle arrays (tags)
+      if (value.startsWith('[') && value.endsWith(']')) {
+        value = value.slice(1, -1).split(',').map(item => 
+          item.trim().replace(/['"]/g, '')
+        ).filter(item => item.length > 0);
+      }
+      
+      // Handle booleans
+      if (value === 'true') value = true;
+      if (value === 'false') value = false;
+      
+      data[key] = value;
+    }
+  });
+  
+  return { data, content: markdownContent };
 }
 
 // Import all markdown files from the posts directory
@@ -27,8 +68,8 @@ export function parseMarkdownPosts(): MarkdownPost[] {
     // Extract filename from path for slug generation
     const filename = filepath.split('/').pop()?.replace('.md', '') || '';
     
-    // Parse frontmatter and content
-    const { data: frontmatter, content: markdownContent } = matter(content);
+    // Parse frontmatter and content using our custom parser
+    const { data: frontmatter, content: markdownContent } = parseFrontmatter(content);
     
     // Generate slug from filename (remove date prefix if present)
     const slug = filename.replace(/^\d{4}-\d{2}-\d{2}-/, '');
