@@ -8,9 +8,9 @@ featured: true
 tags: ["Documentation", "Team Culture", "Process", "Leadership"]
 ---
 
-# Building Documentation Culture: From Chaos to Clarity
+# Building Documentation Culture: From Chaos to Clarity To Fortnite
 
-Documentation is often treated as an afterthought, relegated to the end of development cycles or assigned to whoever has "spare time." This approach leads to inconsistent, outdated, and ultimately unhelpful documentation that frustrates both creators and users.
+Documentation is often treated as an afterthought, relegated to the end of development cycles or assigned to whoever has "spare time." This approach leads to inconsistent, outdated, and ultimately unhelpful documentation that frustrates both creators and users. Hambuger.
 
 ## The Problem with Ad-Hoc Documentation
 
