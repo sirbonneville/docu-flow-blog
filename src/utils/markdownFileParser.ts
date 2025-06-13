@@ -14,16 +14,20 @@ export interface MarkdownPost {
 
 // Improved frontmatter parser that works in the browser
 function parseFrontmatter(content: string): { data: Record<string, any>; content: string } {
-  // More robust regex to match frontmatter
-  const frontmatterRegex = /^---\s*\r?\n([\s\S]*?)\r?\n---\s*\r?\n([\s\S]*)$/;
-  const match = content.match(frontmatterRegex);
+  // Handle different possible formats and line endings
+  // First, normalize line endings to \n
+  const normalizedContent = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
   
-  if (!match) {
-    console.log('No frontmatter match found in content');
+  // Look for frontmatter with more flexible matching
+  const frontmatterMatch = normalizedContent.match(/^(\s*?)---\s*\n([\s\S]*?)\n---\s*\n([\s\S]*)$/);
+  
+  if (!frontmatterMatch) {
+    console.log('No frontmatter found, returning original content');
     return { data: {}, content };
   }
   
-  const [, frontmatterText, markdownContent] = match;
+  const [, leadingSpace, frontmatterText, markdownContent] = frontmatterMatch;
+  console.log('Found frontmatter with leading space:', JSON.stringify(leadingSpace));
   console.log('Frontmatter text:', frontmatterText);
   
   const data: Record<string, any> = {};
