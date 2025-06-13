@@ -30,7 +30,7 @@ export const PostCard = ({
   const shouldShowFeaturedStyling = featured && showFeaturedStyling;
   
   const cardClasses = shouldShowFeaturedStyling
-    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover h-full flex flex-col"
+    ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
   // Calculate tag display for desktop (limit 2) and mobile (limit 2)
@@ -70,8 +70,10 @@ export const PostCard = ({
           </span>
         </div>
         
-        {/* Title - Use consistent sizing for grid cards with line clamping */}
-        <h3 className="font-semibold leading-tight hover:text-primary transition-colors cursor-pointer text-lg line-clamp-2 min-h-[3.5rem]">
+        {/* Title - Use consistent sizing for grid cards */}
+        <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
+          shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
+        } line-clamp-2`}>
           <a href={`/post/${slug}`} className="block">
             {title}
           </a>
@@ -84,10 +86,10 @@ export const PostCard = ({
         </div>
       </CardHeader>
       
-      <CardContent className="flex flex-col p-4 pt-0 flex-grow">
+      <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
         {/* Tags Section */}
         {tags && tags.length > 0 && (
-          <div className="flex items-center gap-2 mb-4 flex-wrap min-h-[2rem]">
+          <div className="flex items-center gap-2 mb-4 flex-wrap">
             {visibleTags.map((tag) => (
               <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
             ))}
@@ -101,13 +103,15 @@ export const PostCard = ({
           </div>
         )}
         
-        {/* Excerpt - Fixed height to ensure consistent card sizes */}
-        <p className="text-muted-foreground leading-relaxed text-sm mb-4 line-clamp-3 flex-grow min-h-[4.5rem]">
+        {/* Excerpt */}
+        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
+          shouldShowFeaturedStyling ? '' : 'line-clamp-3 flex-grow'
+        }`}>
           {excerpt}
         </p>
         
         {/* Read More Link */}
-        <div className="border-t border-border/50 pt-3 mt-auto flex-shrink-0">
+        <div className={`border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group"
