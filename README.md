@@ -6,6 +6,8 @@
 
 ## How can I edit this code?
 
+This is a Git-related test. Ignore & Proceed.
+
 There are several ways of editing your application.
 
 **Use Lovable**
