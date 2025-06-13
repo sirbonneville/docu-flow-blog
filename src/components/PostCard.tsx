@@ -58,8 +58,8 @@ export const PostCard = ({
           </div>
         )}
         
-        {/* Publication Date */}
-        <div className="flex items-center space-x-2 text-primary font-medium">
+        {/* Publication Date - Fixed height container */}
+        <div className="flex items-center space-x-2 text-primary font-medium min-h-[20px]">
           <Calendar className="h-4 w-4 flex-shrink-0" />
           <span className="text-sm">
             {new Date(date).toLocaleDateString('en-US', { 
@@ -70,47 +70,55 @@ export const PostCard = ({
           </span>
         </div>
         
-        {/* Title - Use consistent sizing for grid cards */}
-        <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
-          shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
-        } line-clamp-2`}>
-          <a href={`/post/${slug}`} className="block">
-            {title}
-          </a>
-        </h3>
+        {/* Title - Fixed height container with consistent sizing */}
+        <div className="min-h-[56px] flex items-start">
+          <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
+            shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
+          } line-clamp-2 w-full`}>
+            <a href={`/post/${slug}`} className="block">
+              {title}
+            </a>
+          </h3>
+        </div>
 
-        {/* Read Time */}
-        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+        {/* Read Time - Fixed height container */}
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground min-h-[20px]">
           <Clock className="h-4 w-4 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Section */}
-        {tags && tags.length > 0 && (
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
-            {visibleTags.map((tag) => (
-              <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
-            ))}
-            
-            {/* Remaining count indicator */}
-            {remainingCount > 0 && (
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
-                +{remainingCount}
-              </div>
-            )}
-          </div>
-        )}
+        {/* Tags Section - Fixed height container */}
+        <div className="min-h-[40px] flex items-start mb-4">
+          {tags && tags.length > 0 ? (
+            <div className="flex items-center gap-2 flex-wrap w-full">
+              {visibleTags.map((tag) => (
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
+              ))}
+              
+              {/* Remaining count indicator */}
+              {remainingCount > 0 && (
+                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
+                  +{remainingCount}
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="w-full"></div>
+          )}
+        </div>
         
-        {/* Excerpt */}
-        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
-          shouldShowFeaturedStyling ? '' : 'line-clamp-3 flex-grow'
-        }`}>
-          {excerpt}
-        </p>
+        {/* Excerpt - Fixed height container for consistency */}
+        <div className={`${shouldShowFeaturedStyling ? 'min-h-[60px]' : 'min-h-[72px] flex-grow'} flex items-start mb-4`}>
+          <p className={`text-muted-foreground leading-relaxed text-sm ${
+            shouldShowFeaturedStyling ? '' : 'line-clamp-3'
+          } w-full`}>
+            {excerpt}
+          </p>
+        </div>
         
-        {/* Read More Link */}
+        {/* Read More Link - Fixed position at bottom */}
         <div className={`border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
