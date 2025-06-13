@@ -29,6 +29,7 @@ export const PostCard = ({
   // Only apply featured styling when explicitly requested
   const shouldShowFeaturedStyling = featured && showFeaturedStyling;
   
+  // Ensure all grid cards have identical styling regardless of content
   const cardClasses = shouldShowFeaturedStyling
     ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
@@ -58,8 +59,8 @@ export const PostCard = ({
           </div>
         )}
         
-        {/* Publication Date */}
-        <div className="flex items-center space-x-2 text-primary font-medium">
+        {/* Publication Date - Fixed height container */}
+        <div className="flex items-center space-x-2 text-primary font-medium h-5">
           <Calendar className="h-4 w-4 flex-shrink-0" />
           <span className="text-sm">
             {new Date(date).toLocaleDateString('en-US', { 
@@ -70,48 +71,54 @@ export const PostCard = ({
           </span>
         </div>
         
-        {/* Title - Use consistent sizing for grid cards */}
-        <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
-          shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
-        } line-clamp-2`}>
-          <a href={`/post/${slug}`} className="block">
-            {title}
-          </a>
-        </h3>
+        {/* Title - Fixed height container with consistent line clamping */}
+        <div className="h-14 overflow-hidden">
+          <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
+            shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
+          } line-clamp-2`}>
+            <a href={`/post/${slug}`} className="block">
+              {title}
+            </a>
+          </h3>
+        </div>
 
-        {/* Read Time */}
-        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+        {/* Read Time - Fixed height container */}
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground h-5">
           <Clock className="h-4 w-4 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Section */}
-        {tags && tags.length > 0 && (
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
-            {visibleTags.map((tag) => (
-              <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
-            ))}
-            
-            {/* Remaining count indicator */}
-            {remainingCount > 0 && (
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
-                +{remainingCount}
-              </div>
-            )}
-          </div>
-        )}
+        {/* Tags Section - Fixed height container */}
+        <div className="h-8 mb-4">
+          {tags && tags.length > 0 && (
+            <div className="flex items-center gap-2 flex-wrap h-full">
+              {visibleTags.map((tag) => (
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
+              ))}
+              
+              {/* Remaining count indicator */}
+              {remainingCount > 0 && (
+                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
+                  +{remainingCount}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
         
-        {/* Excerpt */}
-        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
-          shouldShowFeaturedStyling ? '' : 'line-clamp-3 flex-grow'
-        }`}>
-          {excerpt}
-        </p>
+        {/* Excerpt - Fixed height container with consistent line clamping */}
+        <div className={`mb-4 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+          <p className={`text-muted-foreground leading-relaxed text-sm ${
+            shouldShowFeaturedStyling ? '' : 'line-clamp-3'
+          }`} style={{ minHeight: shouldShowFeaturedStyling ? 'auto' : '4.5rem' }}>
+            {excerpt}
+          </p>
+        </div>
         
-        {/* Read More Link */}
-        <div className={`border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
+        {/* Read More Link - Fixed height footer */}
+        <div className={`border-t border-border/50 pt-3 h-8 flex items-center ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
             className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group"
