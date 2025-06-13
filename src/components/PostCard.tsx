@@ -26,20 +26,37 @@ export const PostCard = ({
   featured = false,
   showFeaturedStyling = false // Default to false, only true in dedicated featured section
 }: PostCardProps) => {
+  // Debug logging to track styling differences
+  console.log('PostCard render:', { 
+    title, 
+    date, 
+    tags, 
+    tagColors, 
+    featured, 
+    showFeaturedStyling,
+    tagsLength: tags?.length 
+  });
+
   // Only apply featured styling when explicitly requested
   const shouldShowFeaturedStyling = featured && showFeaturedStyling;
   
+  // Ensure consistent card classes for all non-featured cards
   const cardClasses = shouldShowFeaturedStyling
     ? "hover:shadow-lg transition-all duration-300 border-primary/20 bg-gradient-to-br from-primary/5 to-transparent hover:bg-gradient-card-hover"
     : "hover:shadow-lg transition-all duration-300 hover:border-primary/30 hover:bg-gradient-card-hover h-full flex flex-col";
 
   // Calculate tag display for desktop (limit 2) and mobile (limit 2)
   const getTagDisplayInfo = () => {
-    if (!tags || tags.length === 0) return { visibleTags: [], remainingCount: 0 };
+    if (!tags || tags.length === 0) {
+      console.log('No tags found for post:', title);
+      return { visibleTags: [], remainingCount: 0 };
+    }
     
     const maxTags = 2; // Always limit to 2 tags on both desktop and mobile
     const visibleTags = tags.slice(0, maxTags);
     const remainingCount = Math.max(0, tags.length - maxTags);
+    
+    console.log('Tag display info for', title, ':', { visibleTags, remainingCount, totalTags: tags.length });
     
     return { visibleTags, remainingCount };
   };
@@ -87,12 +104,15 @@ export const PostCard = ({
       </CardHeader>
       
       <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Section */}
+        {/* Tags Section - Ensure consistent rendering */}
         {tags && tags.length > 0 && (
           <div className="flex items-center gap-2 mb-4 flex-wrap">
-            {visibleTags.map((tag) => (
-              <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
-            ))}
+            {visibleTags.map((tag) => {
+              console.log('Rendering tag:', tag, 'with colors:', tagColors);
+              return (
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
+              );
+            })}
             
             {/* Remaining count indicator */}
             {remainingCount > 0 && (

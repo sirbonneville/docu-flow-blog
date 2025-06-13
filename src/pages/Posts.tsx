@@ -39,6 +39,10 @@ const Posts = () => {
     return dateB.getTime() - dateA.getTime();
   });
 
+  console.log('All posts:', allPosts);
+  console.log('Grouped posts:', groupedPosts);
+  console.log('Sorted months:', sortedMonths);
+
   return (
     <Layout>
       <div className="py-8 animate-fade-in">
@@ -66,19 +70,22 @@ const Posts = () => {
                     {monthYear}
                   </h2>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {groupedPosts[monthYear].map((post) => (
-                      <PostCard
-                        key={post.id}
-                        title={post.title}
-                        excerpt={post.excerpt}
-                        date={post.date}
-                        readTime={post.readTime}
-                        slug={post.slug}
-                        tags={post.tags}
-                        tagColors={post.tagColors}
-                        featured={post.featured}
-                      />
-                    ))}
+                    {groupedPosts[monthYear].map((post, index) => {
+                      console.log(`Rendering post for ${monthYear}:`, post);
+                      return (
+                        <PostCard
+                          key={post.id}
+                          title={post.title}
+                          excerpt={post.excerpt}
+                          date={post.date}
+                          readTime={post.readTime}
+                          slug={post.slug}
+                          tags={post.tags}
+                          tagColors={post.tagColors}
+                          featured={post.featured}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               ))}

@@ -10,7 +10,11 @@ interface TagProps {
 }
 
 export const Tag = ({ tag, variant = 'outline', className, tagColors }: TagProps) => {
+  console.log('Tag component rendering:', { tag, tagColors, variant });
+  
   const tagColorClasses = getTagColor(tag, { frontmatterColors: tagColors });
+  
+  console.log('Tag color classes for', tag, ':', tagColorClasses);
   
   return (
     <Badge 
