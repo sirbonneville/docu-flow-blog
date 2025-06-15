@@ -50,29 +50,27 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     </nav>
   );
 
-  // Mobile version - fixed top dropdown
+  // Mobile version - compact dropdown
   if (isMobile) {
     return (
-      <div className="fixed top-4 right-4 z-50 md:hidden">
+      <div className="mb-6">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
           <CollapsibleTrigger asChild>
             <Button 
               variant="outline" 
               size="sm"
-              className="bg-background/95 backdrop-blur-sm border-border/50 shadow-lg"
+              className="w-full justify-between bg-muted/50 hover:bg-muted"
             >
-              <List className="h-4 w-4 mr-1" />
-              <span className="sr-only sm:not-sr-only">TOC</span>
-              {isOpen ? <ChevronUp className="h-3 w-3 ml-1" /> : <ChevronDown className="h-3 w-3 ml-1" />}
+              <div className="flex items-center space-x-2">
+                <List className="h-4 w-4" />
+                <span className="font-medium">Table of Contents</span>
+              </div>
+              {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
             </Button>
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <Card className="mt-2 w-64 border-border/50 bg-background/95 backdrop-blur-sm shadow-lg">
-              <CardContent className="p-3">
-                <div className="flex items-center space-x-2 mb-2 pb-2 border-b border-border/50">
-                  <List className="h-3 w-3 text-muted-foreground" />
-                  <span className="font-medium text-xs text-foreground">Table of Contents</span>
-                </div>
+            <Card className="mt-3 border-muted bg-muted/20">
+              <CardContent className="p-4">
                 {renderTocItems(tocItems)}
               </CardContent>
             </Card>
@@ -82,14 +80,14 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     );
   }
 
-  // Desktop version - fixed right side
+  // Desktop version - inline with content
   return (
-    <div className="fixed top-1/4 right-4 z-40 hidden md:block max-w-64">
-      <Card className="border-border/50 bg-background/95 backdrop-blur-sm shadow-lg">
-        <CardContent className="p-4">
-          <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-border/50">
-            <List className="h-4 w-4 text-muted-foreground" />
-            <span className="font-medium text-sm text-foreground">Contents</span>
+    <div className="mb-8">
+      <Card className="border-muted bg-muted/20">
+        <CardContent className="p-6">
+          <div className="flex items-center space-x-2 mb-4 pb-3 border-b border-muted">
+            <List className="h-5 w-5 text-muted-foreground" />
+            <span className="font-semibold text-lg text-foreground">Table of Contents</span>
           </div>
           {renderTocItems(tocItems)}
         </CardContent>

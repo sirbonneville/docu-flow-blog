@@ -44,14 +44,6 @@ const Post = () => {
           </Button>
         </div>
 
-        {/* Table of Contents for Mobile */}
-        <div className="lg:hidden mb-8">
-          <TableOfContents content={post.content} />
-        </div>
-
-        {/* Table of Contents for Desktop (fixed position) */}
-        <TableOfContents content={post.content} />
-
         {/* Article Header */}
         <article className="max-w-4xl mx-auto">
           <header className="mb-12">
@@ -91,7 +83,10 @@ const Post = () => {
             </p>
           </header>
 
-          {/* Article Content - Now using custom MarkdownRenderer */}
+          {/* Table of Contents - Now integrated within content flow */}
+          <TableOfContents content={post.content} />
+
+          {/* Article Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none
             prose-headings:font-bold prose-headings:text-foreground
             prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-12 prose-h1:mb-6
