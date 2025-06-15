@@ -1,3 +1,4 @@
+
 import { List, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -51,7 +52,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
 
   // Both mobile and desktop now use the same collapsible pattern
   return (
-    <div className="mb-3">
+    <div className="mb-2">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button 
@@ -67,8 +68,8 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <Card className="mt-3 border-muted bg-muted/20">
-            <CardContent className="p-4">
+          <Card className="mt-2 border-muted bg-muted/20">
+            <CardContent className="p-3">
               {renderTocItems(tocItems)}
             </CardContent>
           </Card>
