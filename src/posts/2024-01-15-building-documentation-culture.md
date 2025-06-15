@@ -4,7 +4,7 @@ title: "Building Documentation Culture: From Chaos to Clarity"
 excerpt: "How to transform your team's approach to documentation by establishing clear processes, ownership models, and quality standards that scale."
 date: "2024-01-15"
 readTime: "8 min read"
-featured: true
+featured: false
 tags: ["Documentation", "Team Culture", "Process", "Leadership"]
 ---
 
