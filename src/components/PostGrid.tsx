@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { SearchBar } from "./SearchBar";
@@ -88,7 +89,7 @@ export const PostGrid = ({
   const visiblePosts = filteredPosts.slice(0, visibleCount);
 
   return (
-    <section className="py-2 pb-16 relative">
+    <section className="py-2 pb-8 relative">
       <div className="max-w-6xl mx-auto">
         {/* Tighter mobile spacing for heading */}
         <div className="text-center mb-4 md:mb-6">
@@ -165,9 +166,9 @@ export const PostGrid = ({
           </div>
         </div>
 
-        {/* Discover More Stories Section - only show if showDiscoverMore is true */}
+        {/* Discover More Stories Section - adjusted spacing for even top/bottom margins */}
         {showGlassEffect && showDiscoverMore && (
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-12 mb-8">
             <div className="group relative overflow-hidden rounded-2xl 
                           border-2 shadow-2xl hover:shadow-3xl
                           transition-all duration-500 ease-out
