@@ -1,4 +1,3 @@
-
 import { List, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -52,7 +51,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
 
   // Both mobile and desktop now use the same collapsible pattern
   return (
-    <div className="mb-6">
+    <div className="mb-3">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button 
