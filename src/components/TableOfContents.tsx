@@ -76,12 +76,12 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   }
 
   return (
-    <div className="hidden lg:block fixed top-32 right-8 w-72 z-10">
+    <div className="hidden lg:block mb-8 w-56">
       <Card className="border-border/50 bg-card/95 backdrop-blur-sm">
-        <CardContent className="p-6">
-          <div className="flex items-center space-x-2 mb-4 pb-3 border-b border-border/50">
+        <CardContent className="p-4">
+          <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-border/50">
             <List className="h-4 w-4 text-muted-foreground" />
-            <span className="font-semibold text-base text-foreground">Table of Contents</span>
+            <span className="font-medium text-sm text-foreground">Table of Contents</span>
           </div>
           {renderTocItems(tocItems)}
         </CardContent>
