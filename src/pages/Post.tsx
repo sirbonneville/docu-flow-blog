@@ -1,13 +1,14 @@
 
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft, Calendar, Clock } from "lucide-react";
-import ReactMarkdown from "react-markdown";
 import { Layout } from "@/components/Layout";
 import { SocialShare } from "@/components/SocialShare";
 import { Button } from "@/components/ui/button";
 import { ReadingProgressBar } from "@/components/ReadingProgressBar";
 import { RelatedPosts } from "@/components/RelatedPosts";
 import { Tag } from "@/components/Tag";
+import { TableOfContents } from "@/components/TableOfContents";
+import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import { getPostBySlug, getAllPosts } from "@/data/posts";
 
 const Post = () => {
@@ -42,6 +43,14 @@ const Post = () => {
             <span>Back to Home</span>
           </Button>
         </div>
+
+        {/* Table of Contents for Mobile */}
+        <div className="lg:hidden mb-8">
+          <TableOfContents content={post.content} />
+        </div>
+
+        {/* Table of Contents for Desktop (fixed position) */}
+        <TableOfContents content={post.content} />
 
         {/* Article Header */}
         <article className="max-w-4xl mx-auto">
@@ -82,7 +91,7 @@ const Post = () => {
             </p>
           </header>
 
-          {/* Article Content - Now using ReactMarkdown */}
+          {/* Article Content - Now using custom MarkdownRenderer */}
           <div className="prose prose-lg dark:prose-invert max-w-none
             prose-headings:font-bold prose-headings:text-foreground
             prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:mt-12 prose-h1:mb-6
@@ -96,7 +105,7 @@ const Post = () => {
             prose-pre:bg-muted prose-pre:p-4 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-6
             prose-a:text-primary prose-a:hover:text-primary/80 prose-a:underline"
           >
-            <ReactMarkdown>{post.content}</ReactMarkdown>
+            <MarkdownRenderer content={post.content} />
           </div>
 
           {/* Related Posts */}
