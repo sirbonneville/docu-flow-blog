@@ -65,10 +65,10 @@ export const PostCard = ({
 
   return (
     <Card className={cardClasses}>
-      <CardHeader className="pb-3 space-y-3 p-4 flex-shrink-0">
+      <CardHeader className="pb-2 space-y-2 p-3 flex-shrink-0">
         {/* Featured Badge - only show when showFeaturedStyling is true */}
         {shouldShowFeaturedStyling && (
-          <div className="flex justify-start mb-2">
+          <div className="flex justify-start mb-1">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
               Featured Post
             </span>
@@ -76,9 +76,9 @@ export const PostCard = ({
         )}
         
         {/* Publication Date */}
-        <div className="flex items-center space-x-2 text-primary font-medium">
-          <Calendar className="h-4 w-4 flex-shrink-0" />
-          <span className="text-sm">
+        <div className="flex items-center space-x-1.5 text-primary font-medium">
+          <Calendar className="h-3.5 w-3.5 flex-shrink-0" />
+          <span className="text-xs">
             {new Date(date).toLocaleDateString('en-US', { 
               year: 'numeric', 
               month: 'long', 
@@ -87,9 +87,9 @@ export const PostCard = ({
           </span>
         </div>
         
-        {/* Title - Use consistent sizing for grid cards */}
+        {/* Title - Reduced font size and spacing */}
         <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
-          shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
+          shouldShowFeaturedStyling ? "text-base md:text-lg" : "text-base"
         } line-clamp-2`}>
           <a href={`/post/${slug}`} className="block">
             {title}
@@ -97,44 +97,44 @@ export const PostCard = ({
         </h3>
 
         {/* Read Time */}
-        <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-          <Clock className="h-4 w-4 flex-shrink-0" />
+        <div className="flex items-center space-x-1.5 text-xs text-muted-foreground">
+          <Clock className="h-3.5 w-3.5 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
-      <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Section - Ensure consistent rendering */}
+      <CardContent className={`flex flex-col p-3 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+        {/* Tags Section - Reduced spacing */}
         {tags && tags.length > 0 && (
-          <div className="flex items-center gap-2 mb-4 flex-wrap">
+          <div className="flex items-center gap-1.5 mb-2.5 flex-wrap">
             {visibleTags.map((tag) => {
               console.log('Rendering tag:', tag, 'with colors:', tagColors);
               return (
-                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0" />
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0 text-xs px-2 py-0.5" />
               );
             })}
             
             {/* Remaining count indicator */}
             {remainingCount > 0 && (
-              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
+              <div className="inline-flex items-center px-1.5 py-0.5 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
                 +{remainingCount}
               </div>
             )}
           </div>
         )}
         
-        {/* Excerpt */}
-        <p className={`text-muted-foreground leading-relaxed text-sm mb-4 ${
+        {/* Excerpt - Reduced font size and spacing */}
+        <p className={`text-muted-foreground leading-relaxed text-xs mb-2.5 ${
           shouldShowFeaturedStyling ? '' : 'line-clamp-3 flex-grow'
         }`}>
           {excerpt}
         </p>
         
-        {/* Read More Link */}
-        <div className={`border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
+        {/* Read More Link - Reduced padding */}
+        <div className={`border-t border-border/50 pt-2 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
-            className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group"
+            className="text-primary hover:text-primary/80 font-medium text-xs transition-colors inline-flex items-center group"
           >
             Read more 
             <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
