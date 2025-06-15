@@ -61,19 +61,19 @@ export const PostCard = ({
 
   return (
     <Card className={cardClasses}>
-      {/* Header Section - Fixed structure for metadata */}
+      {/* Header Section - Flexible structure for metadata */}
       <CardHeader className="p-4 pb-0 flex-shrink-0">
-        {/* Featured Badge Zone - Fixed height when present */}
+        {/* Featured Badge Zone - Only present when needed */}
         {shouldShowFeaturedStyling && (
-          <div className="h-6 flex justify-start items-start mb-3">
+          <div className="flex justify-start items-start mb-3">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold bg-gradient-green-cta text-primary-foreground">
               Featured Post
             </span>
           </div>
         )}
         
-        {/* Date Zone - Fixed height and structure */}
-        <div className="h-5 flex items-center space-x-2 text-primary font-medium mb-3">
+        {/* Date Zone - Consistent structure */}
+        <div className="flex items-center space-x-2 text-primary font-medium mb-3">
           <Calendar className="h-4 w-4 flex-shrink-0" />
           <span className="text-sm">
             {new Date(date).toLocaleDateString('en-US', { 
@@ -84,59 +84,55 @@ export const PostCard = ({
           </span>
         </div>
         
-        {/* Title Zone - Fixed height with consistent line clamping */}
-        <div className="h-12 mb-3">
+        {/* Title Zone - Flexible height based on content */}
+        <div className="mb-2">
           <h3 className={`font-semibold leading-tight hover:text-primary transition-colors cursor-pointer ${
             shouldShowFeaturedStyling ? "text-lg md:text-xl" : "text-lg"
-          } line-clamp-2 h-full flex items-start`}>
+          } line-clamp-2`}>
             <a href={`/post/${slug}`} className="block">
               {title}
             </a>
           </h3>
         </div>
 
-        {/* Read Time Zone - Fixed height and structure */}
-        <div className="h-5 flex items-center space-x-2 text-sm text-muted-foreground">
+        {/* Read Time Zone - Consistent structure */}
+        <div className="flex items-center space-x-2 text-sm text-muted-foreground mb-3">
           <Clock className="h-4 w-4 flex-shrink-0" />
           <span>{readTime}</span>
         </div>
       </CardHeader>
       
-      <CardContent className={`flex flex-col p-4 pt-3 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
-        {/* Tags Zone - Fixed height to ensure consistency */}
-        <div className="h-8 mb-4">
-          {tags && tags.length > 0 ? (
-            <div className="flex items-center gap-2 flex-wrap h-full">
-              {visibleTags.map((tag) => {
-                console.log('Rendering tag:', tag, 'with colors:', tagColors);
-                return (
-                  <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0 text-xs" />
-                );
-              })}
-              
-              {remainingCount > 0 && (
-                <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
-                  +{remainingCount}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="h-full"></div>
-          )}
-        </div>
+      <CardContent className={`flex flex-col p-4 pt-0 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+        {/* Tags Zone - Flexible height with proper spacing */}
+        {tags && tags.length > 0 && (
+          <div className="flex items-start gap-2 flex-wrap mb-3">
+            {visibleTags.map((tag) => {
+              console.log('Rendering tag:', tag, 'with colors:', tagColors);
+              return (
+                <Tag key={tag} tag={tag} tagColors={tagColors} className="flex-shrink-0 text-xs" />
+              );
+            })}
+            
+            {remainingCount > 0 && (
+              <div className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium border border-muted-foreground/30 bg-muted/50 text-muted-foreground flex-shrink-0">
+                +{remainingCount}
+              </div>
+            )}
+          </div>
+        )}
         
-        {/* Excerpt Zone - Fixed height with consistent line clamping */}
-        <div className={`mb-4 ${shouldShowFeaturedStyling ? 'h-16' : 'h-16 flex-grow'}`}>
-          <p className="text-muted-foreground leading-relaxed text-sm line-clamp-3 h-full">
+        {/* Excerpt Zone - Flexible height with proper spacing */}
+        <div className={`mb-4 ${shouldShowFeaturedStyling ? '' : 'flex-grow'}`}>
+          <p className="text-muted-foreground leading-relaxed text-sm line-clamp-3">
             {excerpt}
           </p>
         </div>
         
-        {/* Action Zone - Fixed height for read more link */}
-        <div className={`h-6 border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
+        {/* Action Zone - Fixed position at bottom */}
+        <div className={`border-t border-border/50 pt-3 ${shouldShowFeaturedStyling ? '' : 'mt-auto flex-shrink-0'}`}>
           <a 
             href={`/post/${slug}`}
-            className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group h-full"
+            className="text-primary hover:text-primary/80 font-medium text-sm transition-colors inline-flex items-center group"
           >
             Read more 
             <span className="ml-1 group-hover:translate-x-1 transition-transform">→</span>
