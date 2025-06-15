@@ -26,7 +26,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   };
 
   const renderTocItems = (items: TocItem[]) => (
-    <nav className="space-y-0.5">
+    <nav className="space-y-1">
       {items.map((item) => (
         <button
           key={item.id}
@@ -36,12 +36,12 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
               ? 'text-primary font-medium border-l-2 border-primary bg-primary/5' 
               : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
           } ${
-            item.level === 1 ? 'font-medium text-sm pl-2 py-1' :
-            item.level === 2 ? 'pl-4 text-sm py-0.5' :
-            item.level === 3 ? 'pl-6 text-xs py-0.5' :
-            item.level === 4 ? 'pl-8 text-xs py-0.5' :
-            item.level === 5 ? 'pl-10 text-xs py-0.5' :
-            'pl-12 text-xs py-0.5'
+            item.level === 1 ? 'font-medium text-sm pl-3 py-1.5' :
+            item.level === 2 ? 'pl-5 text-sm py-1' :
+            item.level === 3 ? 'pl-7 text-xs py-1' :
+            item.level === 4 ? 'pl-9 text-xs py-0.5' :
+            item.level === 5 ? 'pl-11 text-xs py-0.5' :
+            'pl-13 text-xs py-0.5'
           } rounded-sm`}
         >
           {item.text}
@@ -52,24 +52,24 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
 
   // Both mobile and desktop now use the same collapsible pattern
   return (
-    <div className="mb-4">
+    <div className="mb-6">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button 
             variant="outline" 
             size="sm"
-            className="w-full justify-between bg-muted/50 hover:bg-muted h-8 px-3"
+            className="w-full justify-between bg-muted/50 hover:bg-muted"
           >
-            <div className="flex items-center space-x-1.5">
-              <List className="h-3.5 w-3.5" />
-              <span className="font-medium text-sm">Table of Contents</span>
+            <div className="flex items-center space-x-2">
+              <List className="h-4 w-4" />
+              <span className="font-medium">Table of Contents</span>
             </div>
-            {isOpen ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
+            {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <Card className="mt-2 border-muted bg-muted/20">
-            <CardContent className="p-3">
+          <Card className="mt-3 border-muted bg-muted/20">
+            <CardContent className="p-4">
               {renderTocItems(tocItems)}
             </CardContent>
           </Card>
