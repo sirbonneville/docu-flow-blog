@@ -67,7 +67,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
             </Button>
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <Card className="mt-2 w-64 max-h-80 overflow-y-auto border-border/50 bg-background/95 backdrop-blur-sm shadow-lg">
+            <Card className="mt-2 w-64 border-border/50 bg-background/95 backdrop-blur-sm shadow-lg">
               <CardContent className="p-3">
                 <div className="flex items-center space-x-2 mb-2 pb-2 border-b border-border/50">
                   <List className="h-3 w-3 text-muted-foreground" />
@@ -85,7 +85,7 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   // Desktop version - fixed right side
   return (
     <div className="fixed top-1/4 right-4 z-40 hidden md:block max-w-64">
-      <Card className="border-border/50 bg-background/95 backdrop-blur-sm shadow-lg max-h-96 overflow-y-auto">
+      <Card className="border-border/50 bg-background/95 backdrop-blur-sm shadow-lg">
         <CardContent className="p-4">
           <div className="flex items-center space-x-2 mb-3 pb-2 border-b border-border/50">
             <List className="h-4 w-4 text-muted-foreground" />
