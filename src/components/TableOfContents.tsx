@@ -26,22 +26,22 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   };
 
   const renderTocItems = (items: TocItem[]) => (
-    <nav className="space-y-1">
+    <nav className="space-y-2">
       {items.map((item) => (
         <button
           key={item.id}
           onClick={() => handleItemClick(item.id)}
-          className={`w-full text-left text-sm transition-colors duration-200 hover:text-primary ${
+          className={`w-full text-left text-sm transition-colors duration-200 hover:text-primary block ${
             activeId === item.id 
               ? 'text-primary font-medium border-l-2 border-primary pl-3' 
               : 'text-muted-foreground hover:text-foreground pl-3'
           } ${
-            item.level === 1 ? 'font-medium' :
-            item.level === 2 ? 'pl-6' :
-            item.level === 3 ? 'pl-9' :
-            item.level === 4 ? 'pl-12' :
-            item.level === 5 ? 'pl-15' :
-            'pl-18'
+            item.level === 1 ? 'font-medium text-base' :
+            item.level === 2 ? 'pl-4 text-sm' :
+            item.level === 3 ? 'pl-6 text-sm' :
+            item.level === 4 ? 'pl-8 text-xs' :
+            item.level === 5 ? 'pl-10 text-xs' :
+            'pl-12 text-xs'
           }`}
         >
           {item.text}
@@ -76,12 +76,12 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
   }
 
   return (
-    <div className="hidden lg:block fixed top-32 right-8 w-64 max-h-96 overflow-y-auto z-10">
-      <Card>
-        <CardContent className="p-4">
-          <div className="flex items-center space-x-2 mb-3 pb-2 border-b">
-            <List className="h-4 w-4" />
-            <span className="font-medium text-sm">Table of Contents</span>
+    <div className="hidden lg:block fixed top-32 right-8 w-72 z-10">
+      <Card className="border-border/50 bg-card/95 backdrop-blur-sm">
+        <CardContent className="p-6">
+          <div className="flex items-center space-x-2 mb-4 pb-3 border-b border-border/50">
+            <List className="h-4 w-4 text-muted-foreground" />
+            <span className="font-semibold text-base text-foreground">Table of Contents</span>
           </div>
           {renderTocItems(tocItems)}
         </CardContent>
