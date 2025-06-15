@@ -46,7 +46,7 @@ const Post = () => {
 
         {/* Article Header */}
         <article className="max-w-4xl mx-auto">
-          <header className="mb-12">
+          <header className="mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
               {post.title}
             </h1>
@@ -78,13 +78,15 @@ const Post = () => {
               </div>
             )}
 
-            <p className="text-xl text-muted-foreground leading-relaxed">
+            <p className="text-xl text-muted-foreground leading-relaxed mb-0">
               {post.excerpt}
             </p>
           </header>
 
-          {/* Table of Contents - Now integrated within content flow */}
-          <TableOfContents content={post.content} />
+          {/* Table of Contents - Tightly integrated with minimal spacing */}
+          <div className="my-4">
+            <TableOfContents content={post.content} />
+          </div>
 
           {/* Article Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none

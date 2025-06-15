@@ -50,31 +50,29 @@ export const TableOfContents = ({ content }: TableOfContentsProps) => {
     </nav>
   );
 
-  // Both mobile and desktop now use the same collapsible pattern
+  // Completely minimal spacing - no margins on container
   return (
-    <div className="mb-2">
-      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-        <CollapsibleTrigger asChild>
-          <Button 
-            variant="outline" 
-            size="sm"
-            className="w-full justify-between bg-muted/50 hover:bg-muted"
-          >
-            <div className="flex items-center space-x-2">
-              <List className="h-4 w-4" />
-              <span className="font-medium">Table of Contents</span>
-            </div>
-            {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
-          </Button>
-        </CollapsibleTrigger>
-        <CollapsibleContent>
-          <Card className="mt-2 border-muted bg-muted/20">
-            <CardContent className="p-3">
-              {renderTocItems(tocItems)}
-            </CardContent>
-          </Card>
-        </CollapsibleContent>
-      </Collapsible>
-    </div>
+    <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+      <CollapsibleTrigger asChild>
+        <Button 
+          variant="outline" 
+          size="sm"
+          className="w-full justify-between bg-muted/50 hover:bg-muted"
+        >
+          <div className="flex items-center space-x-2">
+            <List className="h-4 w-4" />
+            <span className="font-medium">Table of Contents</span>
+          </div>
+          {isOpen ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+        </Button>
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <Card className="mt-1 border-muted bg-muted/20">
+          <CardContent className="p-3">
+            {renderTocItems(tocItems)}
+          </CardContent>
+        </Card>
+      </CollapsibleContent>
+    </Collapsible>
   );
 };
