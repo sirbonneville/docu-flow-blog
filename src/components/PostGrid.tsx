@@ -23,14 +23,16 @@ interface PostGridProps {
   posts: Post[];
   showSearch?: boolean;
   title?: string;
-  showDiscoverMore?: boolean; // New prop to control the "Discover More Stories" button
+  showDiscoverMore?: boolean;
+  animateCards?: boolean; // New prop for controlling card animations
 }
 
 export const PostGrid = ({ 
   posts, 
   showSearch = true, 
   title = "Recent Posts",
-  showDiscoverMore = true // Default to true for backward compatibility
+  showDiscoverMore = true,
+  animateCards = false // Default to false for backward compatibility
 }: PostGridProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [screenSize, setScreenSize] = useState<'mobile' | 'tablet' | 'desktop'>('desktop');
@@ -67,20 +69,20 @@ export const PostGrid = ({
         return {
           visibleCount: totalPosts > 3 ? 3 : totalPosts,
           showGlassEffect: totalPosts > 3,
-          fadeIndices: totalPosts > 3 ? [2] : [] // Only the 3rd card (index 2)
+          fadeIndices: totalPosts > 3 ? [2] : []
         };
       case 'tablet':
         return {
           visibleCount: totalPosts > 4 ? 4 : totalPosts,
           showGlassEffect: totalPosts > 4,
-          fadeIndices: totalPosts > 4 ? [2, 3] : [] // Both 3rd and 4th cards (indices 2, 3) - bottom row in 2-column grid
+          fadeIndices: totalPosts > 4 ? [2, 3] : []
         };
       case 'desktop':
       default:
         return {
           visibleCount: totalPosts > 6 ? 6 : totalPosts,
           showGlassEffect: totalPosts > 6,
-          fadeIndices: totalPosts > 6 ? [3, 4, 5] : [] // Bottom row cards (indices 3, 4, 5)
+          fadeIndices: totalPosts > 6 ? [3, 4, 5] : []
         };
     }
   };
@@ -91,7 +93,7 @@ export const PostGrid = ({
   return (
     <section className="py-2 pb-8 relative">
       <div className="max-w-6xl mx-auto">
-        {/* Tighter mobile spacing for heading */}
+        {/* Title section */}
         <div className="text-center mb-4 md:mb-6">
           <h2 className="text-xl md:text-2xl font-bold mb-1 md:mb-3">{title}</h2>
           <p className="text-muted-foreground text-base max-w-2xl mx-auto mb-4 md:mb-0">
@@ -105,7 +107,7 @@ export const PostGrid = ({
           </div>
         )}
 
-        {/* Cards Container with improved grid consistency */}
+        {/* Cards Container with improved grid consistency and animations */}
         <div className="relative">
           <div 
             className="relative"
@@ -122,31 +124,41 @@ export const PostGrid = ({
                 // Apply fade effect only to cards that need it
                 const shouldFade = fadeIndices.includes(index);
                 
+                // Calculate staggered animation delay for cards
+                const animationDelay = animateCards ? `${index * 0.15}s` : '0s';
+                
                 return (
                   <div 
                     key={post.id}
                     className={`
                       ${hiddenOnMobile ? 'hidden md:block' : ''}
                       ${shouldFade ? 'relative' : ''}
+                      ${animateCards ? 'opacity-0 animate-fade-in translate-y-4' : ''}
                     `}
-                    style={shouldFade ? {
-                      maskImage: `linear-gradient(to bottom, 
-                        rgba(0,0,0,1) 0%, 
-                        rgba(0,0,0,0.9) 20%, 
-                        rgba(0,0,0,0.7) 40%, 
-                        rgba(0,0,0,0.4) 60%, 
-                        rgba(0,0,0,0.2) 80%, 
-                        rgba(0,0,0,0.1) 100%
-                      )`,
-                      WebkitMaskImage: `linear-gradient(to bottom, 
-                        rgba(0,0,0,1) 0%, 
-                        rgba(0,0,0,0.9) 20%, 
-                        rgba(0,0,0,0.7) 40%, 
-                        rgba(0,0,0,0.4) 60%, 
-                        rgba(0,0,0,0.2) 80%, 
-                        rgba(0,0,0,0.1) 100%
-                      )`
-                    } : {}}
+                    style={{
+                      ...(shouldFade ? {
+                        maskImage: `linear-gradient(to bottom, 
+                          rgba(0,0,0,1) 0%, 
+                          rgba(0,0,0,0.9) 20%, 
+                          rgba(0,0,0,0.7) 40%, 
+                          rgba(0,0,0,0.4) 60%, 
+                          rgba(0,0,0,0.2) 80%, 
+                          rgba(0,0,0,0.1) 100%
+                        )`,
+                        WebkitMaskImage: `linear-gradient(to bottom, 
+                          rgba(0,0,0,1) 0%, 
+                          rgba(0,0,0,0.9) 20%, 
+                          rgba(0,0,0,0.7) 40%, 
+                          rgba(0,0,0,0.4) 60%, 
+                          rgba(0,0,0,0.2) 80%, 
+                          rgba(0,0,0,0.1) 100%
+                        )`
+                      } : {}),
+                      ...(animateCards ? {
+                        animationDelay,
+                        animationFillMode: 'forwards'
+                      } : {})
+                    }}
                   >
                     <PostCard
                       title={post.title}
@@ -157,7 +169,6 @@ export const PostGrid = ({
                       tags={post.tags}
                       tagColors={post.tagColors}
                       featured={post.featured}
-                      // Don't pass showFeaturedStyling - all grid cards use standard styling
                     />
                   </div>
                 );
@@ -166,7 +177,7 @@ export const PostGrid = ({
           </div>
         </div>
 
-        {/* Discover More Stories Section - adjusted spacing for even top/bottom margins */}
+        {/* Discover More Stories Section */}
         {showGlassEffect && showDiscoverMore && (
           <div className="flex justify-center mt-12 mb-8">
             <div className="group relative overflow-hidden rounded-2xl 
