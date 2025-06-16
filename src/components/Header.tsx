@@ -4,14 +4,18 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const Header = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true); // Default to dark mode
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const savedTheme = localStorage.getItem("theme");
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     
-    if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+    // Default to dark mode if no saved preference
+    if (savedTheme === "light") {
+      setIsDark(false);
+      document.documentElement.classList.remove("dark");
+    } else {
       setIsDark(true);
       document.documentElement.classList.add("dark");
     }
@@ -40,11 +44,10 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b backdrop-blur-md bg-[#FAF8F3]/80 dark:bg-[#212121]/80">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* Logo - Responsive sizing */}
+          {/* Logo - Responsive sizing - removed "Doc Lead" text */}
           <div className="flex items-center min-w-0 flex-1 sm:flex-none">
             <a href="/" className="text-sm sm:text-lg md:text-xl font-bold text-primary hover:text-primary/80 transition-colors truncate">
-              <span className="hidden xs:inline">The Documentation Lead</span>
-              <span className="xs:hidden">Doc Lead</span>
+              The Documentation Lead
             </a>
           </div>
 
