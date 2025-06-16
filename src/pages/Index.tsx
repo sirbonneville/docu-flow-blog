@@ -20,26 +20,26 @@ const Index = () => {
       <div>
         <Hero />
         
-        {/* Featured Post Section - Animates in after hero */}
+        {/* Featured Post Section - Animates in after hero with longer delay */}
         {featuredPost && (
           <section className="pt-3 pb-4 md:pt-3 md:pb-8">
             <div className="max-w-4xl mx-auto">
-              {/* Featured post title with fade-in */}
+              {/* Featured post title with fade-in - delayed more */}
               <h2 
                 className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-10 opacity-0 animate-fade-in"
                 style={{
-                  animationDelay: '1.8s',
+                  animationDelay: '2.4s',
                   animationFillMode: 'forwards'
                 }}
               >
                 Featured Post
               </h2>
               
-              {/* Featured post card with scale-in animation */}
+              {/* Featured post card with scale-in animation - delayed even more */}
               <div 
                 className="opacity-0 animate-scale-in"
                 style={{
-                  animationDelay: '2.2s',
+                  animationDelay: '2.8s',
                   animationFillMode: 'forwards'
                 }}
               >

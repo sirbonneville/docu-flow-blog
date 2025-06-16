@@ -51,13 +51,13 @@ export const Hero = () => {
           I write about documentation leadership
         </h2>
         
-        {/* Description - slides in from top with final delay */}
+        {/* Description - slides in from top with longer delay */}
         <p 
           className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-down" 
           style={{ 
             lineHeight: '1.5', 
             margin: '0 auto',
-            animationDelay: '1.4s',
+            animationDelay: '1.8s',
             animationFillMode: 'forwards'
           }}
         >
