@@ -1,7 +1,7 @@
 
 export const Hero = () => {
   return (
-    <section className="py-8 sm:py-12 lg:py-16" style={{ paddingBottom: '16px' }}>
+    <section className="py-8 sm:py-12 lg:py-16" style={{ paddingBottom: '8px' }}>
       <div className="max-w-4xl mx-auto text-center px-4 sm:px-6">
         {/* Main title with fade-in animation */}
         <h1 
@@ -70,7 +70,7 @@ export const Hero = () => {
           className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed opacity-0 animate-slide-down mobile-only mobile-description" 
           style={{ 
             lineHeight: '1.5', 
-            margin: '0 auto 1rem auto',
+            margin: '0 auto',
             animationDelay: '1.8s',
             animationFillMode: 'forwards'
           }}

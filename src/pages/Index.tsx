@@ -20,9 +20,9 @@ const Index = () => {
       <div>
         <Hero />
         
-        {/* Featured Post Section - Reduced top padding for better spacing */}
+        {/* Featured Post Section - Animates in after hero with longer delay */}
         {featuredPost && (
-          <section className="pt-1 pb-4 md:pt-2 md:pb-8">
+          <section className="pt-3 pb-4 md:pt-3 md:pb-8">
             <div className="max-w-4xl mx-auto">
               {/* Featured post title with fade-in - delayed more */}
               <h2 
