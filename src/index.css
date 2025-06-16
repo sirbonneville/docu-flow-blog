@@ -74,16 +74,16 @@
     --fade-texture: hsla(215, 16%, 47%, 0.1);
   }
 
-  /* Mobile spacing - enhanced for better mobile experience */
-  @media (max-width: 768px) {
+  /* Mobile spacing - keep compact values consistent */
+  @media (max-width: 767px) {
     :root {
-      --space-xs: 6px;
-      --space-sm: 12px;
-      --space-md: 18px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      /* Enhanced tag spacing for mobile */
-      --tag-spacing: 12px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 20px;
+      /* Keep tag spacing compact and consistent */
+      --tag-spacing: 8px;
     }
   }
   
@@ -102,7 +102,7 @@
   }
 
   .dark {
-    /* Dark Mode - Enhanced gradient overlay */
+    /* Dark Mode - Neutral gray base */
     --background: 0 0% 13%; /* #212121 - Neutral dark gray */
     --foreground: 210 40% 98%; /* #F8FAFC - Off-white for headings */
 
@@ -135,11 +135,11 @@
     /* Tag container spacing - compact and consistent */
     --tag-spacing: 8px;
 
-    /* Custom gradient variables for dark mode - enhanced visual elements */
+    /* Custom gradient variables for dark mode - neutral grays */
     --gradient-subtle-bg: linear-gradient(135deg, #333333 0%, #2B2B2B 100%);
     --gradient-white-gray: linear-gradient(180deg, #333333 0%, #2B2B2B 100%);
     --gradient-green-cta: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    --gradient-hero: linear-gradient(135deg, #212121 0%, #1a1a1a 25%, #212121 50%, #1f1f1f 75%, #212121 100%);
+    --gradient-hero: none; /* No gradient for background */
     --gradient-card-hover: linear-gradient(135deg, #2B2B2B 0%, #333333 100%);
 
     /* Natural fade mask colors for dark mode */
@@ -160,16 +160,16 @@
     --fade-texture: hsla(214, 32%, 91%, 0.05);
   }
 
-  /* Mobile spacing for dark mode - enhanced for better mobile experience */
-  @media (max-width: 768px) {
+  /* Mobile spacing for dark mode - keep compact values consistent */
+  @media (max-width: 767px) {
     .dark {
-      --space-xs: 6px;
-      --space-sm: 12px;
-      --space-md: 18px;
-      --space-lg: 24px;
-      --space-xl: 32px;
-      /* Enhanced tag spacing for mobile */
-      --tag-spacing: 12px;
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 12px;
+      --space-lg: 16px;
+      --space-xl: 20px;
+      /* Keep tag spacing compact and consistent */
+      --tag-spacing: 8px;
     }
   }
   
@@ -198,11 +198,8 @@
     position: relative;
     min-height: 100vh;
     background-color: hsl(var(--background));
-    /* Enhanced mobile line-height */
-    line-height: 1.6;
   }
   
-  /* Enhanced background pattern with subtle gradient overlay */
   body::before {
     content: '';
     position: fixed;
@@ -214,22 +211,8 @@
     background-size: 60px 60px;
     background-position: 0 0;
     background-repeat: repeat;
-    z-index: -2;
-    pointer-events: none;
-  }
-  
-  /* Additional gradient overlay for visual depth */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-hero);
     z-index: -1;
     pointer-events: none;
-    opacity: 0.7;
   }
   
   /* Light mode: make SVG lines visible */
@@ -238,31 +221,16 @@
     opacity: 0.05;
   }
   
-  /* Dark mode: enhanced with gradient overlay */
+  /* Dark mode: make SVG lines lighter gray */
   .dark body::before {
     filter: invert(1);
-    opacity: 0.03;
-  }
-  
-  .dark body::after {
-    opacity: 0.8;
+    opacity: 0.05;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;
     color: hsl(var(--foreground));
     line-height: 1.2;
-  }
-
-  /* Enhanced mobile typography */
-  @media (max-width: 768px) {
-    h1, h2, h3, h4, h5, h6 {
-      line-height: 1.6;
-    }
-    
-    p {
-      line-height: 1.6;
-    }
   }
 
   p {
@@ -387,17 +355,6 @@
   .mb-space-lg { margin-bottom: var(--space-lg); }
   .mb-space-xl { margin-bottom: var(--space-xl); }
 
-  /* Mobile-specific utility classes */
-  @media (max-width: 768px) {
-    .mobile-only { display: block !important; }
-    .desktop-only { display: none !important; }
-  }
-  
-  @media (min-width: 769px) {
-    .mobile-only { display: none !important; }
-    .desktop-only { display: block !important; }
-  }
-
   /* Custom responsive utilities */
   @media (max-width: 480px) {
     .xs\:hidden { display: none !important; }
@@ -409,25 +366,24 @@
   }
 }
 
-/* Tag container layout fixes with enhanced mobile support */
+/* Tag container layout fixes */
 @layer utilities {
   .tag-container {
-    /* Ensure proper layout and spacing with enhanced mobile values */
+    /* Ensure proper layout and spacing with compact values */
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: nowrap;
     justify-content: flex-start;
     overflow: visible;
-    margin-right: 12px; /* Enhanced space to prevent cut-off on mobile */
+    margin-right: 8px; /* Extra space to prevent cut-off */
     width: 100%;
   }
   
-  /* Enhanced responsive adjustments for tag container */
-  @media (max-width: 768px) {
+  /* Responsive adjustments for tag container with compact spacing */
+  @media (max-width: 767px) {
     .tag-container {
-      margin-right: 16px; /* Enhanced margin on mobile */
-      gap: 12px; /* Increased gap for better touch targets */
+      margin-right: 8px; /* Compact margin on mobile */
     }
   }
   
@@ -440,28 +396,6 @@
   @media (min-width: 1200px) {
     .tag-container {
       margin-right: 8px; /* Compact margin on desktop */
-    }
-  }
-}
-
-/* Enhanced mobile touch targets */
-@layer utilities {
-  .touch-target {
-    min-height: 44px;
-    min-width: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  @media (max-width: 768px) {
-    .enhanced-mobile-spacing {
-      padding: 1.5rem;
-    }
-    
-    .mobile-text-enhancement {
-      font-size: 0.875rem;
-      opacity: 0.8;
     }
   }
 }
