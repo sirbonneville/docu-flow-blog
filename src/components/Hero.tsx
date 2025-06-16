@@ -77,30 +77,6 @@ export const Hero = () => {
         >
           Technical writing & documentation leadership insights
         </p>
-
-        {/* Mobile-only value proposition section */}
-        <div className="mobile-only mobile-value-section opacity-0 animate-fade-in" 
-             style={{ 
-               animationDelay: '2.2s',
-               animationFillMode: 'forwards'
-             }}>
-          <div className="mobile-content-break"></div>
-          <h3 className="mobile-value-title">What you'll find here</h3>
-          <div className="mobile-value-points">
-            <div className="mobile-value-item">
-              <span className="mobile-value-icon">📝</span>
-              <span>Technical writing best practices</span>
-            </div>
-            <div className="mobile-value-item">
-              <span className="mobile-value-icon">🚀</span>
-              <span>Documentation strategy insights</span>
-            </div>
-            <div className="mobile-value-item">
-              <span className="mobile-value-icon">👥</span>
-              <span>Team leadership guidance</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
